@@ -46,3 +46,17 @@ body {
     position: relative;
     margin: 0;
 }
+.journey {
+  .container {
+    > div {
+      > div {
+        > div {
+          label.Mui-focused {
+            color: $brand-color;
+
+          }
+        }
+      }
+    }
+  }
+}

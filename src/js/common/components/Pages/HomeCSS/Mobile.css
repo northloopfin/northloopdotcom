@@ -29,6 +29,7 @@
           font-weight: 600;
           color: $brand-color;
           line-height: 18px;
+          text-align: center;
         }
         p {
           color: $body-color;

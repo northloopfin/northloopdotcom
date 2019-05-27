@@ -4,12 +4,27 @@ import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
+import Drawer from '@material-ui/core/Drawer';
 
 import Logo from '../../../../assets/images/logo.png';
 import iPhone from '../../../../assets/images/iphone-6.png';
 import styles from './CSS/Header.css';
 
 class Header extends PureComponent {
+  const classes = useStyles();
+  const [state, setState] = React.useState({
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+  });
+  const toggleDrawer = (side, open) => event => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setState({ ...state, [side]: open });
+  };
   render() {
     const { location } = this.props;
     const { pathname } = location;
