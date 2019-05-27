@@ -1,0 +1,9 @@
+@import "../../../../../style/configs/color";
+@import "./Mobile.css";
+@import "./Desktop.css";
+ul {
+  list-style: none;
+  li {
+    display: inline-block;
+  }
+}

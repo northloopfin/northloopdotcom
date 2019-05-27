@@ -1,0 +1,48 @@
+@import "configs/color";
+@import "configs/font-faces";
+
+* {
+  -webkit-touch-callout: none;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+}
+
+/* IE10+ */
+::-ms-clear,
+::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+html {
+  height: 100%;
+  overflow: auto!important;
+}
+
+::-webkit-search-cancel-button,
+::-webkit-search-decoration,
+::-webkit-search-results-button,
+::-webkit-search-decoration {
+  display: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -webkit-text-size-adjust: none;
+    background: #fff;
+    color: #3c3c35;
+    font-family: 'Muli', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    min-height: 100%;
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+}

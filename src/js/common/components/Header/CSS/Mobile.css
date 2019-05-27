@@ -1,0 +1,92 @@
+@media only screen and (max-width: 600px)  {
+  .globalHeader {
+    nav {
+      text-align: center;
+      float: none;
+    }
+    ul {
+      list-style: none;
+      text-align: center;
+      display: block!important;
+      li {
+        display: block!important;
+        font-size: 18px;
+        .button {
+          height: 49px;
+          width: 161px;
+          text-transform: none;
+          font-size: 18px;
+          border-radius: 22px;
+          border: 2pt solid #a24a87;
+          color: #a24a87;
+          display: block;
+
+        }
+      }
+    }
+    .headerWithText {
+      padding-top: 20px; 
+    }
+    .headerIphone {
+      padding-top: 20px;
+      div {
+        text-align: center;
+      }
+      img {
+        max-height: 540px;
+      }
+    }
+    .title {
+      font-size: 28px;
+      line-height: 28px;
+      font-weight: normal;
+      margin-bottom: 0px;
+      span {
+        width: 152px;
+        display: block;
+        margin-top: 20px;
+        border: 3pt solid #a24a87;
+        border-radius: 16px;
+      }
+    }
+    .subHeader {
+      font-size: 18px;
+      margin-top: 19px;
+      color: #6c6c6c;
+    }
+    
+  }
+  .bannerForm {
+    position: relative;
+    margin-top: 20px;
+    div {
+      width: 100%;
+    }
+    input {
+      height: 60px;
+      background: white;
+      border-radius: 50px;
+      padding: 0px;
+      padding-left: 25px;
+      &:before {
+        display: none!important;
+      }
+    }
+    button {
+      position: absolute;
+      right: 6px;
+      top: 15px;
+      height: 55px;
+      border-radius: 35px;
+      padding: 0 30px;
+      font-size: 14px;
+      background-color: #a24a87;
+      &:hover {
+        background-color: #b24a87;
+      }
+    span {
+      text-transform: none;
+    }
+    }
+  }
+  }
