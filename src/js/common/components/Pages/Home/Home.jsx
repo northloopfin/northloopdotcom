@@ -20,7 +20,7 @@ import GooglePlay from '../../../../../assets/images/GooglePlay.png';
 
 const Services = () => (
   <Container className={styles.servicesWrapper}>
-    <h2 className={styles.subtitle}>Our Great Services With<br />All In One App <span /></h2>
+    <h2 className={styles.subtitle}>Banking designed for<br />your lifestyle <span /></h2>
     <Grid container className={styles.servicesGrid}>
       <Grid item xs={12} sm={4} className={styles.servicesRow}>
         <div className={styles.maxWidthFirst}>

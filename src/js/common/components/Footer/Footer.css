@@ -4,16 +4,14 @@
   background-color: $bg-color;
   .footerSection {
     padding-top: 18px;
-    ul, nav {
-      display: inline-block;
-    }
     nav {
-      float: right;
       li {
+        display: block;
         padding-right: 50px;
         font-weight: 400;
           font-size: 18px;
           color: #6c6c6c;
+          padding-bottom: 10px;
         &:last-child {
           padding-right: 0;
         } 
@@ -65,4 +63,13 @@
     }
   } 
 }
-
+.copy {
+  margin-top: 16px;
+  font-size: 0.9em;
+  color: #c0c0c0;
+  padding-bottom: 20px;
+}
+ul {
+  padding: 0;
+  margin: 0;
+}

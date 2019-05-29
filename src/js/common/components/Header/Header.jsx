@@ -29,6 +29,20 @@ function Header(props) {
   const isLoans = pathname === '/loans';
   const isMobile = window.innerWidth < 768;
 
+  // Content for each pages
+  let title = 'Banking for international students in the US';
+  let subtitle = 'No wire fees. No social security number needed.';
+  let button = 'Get Early Access';
+  if (isLoans) {
+    title = 'International Student Loans & Refinancing';
+    subtitle = 'Need an education loan? Get early access to the lowest rates possible. Why pay more when you can save thousands of dollars? Refer 4 friends and get 0.5% off your interest. Refer 10 friends and get 1.5% off your interest.';
+    button = 'Get Early Access';
+  }
+  if (isHighYieldSavings) {
+    title = 'Design - same as homepage';
+    subtitle = 'Earn 5% APY on your savings and CDs. The more people you refer, the higher you move up the waitlist. The first 5,000 people get access to 5% APY The next 5,000 get access to 5%. It’ll keep dropping until 2%. Hurry.';
+    button: 'Join the waitlist';
+  }
   const toggleDrawer = (side, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
@@ -45,29 +59,29 @@ function Header(props) {
       onKeyDown={toggleDrawer(side, false)}
     >
       <div className={styles.globalHeader}>
-      <nav>
-              <ul>
-                <li className={!isHome ? styles.active : ''}>
-                  {isHome ? 'Students' : <Link to="/">Students</Link>}
-                </li>
-                <li className={!isJoinUs ? styles.active : ''}>
-                  {isJoinUs ? 'Join Us' : <a href="https://www.linkedin.com/company/35694537/admin/" target="_blank">Join Us</a>}
-                </li>
-                <li className={!isHighYieldSavings ? styles.active : ''}>
-                  {isHighYieldSavings ? 'High Yield Savings' : <Link to="/high-yield-savings">High Yield Savings</Link>}
-                </li>
-                <li className={!isLoans ? styles.active : ''}>
-                  {isLoans ? 'Loans' : <Link to="/loans">Loans</Link>}
-                </li>
-              </ul>
-              <ul>
-                <li>
-                  <Button variant="outlined" color="secondary" className={styles.button}>
+        <nav>
+          <ul>
+            <li className={!isHome ? styles.active : ''}>
+            {isHome ? 'Students' : <Link to="/">Students</Link>}
+          </li>
+            <li className={!isJoinUs ? styles.active : ''}>
+            {isJoinUs ? 'Join Us' : <a href="https://www.linkedin.com/company/35694537/admin/" target="_blank">Join Us</a>}
+          </li>
+            <li className={!isHighYieldSavings ? styles.active : ''}>
+            {isHighYieldSavings ? 'High Yield Savings' : <Link to="/high-yield-savings">High Yield Savings</Link>}
+          </li>
+            <li className={!isLoans ? styles.active : ''}>
+            {isLoans ? 'Loans' : <Link to="/loans">Loans</Link>}
+          </li>
+          </ul>
+          <ul>
+            <li>
+            <Button variant="outlined" color="secondary" className={styles.button}>
                 Login / Signup
-              </Button>
-                </li>
-              </ul>
-            </nav>
+                  </Button>
+          </li>
+          </ul>
+        </nav>
 
       </div>
     </div>
@@ -121,7 +135,7 @@ function Header(props) {
                 <li>
                   <Button variant="outlined" color="secondary" className={styles.button}>
                 Login / Signup
-              </Button>
+                  </Button>
                 </li>
               </ul>
             </nav>
@@ -134,13 +148,11 @@ function Header(props) {
           <Grid container>
             <Grid item xs={12} sm={8} className={styles.headerWithText}>
               <h1 className={styles.title}>
-              Banking for international
-                <br />
-                students in the US
+                { renderHTML({ title }) }
                 {' '}
                 <span />
               </h1>
-              <p className={styles.subHeader}>No wire fees. No social security number needed.</p>
+              <p className={styles.subHeader}>{subtitle}</p>
               <div className={styles.buttonInputWrapper}>
                 <form className={styles.bannerForm} noValidate autoComplete="off">
                   <TextField
@@ -151,15 +163,17 @@ function Header(props) {
                     margin="normal"
             />
                   <Button variant="contained" color="primary" className={styles.button}>
-                  Get Early Access
+                    {button}
                   </Button>
                 </form>
               </div>
             </Grid>
             <Grid item xs={12} sm={4} className={styles.headerIphone}>
+              {!isLoans && (
               <div className={styles.iPhoneContainer}>
                 <img src={iPhone} alt="iPhone 6" />
               </div>
+              )}
             </Grid>
           </Grid>
         </div>
