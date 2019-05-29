@@ -1,99 +1,172 @@
-import React, { PureComponent } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import Drawer from '@material-ui/core/Drawer';
+import { Link } from 'react-router-dom';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import MenuIcon from '@material-ui/icons/Menu';
+import IconButton from '@material-ui/core/IconButton';
 
+import styles from './CSS/Header.css';
 import Logo from '../../../../assets/images/logo.png';
 import iPhone from '../../../../assets/images/iphone-6.png';
-import styles from './CSS/Header.css';
 
-class Header extends PureComponent {
-  const classes = useStyles();
+
+function Header(props) {
+
   const [state, setState] = React.useState({
-    top: false,
     left: false,
-    bottom: false,
-    right: false,
   });
-  const toggleDrawer = (side, open) => event => {
+  const { location } = props;
+  const { pathname } = location;
+  const isHome = pathname === '/';
+  const isJoinUs = pathname === 'https://www.linkedin.com/company/35694537/admin/';
+  const isHighYieldSavings = pathname === '/high-yield-savings';
+  const isLoans = pathname === '/loans';
+  const isMobile = window.innerWidth < 768;
+
+  const toggleDrawer = (side, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
 
     setState({ ...state, [side]: open });
   };
-  render() {
-    const { location } = this.props;
-    const { pathname } = location;
-    const isHome = pathname === '/';
-    const isPersonal = pathname === '/personal';
-    const isBusiness = pathname === '/business';
-    const isMembers = pathname === '/members';
 
-    return (
-      <header className={styles.globalHeader}>
-      <Container className={styles.marginTop}>
-      <ul className={styles.brandLogo}>
-          <img src={Logo} alt="Nort Loop" />
-      </ul>
+  const sideList = (side) => (
+    <div
+      className={styles.list}
+      role="presentation"
+      onClick={toggleDrawer(side, false)}
+      onKeyDown={toggleDrawer(side, false)}
+    >
+      <div className={styles.globalHeader}>
       <nav>
-        <ul>
-          <li className={!isHome ? styles.active : ''}>
-            {isHome ? 'Home' : <Link to="/">Home</Link>}
-          </li>
-          <li className={!isPersonal ? styles.active : ''}>
-            {isPersonal ? 'Personal' : <Link to="/personal">Personal</Link>}
-          </li>
-          <li className={!isBusiness ? styles.active : ''}>
-            {isBusiness ? 'Business' : <Link to="/business">Business</Link>}
-          </li>
-          <li className={!isMembers ? styles.active : ''}>
-            {isMembers ? 'Members' : <Link to="/members">Members</Link>}
-          </li>
-        </ul>
-        <ul>
-            <li>
-                <Button variant="outlined" color="secondary" className={styles.button}>
-                    Login / Signup
-                </Button>
-            </li>
-        </ul>
-        </nav>
+              <ul>
+                <li className={!isHome ? styles.active : ''}>
+                  {isHome ? 'Students' : <Link to="/">Students</Link>}
+                </li>
+                <li className={!isJoinUs ? styles.active : ''}>
+                  {isJoinUs ? 'Join Us' : <a href="https://www.linkedin.com/company/35694537/admin/" target="_blank">Join Us</a>}
+                </li>
+                <li className={!isHighYieldSavings ? styles.active : ''}>
+                  {isHighYieldSavings ? 'High Yield Savings' : <Link to="/high-yield-savings">High Yield Savings</Link>}
+                </li>
+                <li className={!isLoans ? styles.active : ''}>
+                  {isLoans ? 'Loans' : <Link to="/loans">Loans</Link>}
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  <Button variant="outlined" color="secondary" className={styles.button}>
+                Login / Signup
+              </Button>
+                </li>
+              </ul>
+            </nav>
+
+      </div>
+    </div>
+  );
+
+  return (
+    <header className={styles.globalHeader}>
+      { isMobile
+        && (
+        <div>
+          <AppBar position="fixed" className={styles.appBar}>
+            <Toolbar variant="dense">
+              <Typography variant="h6" color="inherit">
+                <ul className={styles.brandLogo}>
+                  <img src={Logo} alt="Nort Loop" />
+                </ul>
+              </Typography>
+              <IconButton onClick={toggleDrawer('left', true)} edge="end" className={styles.menuButton} color="inherit" aria-label="Menu">
+                <MenuIcon />
+              </IconButton>
+            </Toolbar>
+          </AppBar>
+          <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
+            {sideList('left')}
+          </Drawer>
+        </div>
+        )
+      }
+      <Container className={styles.marginTop}>
+        { !isMobile && (
+          <div>
+            <ul className={styles.brandLogo}>
+              <img src={Logo} alt="Nort Loop" />
+            </ul>
+            <nav>
+              <ul>
+                <li className={!isHome ? styles.active : ''}>
+                  {isHome ? 'Students' : <Link to="/">Students</Link>}
+                </li>
+                <li className={!isJoinUs ? styles.active : ''}>
+                  {isJoinUs ? 'Join Us' : <a href="https://www.linkedin.com/company/35694537/admin/" target="_blank">Join Us</a>}
+                </li>
+                <li className={!isHighYieldSavings ? styles.active : ''}>
+                  {isHighYieldSavings ? 'High Yield Savings' : <Link to="/high-yield-savings">High Yield Savings</Link>}
+                </li>
+                <li className={!isLoans ? styles.active : ''}>
+                  {isLoans ? 'Loans' : <Link to="/loans">Loans</Link>}
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  <Button variant="outlined" color="secondary" className={styles.button}>
+                Login / Signup
+              </Button>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        )
+}
+
+
         <div className={styles.headerTextContainer}>
           <Grid container>
-          <Grid item xs={12} sm={8} className={styles.headerWithText}>
-            <h1 className={styles.title}>Maximise Your Profit<br />With Our Bank <span /></h1>
-            <p className={styles.subHeader}>A modern banking solution, designed exclusively for your goals and lifestyle</p>
-            <div className={styles.buttonInputWrapper}>
-            <form className={styles.bannerForm} noValidate autoComplete="off">
-              <TextField
-                id="standard-textarea"
-                type="email"
-                placeholder="Enter your email"
-                className={styles.textField}
-                margin="normal"
-              />
-              <Button variant="contained" color="primary" className={styles.button}>
-                Sign up
-              </Button>
-              </form>
-            </div>
+            <Grid item xs={12} sm={8} className={styles.headerWithText}>
+              <h1 className={styles.title}>
+              Banking for international
+                <br />
+                students in the US
+                {' '}
+                <span />
+              </h1>
+              <p className={styles.subHeader}>No wire fees. No social security number needed.</p>
+              <div className={styles.buttonInputWrapper}>
+                <form className={styles.bannerForm} noValidate autoComplete="off">
+                  <TextField
+                    id="standard-textarea"
+                    type="email"
+                    placeholder="Enter your email"
+                    className={styles.textField}
+                    margin="normal"
+            />
+                  <Button variant="contained" color="primary" className={styles.button}>
+                  Get Early Access
+                  </Button>
+                </form>
+              </div>
+            </Grid>
+            <Grid item xs={12} sm={4} className={styles.headerIphone}>
+              <div className={styles.iPhoneContainer}>
+                <img src={iPhone} alt="iPhone 6" />
+              </div>
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={4} className={styles.headerIphone}>
-            <div className={styles.iPhoneContainer}>
-            <img src={iPhone} alt="iPhone 6" />
-            </div>
-          </Grid>
-          </Grid>
-        </div>  
-        
-        </Container>
-      </header>
-    );
-  }
+        </div>
+
+      </Container>
+    </header>
+  );
 }
 
 export default Header;

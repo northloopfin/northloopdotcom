@@ -3,16 +3,16 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 // This is i18n and i10n
-import { FormattedMessage, FormattedDate, FormattedTime } from 'react-intl'
+// import { FormattedMessage, FormattedDate, FormattedTime } from 'react-intl'
 
 import LazyLoading from '../../common/components/LazyLoading'
 import { actions as homeActions } from '../../redux/modules/home'
 import { homeSelector } from '../../redux/selectors/home/Selector'
-import { HomeWithError } from '../../common/components/Pages';
+import { HomeWithError } from '../../common/components/Pages/Home';
 import { ErrorBoundary } from '../../common/components/Utilities';
 
 // This is lazy loading home
-const LazyHome = LazyLoading(() => import('../../common/components/Pages/Home'));
+const LazyHome = LazyLoading(() => import('../../common/components/Pages/Home/Home'));
 
 class HomeView extends Component {
   static propTypes = {

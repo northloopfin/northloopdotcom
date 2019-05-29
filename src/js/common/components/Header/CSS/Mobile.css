@@ -1,16 +1,18 @@
-@media only screen and (max-width: 600px)  {
+@import "../../../../../style/configs/color";
+@media only screen and (max-width: 768px)  {
   .globalHeader {
     nav {
-      text-align: center;
+      text-align: left;
       float: none;
+      padding: 20px 10px;
     }
     ul {
       list-style: none;
-      text-align: center;
-      display: block!important;
+      text-align: left;
       li {
         display: block!important;
         font-size: 18px;
+        margin-bottom: 15px;
         .button {
           height: 49px;
           width: 161px;
@@ -41,6 +43,7 @@
       line-height: 28px;
       font-weight: normal;
       margin-bottom: 0px;
+      margin-top: 30px;
       span {
         width: 152px;
         display: block;
@@ -78,7 +81,7 @@
       top: 18px;
       height: 55px;
       border-radius: 35px;
-      padding: 0 30px;
+      padding: 0 12px;
       font-size: 14px;
       background-color: #a24a87;
       &:hover {
@@ -87,6 +90,21 @@
     span {
       text-transform: none;
     }
+    }
+  }
+  .list {
+    width: 80%;
+  }
+  .appBar {
+    background-color: $bg-color;
+    padding-top: 5px;
+    img {
+      max-width: 90px;
+    }
+    button {
+      color: #000;
+      position: absolute;
+      right: 12px;
     }
   }
   }

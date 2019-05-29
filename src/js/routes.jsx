@@ -7,6 +7,7 @@ import styles from '../style/index.css'
 
 // This is show case how you can lazy loading component
 const HomeRouteHandler = LazyLoading(() => import('views/home'))
+const LoanRouteHandler = LazyLoading(() => import('views/loan'))
 const Header = LazyLoading(() => import('common/components/Header/Header'))
 const Footer = LazyLoading(() => import('common/components/Footer/Footer'))
 
@@ -21,6 +22,7 @@ module.exports = (
     <div className={styles.content}>
       <Switch>
         <Route exact path="/" component={HomeRouteHandler} />
+        <Route exact path="/loan" component={LoanRouteHandler} />
         <Route path="*" component={HomeRouteHandler} />
       </Switch>
     </div>
