@@ -20,6 +20,7 @@
       margin-bottom: 70px;
       .icon {
         text-align: center;
+        min-height: 70px;
       }
       .servicesRow {
         &:last-child {
@@ -31,6 +32,7 @@
           font-weight: 600;
           color: $brand-color;
           line-height: 28px;
+          min-height: 58px
         }
         p {
           color: $body-color;
@@ -44,8 +46,9 @@
           margin-left: 200px;
         }
         .maxWidthSec {
-          margin-left: 100px;
-          margin-right: 100px;
+          margin-left: 80px;
+          margin-right: 80px;
+          max-width: 225px;
         }
       }
     } 

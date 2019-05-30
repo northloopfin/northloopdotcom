@@ -10,6 +10,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
+import ReactHtmlParser from 'react-html-parser';
 
 import styles from './CSS/Header.css';
 import Logo from '../../../../assets/images/logo.png';
@@ -35,13 +36,13 @@ function Header(props) {
   let button = 'Get Early Access';
   if (isLoans) {
     title = 'International Student Loans & Refinancing';
-    subtitle = 'Need an education loan? Get early access to the lowest rates possible. Why pay more when you can save thousands of dollars? Refer 4 friends and get 0.5% off your interest. Refer 10 friends and get 1.5% off your interest.';
+    subtitle = 'Need an education loan? Get early access to the lowest rates possible.<br /><br />Why pay more when you can save thousands of dollars?<br />Refer 4 friends and get 0.5% off your interest.<br />Refer 10 friends and get 1.5% off your interest.';
     button = 'Get Early Access';
   }
   if (isHighYieldSavings) {
     title = 'Design - same as homepage';
-    subtitle = 'Earn 5% APY on your savings and CDs. The more people you refer, the higher you move up the waitlist. The first 5,000 people get access to 5% APY The next 5,000 get access to 5%. It’ll keep dropping until 2%. Hurry.';
-    button: 'Join the waitlist';
+    subtitle = 'The more people you refer, the higher you move up the waitlist.<br />The first 5,000 people get access to 5% APY<br />The next 5,000 get access to 5%. It’ll keep dropping until 2%. Hurry.';
+    button = 'Join the waitlist';
   }
   const toggleDrawer = (side, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -77,7 +78,7 @@ function Header(props) {
           <ul>
             <li>
             <Button variant="outlined" color="secondary" className={styles.button}>
-                Login / Signup
+              Coming Soon
                   </Button>
           </li>
           </ul>
@@ -134,7 +135,7 @@ function Header(props) {
               <ul>
                 <li>
                   <Button variant="outlined" color="secondary" className={styles.button}>
-                Login / Signup
+                  Coming Soon
                   </Button>
                 </li>
               </ul>
@@ -148,11 +149,11 @@ function Header(props) {
           <Grid container>
             <Grid item xs={12} sm={8} className={styles.headerWithText}>
               <h1 className={styles.title}>
-                { renderHTML({ title }) }
+                { ReactHtmlParser(title) }
                 {' '}
                 <span />
               </h1>
-              <p className={styles.subHeader}>{subtitle}</p>
+              <p className={styles.subHeader}>{ ReactHtmlParser(subtitle) }</p>
               <div className={styles.buttonInputWrapper}>
                 <form className={styles.bannerForm} noValidate autoComplete="off">
                   <TextField
@@ -163,7 +164,7 @@ function Header(props) {
                     margin="normal"
             />
                   <Button variant="contained" color="primary" className={styles.button}>
-                    {button}
+                    { ReactHtmlParser(button) }
                   </Button>
                 </form>
               </div>

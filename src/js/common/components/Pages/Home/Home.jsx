@@ -4,6 +4,7 @@ import Container from '@material-ui/core/Container';
 import Slider from 'react-slick';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import ReactHtmlParser from 'react-html-parser';
 
 import styles from './HomeCSS/Home.css';
 import ZeroFees from '../../../../../assets/images/zero-fees.png';
@@ -18,50 +19,6 @@ import playground from '../../../../../assets/images/playground.png';
 import AppStore from '../../../../../assets/images/AppStore.png';
 import GooglePlay from '../../../../../assets/images/GooglePlay.png';
 
-const Services = () => (
-  <Container className={styles.servicesWrapper}>
-    <h2 className={styles.subtitle}>Banking designed for<br />your lifestyle <span /></h2>
-    <Grid container className={styles.servicesGrid}>
-      <Grid item xs={12} sm={4} className={styles.servicesRow}>
-        <div className={styles.maxWidthFirst}>
-          <div className={styles.icon}><img src={ZeroFees} alt="Zero Fees" /></div>
-          <h3>No fees</h3>
-          <p>ZERO wire fees. No ATM Fees. No Account Fees or Minimums. </p></div>
-      </Grid>
-      <Grid item xs={12} sm={4} className={styles.servicesRow}>
-        <div className={styles.maxWidthSec}>
-          <div className={styles.icon}><img src={whenYouLand} alt="Zero Fees" /></div>
-          <h3>Bank Wherever You Are</h3>
-          <p>Start the sign up process before you come to the US. Your card will be waiting for you when you land.</p>
-        </div>
-      </Grid>
-      <Grid item xs={12} sm={4} className={styles.servicesRow}>
-        <div className={styles.maxWidthThird}>
-          <div className={styles.icon}><img src={FDIC} alt="Zero Fees" /></div>
-          <h3>100% secure</h3>
-          <p>All accounts are insured up to $250,000 by the US government.</p>
-        </div>
-      </Grid>
-    </Grid>
-  </Container>
-);
-
-const CreditCard = () => (
-  <div className={styles.creditCard}>
-    <Container>
-      <Grid item container>
-        <Grid item xs={12} sm={6}>
-          <h3 className={styles.subtitle}>North Loop Visa® Card <span /></h3>
-          <p className={styles.discoverHow}>Accepted everywhere. Extra secure with EMV chips.<br />5% cashback on your first $1,000 every month</p>
-        </Grid>
-        <Grid item xs={12} sm={6} className={styles.creditC}>
-          <img src={CreditCardImg} alt="Credit Card" />
-        </Grid>
-      </Grid>
-    </Container>
-  </div>
-);
-
 function Partners() {
   const settings = {
     dots: false,
@@ -75,13 +32,17 @@ function Partners() {
         breakpoint: 478,
         settings: {
           slidesToShow: 2,
-        }
-      }
-    ]
+        },
+      },
+    ],
   };
   return (
     <Container className={styles.Partners}>
-      <h3 className={styles.subtitle}>Partners <span /></h3>
+      <h3 className={styles.subtitle}>
+Partners
+        {' '}
+        <span />
+      </h3>
       <Slider {...settings} className={styles.partnerSlider}>
         <div>
           <img src={Audio} alt="Audio Tech" />
@@ -125,7 +86,11 @@ const Download = () => (
 
 const Journey = () => (
   <Container className={styles.journey}>
-    <h2 className={styles.subtitle}>Start Your Journey <span /></h2>
+    <h2 className={styles.subtitle}>
+Start Your Journey
+      {' '}
+      <span />
+    </h2>
     <Grid item sm={10}>
       <form className={styles.container} noValidate autoComplete="off">
         <Grid container>
@@ -180,29 +145,107 @@ const Journey = () => (
     </Grid>
   </Container>
 );
-const NewServices = Services();
-const NewCreditCard = CreditCard();
 const NewPartners = Partners();
 const NewDownload = Download();
 const NewJourney = Journey();
 
 class Home extends PureComponent {
   render() {
-    const { home } = this.props;
-    const result = (home && home.result) || null;
-    if (result) {
-      return (
-        <div className={styles.homeOutput}>
-          {/* <pre>{JSON.stringify(result, undefined, 2)}</pre> */}
-          {NewServices}
-          {NewCreditCard}
-          {NewPartners}
-          {NewDownload}
-          {NewJourney}
-        </div>
-      );
+    const { location } = this.props;
+    const { pathname } = location;
+    const isHighYieldSavings = pathname === '/high-yield-savings';
+    const isLoans = pathname === '/loans';
+
+    // Text for each pages
+    let serviceTitle = 'Banking designed for<br />your lifestyle';
+    let servicesubTitle1 = 'No fees';
+    let servicesubTitle2 = 'Bank Wherever You Are';
+    let servicesubTitle3 = '100% secure';
+    let serviceText1 = 'ZERO wire fees. No ATM Fees. No Account Fees or Minimums.';
+    let serviceText2 = 'Start the sign up process before you come to the US. Your card will be waiting for you when you land.';
+    let serviceText3 = 'All accounts are insured up to $250,000 by the US government.';
+
+    let visaTitle = 'North Loop Visa® Card';
+    let visaSubtitle = 'Accepted everywhere. Extra secure with EMV chips.<br />5% cashback on your first $1,000 every month';
+    if (isHighYieldSavings) {
+      serviceTitle = 'The North Loop Checking<br />Account';
+      servicesubTitle1 = 'No fees';
+      servicesubTitle2 = 'A global spending account';
+      servicesubTitle3 = '100% secure';
+      serviceText1 = 'Free access to over 32,000 ATMs. No Account Fees. No overdraft fees.';
+      serviceText2 = 'No international transaction fees.';
+      serviceText3 = 'All accounts are FDIC insured';
+
+      visaTitle = 'North Loop Visa® Card';
+      visaSubtitle = 'Accepted everywhere that accepts VISA. Extra secure with EMV chips. ';
+
     }
-    return <div />;
+    const Services = () => (
+      <Container className={styles.servicesWrapper}>
+        <h2 className={styles.subtitle}>
+          { ReactHtmlParser(serviceTitle) }
+          {' '}
+          <span />
+        </h2>
+        <Grid container className={styles.servicesGrid}>
+          <Grid item xs={12} sm={4} className={styles.servicesRow}>
+            <div className={styles.maxWidthFirst}>
+              <div className={styles.icon}><img src={ZeroFees} alt="Zero Fees" /></div>
+              <h3>{ ReactHtmlParser(servicesubTitle1) }</h3>
+              <p>
+                { ReactHtmlParser(serviceText1) }
+              </p>
+
+            </div>
+          </Grid>
+          <Grid item xs={12} sm={4} className={styles.servicesRow}>
+            <div className={styles.maxWidthSec}>
+              <div className={styles.icon}><img src={whenYouLand} alt="Zero Fees" /></div>
+              <h3>{ ReactHtmlParser(servicesubTitle2) }</h3>
+              <p>{ ReactHtmlParser(serviceText2) }</p>
+            </div>
+          </Grid>
+          <Grid item xs={12} sm={4} className={styles.servicesRow}>
+            <div className={styles.maxWidthThird}>
+              <div className={styles.icon}><img src={FDIC} alt="Zero Fees" /></div>
+              <h3>{ ReactHtmlParser(servicesubTitle3) }</h3>
+              <p>{ ReactHtmlParser(serviceText3) }</p>
+            </div>
+          </Grid>
+        </Grid>
+      </Container>
+    );
+    const CreditCard = () => (
+      <div className={styles.creditCard}>
+        <Container>
+          <Grid item container>
+            <Grid item xs={12} sm={6}>
+              <h3 className={styles.subtitle}>
+                { ReactHtmlParser(visaTitle) }
+                {' '}
+                <span />
+              </h3>
+              <p className={styles.discoverHow}>
+                { ReactHtmlParser(visaSubtitle) }
+              </p>
+            </Grid>
+            <Grid item xs={12} sm={6} className={styles.creditC}>
+              <img src={CreditCardImg} alt="Credit Card" />
+            </Grid>
+          </Grid>
+        </Container>
+      </div>
+    );
+    const NewServices = Services();
+    const NewCreditCard = CreditCard();
+
+    return (
+      <div className={styles.homeOutput}>
+        { !isLoans
+          && [NewServices, NewCreditCard, NewPartners, NewDownload, NewJourney]
+      }
+      </div>
+    );
   }
 }
 

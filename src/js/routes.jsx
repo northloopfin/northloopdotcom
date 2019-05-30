@@ -21,7 +21,7 @@ module.exports = (
       <Switch>
         <Route exact path="/" component={HomeRouteHandler} />
         <Route path="/loan" component={LoanRouteHandler} />
-        {/* <Route path="*" component={HomeRouteHandler} /> */}
+        <Route path="*" component={HomeRouteHandler} />
       </Switch>
     </div>
     <FooterWithRouter />
