@@ -242,11 +242,19 @@ class Home extends PureComponent {
     return (
       <div className={styles.homeOutput}>
         { !isLoans
-          && [NewServices, NewCreditCard, NewPartners, NewDownload, NewJourney]
-      }
+        && (
+        <section>
+          <div>{NewServices}</div>
+          <div>{NewCreditCard}</div>
+        </section>
+        )}
       </div>
     );
   }
 }
 
 export default Home;
+
+// <div>{NewPartners}</div>
+// <div>{NewDownload}</div>
+// <div>{NewJourney}</div>

@@ -65,3 +65,16 @@ header {
   box-shadow: 0 5px 14px rgba(0, 0, 0, 0.3);
   padding-bottom: 20px;
 }
+.newappBar {
+  background-color: $bg-color;
+  padding-top: 5px!important;
+  padding: 0;
+  img {
+    max-width: 90px;
+  }
+  button {
+    color: #000;
+    position: absolute;
+    right: 12px;
+  }
+}

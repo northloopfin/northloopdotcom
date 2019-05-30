@@ -93,7 +93,7 @@ function Header(props) {
       { isMobile
         && (
         <div>
-          <AppBar position="fixed" className={styles.appBar}>
+          <AppBar position="fixed" className={styles.newappBar} style={{color: 'red'}}>
             <Toolbar variant="dense">
               <Typography variant="h6" color="inherit">
                 <ul className={styles.brandLogo}>

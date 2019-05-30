@@ -98,10 +98,11 @@
     span {
       width: 91px;
       display: inline-block;
-      border: 3pt solid #a24a87;
+      border-bottom: 6pt solid #a24a87!important;
       border-radius: 16px;
       display: block;
       margin-top: 18px;
+      border: none;
     }
   }
   .partnerSlider {
