@@ -16,6 +16,29 @@ import styles from './CSS/Header.css';
 import Logo from '../../../../assets/images/logo.png';
 import iPhone from '../../../../assets/images/iphone-6.png';
 
+const divStyle = {
+  background: '#fff6fc',
+  paddingTop: '5px!important',
+  padding: '0',
+};
+
+function sendToGSF() {
+  // const userEmail = document.getElementById('standard-textarea').value;
+  growsurf.open();
+  // if (growsurf && userEmail.length > 0 && userEmail.includes('@') && userEmail.includes('.')) {
+  //       growsurf.addParticipant(userEmail);
+  // }
+}
+
+setTimeout(function(){
+  if (window.innerWidth < 768 && growsurf) {
+    const growsurfWidget = document.getElementById('grsf-widget');
+    growsurfWidget.style.top = '20%';
+    growsurfWidget.style.width = '80px';
+    growsurfWidget.style.fontSize = '11px';
+  }
+}, 2000);
+
 
 function Header(props) {
 
@@ -32,17 +55,31 @@ function Header(props) {
 
   // Content for each pages
   let title = 'Banking for international students in the US';
-  let subtitle = 'No wire fees. No social security number needed.';
+  let subtitle = '<ul><li>No wire fees. No social security number needed.</li><ul>';
   let button = 'Get Early Access';
+  let loanContent;
+
   if (isLoans) {
     title = 'International Student Loans & Refinancing';
-    subtitle = 'Need an education loan? Get early access to the lowest rates possible.<br /><br />Why pay more when you can save thousands of dollars?<br />Refer 4 friends and get 0.5% off your interest.<br />Refer 10 friends and get 1.5% off your interest.';
+    loanContent = (<ul className="hdr-content-ul">
+        <li>Why pay more when you can save thousands of dollars?</li>
+        <li />
+        <li />
+        <li>Refer 4 friends and get 0.5% off your interest.</li>
+        <li>Refer 10 friends and get 1.5% off your interest.</li>
+      </ul>);
+    subtitle = 'Need an education loan? Get early access to the lowest rates possible.<br /><br />Why pay more when you can save thousands of dollars?<br />Refer 10 friends and get 1.5% off your interest.<br />';
     button = 'Get Early Access';
   }
   if (isHighYieldSavings) {
     title = 'Design - same as homepage';
     subtitle = 'The more people you refer, the higher you move up the waitlist.<br />The first 5,000 people get access to 5% APY<br />The next 5,000 get access to 5%. It’ll keep dropping until 2%. Hurry.';
     button = 'Join the waitlist';
+  }
+  const divStyle = {
+    background: '#fff6fc',
+    paddingTop: '5px!important',
+    padding: '0',
   }
   const toggleDrawer = (side, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -57,8 +94,7 @@ function Header(props) {
       className={styles.list}
       role="presentation"
       onClick={toggleDrawer(side, false)}
-      onKeyDown={toggleDrawer(side, false)}
-    >
+      onKeyDown={toggleDrawer(side, false)}>
       <div className={styles.globalHeader}>
         <nav>
           <ul>
@@ -68,18 +104,8 @@ function Header(props) {
             <li className={!isJoinUs ? styles.active : ''}>
             {isJoinUs ? 'Join Us' : <a href="https://www.linkedin.com/company/35694537/admin/" target="_blank">Join Us</a>}
           </li>
-            <li className={!isHighYieldSavings ? styles.active : ''}>
-            {isHighYieldSavings ? 'High Yield Savings' : <Link to="/high-yield-savings">High Yield Savings</Link>}
-          </li>
             <li className={!isLoans ? styles.active : ''}>
             {isLoans ? 'Loans' : <Link to="/loans">Loans</Link>}
-          </li>
-          </ul>
-          <ul>
-            <li>
-            <Button variant="outlined" color="secondary" className={styles.button}>
-              Coming Soon
-                  </Button>
           </li>
           </ul>
         </nav>
@@ -93,7 +119,7 @@ function Header(props) {
       { isMobile
         && (
         <div>
-          <AppBar position="fixed" className={styles.newappBar} style={{color: 'red'}}>
+          <AppBar position="fixed" className={styles.newappBar} style={ divStyle }>
             <Toolbar variant="dense">
               <Typography variant="h6" color="inherit">
                 <ul className={styles.brandLogo}>
@@ -125,18 +151,8 @@ function Header(props) {
                 <li className={!isJoinUs ? styles.active : ''}>
                   {isJoinUs ? 'Join Us' : <a href="https://www.linkedin.com/company/35694537/admin/" target="_blank">Join Us</a>}
                 </li>
-                <li className={!isHighYieldSavings ? styles.active : ''}>
-                  {isHighYieldSavings ? 'High Yield Savings' : <Link to="/high-yield-savings">High Yield Savings</Link>}
-                </li>
                 <li className={!isLoans ? styles.active : ''}>
                   {isLoans ? 'Loans' : <Link to="/loans">Loans</Link>}
-                </li>
-              </ul>
-              <ul>
-                <li>
-                  <Button variant="outlined" color="secondary" className={styles.button}>
-                  Coming Soon
-                  </Button>
                 </li>
               </ul>
             </nav>
@@ -153,21 +169,18 @@ function Header(props) {
                 {' '}
                 <span />
               </h1>
-              <p className={styles.subHeader}>{ ReactHtmlParser(subtitle) }</p>
-              <div className={styles.buttonInputWrapper}>
-                <form className={styles.bannerForm} noValidate autoComplete="off">
-                  <TextField
-                    id="standard-textarea"
-                    type="email"
-                    placeholder="Enter your email"
-                    className={styles.textField}
-                    margin="normal"
-            />
-                  <Button variant="contained" color="primary" className={styles.button}>
-                    { ReactHtmlParser(button) }
-                  </Button>
-                </form>
-              </div>
+              <div className={styles.subHeader}>{  isLoans ? loanContent : ReactHtmlParser(subtitle) }</div>
+              {
+                !isMobile && !isLoans && (
+                  <div className={styles.buttonInputWrapper}>
+                    <form className={styles.bannerForm} noValidate autoComplete="off">
+                      <Button variant="contained" color="primary" onClick={() => {sendToGSF();}} className={styles.button}>
+                        { ReactHtmlParser(button) }
+                      </Button>
+                    </form>
+                  </div> 
+                )
+              }
             </Grid>
             <Grid item xs={12} sm={4} className={styles.headerIphone}>
               {!isLoans && (
@@ -185,3 +198,33 @@ function Header(props) {
 }
 
 export default Header;
+
+// <li className={!isHighYieldSavings ? styles.active : ''}>
+//                   {isHighYieldSavings ? 'High Yield Savings' : <Link to="/high-yield-savings">High Yield Savings</Link>}
+//                 </li>
+
+// <li className={!isHighYieldSavings ? styles.active : ''}>
+//             {isHighYieldSavings ? 'High Yield Savings' : <Link to="/high-yield-savings">High Yield Savings</Link>}
+//           </li>
+
+          // <ul>
+          //   <li>
+          //   <Button variant="outlined" color="secondary" className={styles.button}>
+          //     Coming Soon
+          //         </Button>
+          // </li>
+          // </ul>
+// <ul>
+//                 <li>
+//                   <Button variant="outlined" color="secondary" className={styles.button}>
+//                   Coming Soon
+//                   </Button>
+//                 </li>
+//               </ul>
+
+// <TextField
+//                     id="standard-textarea"
+//                     type="email"
+//                     placeholder="Enter your email"
+//                     className={styles.textField}
+//                     margin="normal"/>

@@ -166,7 +166,7 @@ class Home extends PureComponent {
     let serviceText3 = 'All accounts are insured up to $250,000 by the US government.';
 
     let visaTitle = 'North Loop Visa® Card';
-    let visaSubtitle = 'Accepted everywhere. Extra secure with EMV chips.<br />5% cashback on your first $1,000 every month';
+    let visaSubtitle = 'Accepted everywhere. Extra secure with EMV chips.<br />5% cashback on your first $1,000.';
     if (isHighYieldSavings) {
       serviceTitle = 'The North Loop Checking<br />Account';
       servicesubTitle1 = 'No fees';
@@ -241,11 +241,12 @@ class Home extends PureComponent {
 
     return (
       <div className={styles.homeOutput}>
-        { !isLoans
+        { true
         && (
         <section>
           <div>{NewServices}</div>
-          <div>{NewCreditCard}</div>
+          { !isLoans && <div>{NewCreditCard}</div>
+          }
         </section>
         )}
       </div>
