@@ -37,6 +37,7 @@ const html = config.get('html')
 const htmlPlugins = html.map(
   (page) => new HtmlWebpackPlugin({
     title: page.title,
+    favicon: "./src/assets/images/nolo-favicon.ico",
     template: `src/assets/template/${page.template}`,
     inject: 'body',
     filename: page.filename,
