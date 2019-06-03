@@ -1,2 +1,1 @@
-export { default as Home } from './Blog';
-export { default as HomeWithError } from './BlogWithError';
+export { default as Blog } from './Blog';

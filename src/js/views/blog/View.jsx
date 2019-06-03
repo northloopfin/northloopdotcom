@@ -1,55 +1,38 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import axios from 'axios';
 
 // This is i18n and i10n
 // import { FormattedMessage, FormattedDate, FormattedTime } from 'react-intl'
-
-import LazyLoading from '../../common/components/LazyLoading'
-import { HomeWithError } from '../../common/components/Pages/Blog';
-
-// This is lazy loading home
-const LazyHome = LazyLoading(() => import('../../common/components/Pages/Blog/Blog'));
+import BlogViewFile from '../../common/components/Pages/Blog/Blog.jsx';
 
 class BlogView extends Component {
-  static propTypes = {
-    home: PropTypes.object.isRequired,
-  }
-
   state = {
-    myArbitraryNumber: Math.floor(Math.random() * 10000),
-    currentTime: new Date(),
+    posts:[]
   }
 
-  componentDidMount() {
-    const { getAwesomeCode } = this.props
+  componentWillMount() {
 
-    getAwesomeCode()
+     axios.get("https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2F%40north_loop")
+      .then(res => {
+        console.log(res.data.items);
+        this.setState({posts: res.data.items});
+      })
   }
 
   render() {
-
     // Note for i18n and i10n
     // if `id` is found, it will use the matched message
     // otherwise, it will use defaultMessage as fallback
 
     return (
-      <Fragment>
-        <LazyHome {...this.props} />
-        <ErrorBoundary>
-          <HomeWithError {...this.props} />
-        </ErrorBoundary>
-      </Fragment>
+      <div>
+        <BlogViewFile posts={this.state.posts} />
+      </div>
     )
   }
 }
 
-const mapStateToProps = (state) => ({
-  blog: homeSelector(state),
-})
 
-
-export default connect(
-  mapStateToProps,
-  null
-)(BlogView)
+export default BlogView;

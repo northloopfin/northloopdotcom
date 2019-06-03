@@ -51,6 +51,7 @@ function Header(props) {
   const isJoinUs = pathname === 'https://www.linkedin.com/company/35694537/admin/';
   const isHighYieldSavings = pathname === '/high-yield-savings';
   const isLoans = pathname === '/loans';
+  const isBlogs = pathname === '/blogs';
   const isMobile = window.innerWidth < 768;
 
   // Content for each pages
@@ -161,36 +162,44 @@ function Header(props) {
 }
 
 
-        <div className={styles.headerTextContainer}>
-          <Grid container>
-            <Grid item xs={12} sm={8} className={styles.headerWithText}>
-              <h1 className={styles.title}>
-                { ReactHtmlParser(title) }
-                {' '}
-                <span />
-              </h1>
-              <div className={styles.subHeader}>{  isLoans ? loanContent : ReactHtmlParser(subtitle) }</div>
-              {
-                !isMobile && !isLoans && (
-                  <div className={styles.buttonInputWrapper}>
-                    <form className={styles.bannerForm} noValidate autoComplete="off">
-                      <Button variant="contained" color="primary" onClick={() => {sendToGSF();}} className={styles.button}>
-                        { ReactHtmlParser(button) }
-                      </Button>
-                    </form>
-                  </div> 
-                )
-              }
-            </Grid>
-            <Grid item xs={12} sm={4} className={styles.headerIphone}>
-              {!isLoans && (
-              <div className={styles.iPhoneContainer}>
-                <img src={iPhone} alt="iPhone 6" />
-              </div>
-              )}
-            </Grid>
-          </Grid>
+        {!isBlogs && (<div className={styles.headerTextContainer}>
+                          <Grid container>
+                            <Grid item xs={12} sm={8} className={styles.headerWithText}>
+                              <h1 className={styles.title}>
+                                { ReactHtmlParser(title) }
+                                {' '}
+                                <span />
+                              </h1>
+                              <div className={styles.subHeader}>{  isLoans ? loanContent : ReactHtmlParser(subtitle) }</div>
+                              {
+                                !isMobile && !isLoans && (
+                                  <div className={styles.buttonInputWrapper}>
+                                    <form className={styles.bannerForm} noValidate autoComplete="off">
+                                      <Button variant="contained" color="primary" onClick={() => {sendToGSF();}} className={styles.button}>
+                                        { ReactHtmlParser(button) }
+                                      </Button>
+                                    </form>
+                                  </div> 
+                                )
+                              }
+                            </Grid>
+                            <Grid item xs={12} sm={4} className={styles.headerIphone}>
+                              {!isLoans && (
+                              <div className={styles.iPhoneContainer}>
+                                <img src={iPhone} alt="iPhone 6" />
+                              </div>
+                              )}
+                            </Grid>
+                          </Grid>
+                        </div>)}
+      { isBlogs && (
+        <div style={{marginTop: '5%'}}>
+          <h1>North Loop Blogs</h1>
+          <p>
+            Useful insights to ease your move to the US
+          </p>
         </div>
+      )}
 
       </Container>
     </header>
