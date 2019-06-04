@@ -184,11 +184,19 @@ function Header(props) {
                               }
                             </Grid>
                             <Grid item xs={12} sm={4} className={styles.headerIphone}>
-                              {!isLoans && (
+                              {!isLoans ? (
                               <div className={styles.iPhoneContainer}>
                                 <img src={iPhone} alt="iPhone 6" />
                               </div>
-                              )}
+                              ) :
+                              <div className={styles.loanHeaderAccessButton}>
+                                <div>
+                                  <Button variant="contained" color="primary" onClick={() => {sendToGSF();}} className={styles.button}>
+                                        { ReactHtmlParser(button) }
+                                  </Button>
+                                </div>
+                              </div> 
+                            }
                             </Grid>
                           </Grid>
                         </div>)}

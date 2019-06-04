@@ -36,7 +36,7 @@ class Footer extends PureComponent {
             </Grid>
             <Grid item xs={12} sm={3}>
               <ul>
-                <li style={liTextCenter}><a href="/#/blogs">Blogs</a></li>
+                <li style={liTextCenter}><a href="/#/blogs">Blog</a></li>
               </ul>  
             </Grid>
           </Grid>
