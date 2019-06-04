@@ -19,25 +19,26 @@ class Footer extends PureComponent {
         <Container className={styles.footerSection}>
           <nav>
           <Grid container style={{justifyContent: "center"}}>
-            <Grid item xs={12} sm={3}>
+            <Grid item xs={12} sm={4}>
               <ul>
                 <li style={liTextCenter}><a href="https://www.instagram.com/northloopbank/" target="_blank">Instagram</a></li>
-              </ul>  
-            </Grid>
-            <Grid item xs={12} sm={3}>
-              <ul>
                 <li style={liTextCenter}><a href="https://www.facebook.com/northloopbank/" target="_blank">Facebook</a></li>
-              </ul>  
-            </Grid>
-            <Grid item xs={12} sm={3}>
-              <ul>
                 <li style={liTextCenter}><a href="https://twitter.com/NorthLoop11" target="_blank">Twitter</a></li>
               </ul>  
             </Grid>
-            <Grid item xs={12} sm={3}>
+            <Grid item xs={12} sm={4}>
               <ul>
                 <li style={liTextCenter}><a href="/#/blogs">Blog</a></li>
-              </ul>  
+              </ul> 
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <ul>
+                <li style={liTextCenter} className={styles.contactUsLi}>
+                  <a>Contact Us</a>
+                  <span>help@nolobank.com</span>
+                  <span>+1 (831) 740-8126</span>
+                </li>
+              </ul>
             </Grid>
           </Grid>
             <p style={liTextCenter} className={styles.copy}>© 2019 North Loop Technologies, Inc. Savings and loans are provided by third parties, and not North loop directly</p>      

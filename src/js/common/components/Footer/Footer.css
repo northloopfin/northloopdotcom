@@ -12,9 +12,9 @@
           font-size: 18px;
           color: #6c6c6c;
           padding-bottom: 10px;
-        &:last-child {
+        /*&:last-child {
           padding-right: 0;
-        } 
+        }*/ 
         a {
           text-decoration: none;
           font-weight: 400;
@@ -24,6 +24,13 @@
             color: #a24a87;
           }
         }
+      }
+    }
+    .contactUsLi {
+      display: flex;
+      flex-direction: column;
+      span {
+        font-size: x-small;
       }
     }
   }
@@ -60,6 +67,13 @@
           }
         }
       }
+      .contactUsLi {
+        display: flex;
+        flex-direction: column;
+        span {
+          font-size: x-small;
+        }
+      }  
     }
   } 
 }
