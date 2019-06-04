@@ -31,13 +31,14 @@ class BlogItem extends PureComponent {
 
 
     return data && data.thumbnail ? (
-    	<NewsHeaderCard style={{marginBottom: '5%'}}
-          href={data.link}
-          thumbnail={data.thumbnail}
-          title={data.title}
-          author={data.author}
-          date={data.pubDate}
-          tags={data.categories}/>)
+      <div onClick={() => {window.open(data.link)}} style={{cursor: 'pointer'}}>
+        <NewsHeaderCard
+            thumbnail={data.thumbnail}
+            title={data.title}
+            author={data.author}
+            date={data.pubDate}
+            tags={data.categories}/>
+      </div>)
     	: <p>No posts</p>;
   }
 }
