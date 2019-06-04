@@ -34,6 +34,11 @@ class Footer extends PureComponent {
                 <li style={liTextCenter}><a href="https://twitter.com/NorthLoop11" target="_blank">Twitter</a></li>
               </ul>  
             </Grid>
+            <Grid item xs={12} sm={3}>
+              <ul>
+                <li style={liTextCenter}><a href="/#/blogs">Blogs</a></li>
+              </ul>  
+            </Grid>
           </Grid>
             <p style={liTextCenter} className={styles.copy}>© 2019 North Loop Technologies, Inc. Savings and loans are provided by third parties, and not North loop directly</p>      
           </nav>
