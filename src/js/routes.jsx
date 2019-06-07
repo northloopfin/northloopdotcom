@@ -21,7 +21,7 @@ module.exports = (
     <div className={styles.content}>
       <Switch>
         <Route exact path="/" component={HomeRouteHandler} />
-        <Route path="/loan" component={LoanRouteHandler} />
+        <Route path="/loans" component={LoanRouteHandler} />
         <Route path="/blogs" component={BlogRouteHandler} />
         <Route path="*" component={HomeRouteHandler} />
       </Switch>
