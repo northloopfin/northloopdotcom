@@ -4,6 +4,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 
 import Logo from '../../../../assets/images/bottom.png';
+import RespDialog from '../RespDialog/RespDialog.jsx';
 import styles from './Footer.css';
 
 const liTextCenter = { 'textAlign': 'center' };
@@ -29,6 +30,7 @@ class Footer extends PureComponent {
             <Grid item xs={12} sm={4}>
               <ul>
                 <li style={liTextCenter}><a href="/#/blogs">Blog</a></li>
+                <RespDialog isFooterItem title="Terms of Service" linkName="tos" fullScreen footerLinkTitle="Terms of Service"/>
               </ul> 
             </Grid>
             <Grid item xs={12} sm={4}>
