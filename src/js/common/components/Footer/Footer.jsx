@@ -31,6 +31,7 @@ class Footer extends PureComponent {
               <ul>
                 <li style={liTextCenter}><a href="/#/blogs">Blog</a></li>
                 <RespDialog isFooterItem title="Terms of Service" linkName="tos" fullScreen footerLinkTitle="Terms of Service"/>
+                <RespDialog isFooterItem title="North Loop Consumer Privacy Notice" linkName="pp" fullScreen footerLinkTitle="Privacy"/>
               </ul> 
             </Grid>
             <Grid item xs={12} sm={4}>
