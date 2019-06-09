@@ -12,6 +12,8 @@ import axios from 'axios';
 
 import styles from './LoanCSS/Loan.css';
 
+const universitiesList = [ "Northeastern University",  "Pace University", "Arizona State University", "New York University", "University of Southern California", "UCLA", "Northwestern University", "Cornell University", "Columbia University", "University of Illinois - Urbana Champaign", "Ohio State University", "University of Pennsylvania", "Harvard University", "Carnegie Mellon University", "Stanford University", "Princeton University", "Dartmouth College", "Yale University", "Brown University", "University of Michigan - Ann Arbor", "Boston College", "Boston University", "American University", "Drexel University", "Duke University", "Emory University", "George Washington University", "Iowa State University", "University of California - Davis", "University of California - Berkeley", "University of California - Irvine", "University of California - San Diego", "MIT", "Rutger's University", "Rice University", "SUNY Buffalo", "Stony Brook University", "Texas A&M", "University of Texas - Dallas", "University of Chicago", "University of Iowa", "Florida International University", "University of Notre Dame", "University of Texas - Arlington", "University of Texas - Austin", "University of Washington", "University of Virginia", "Vanderbilt University", "California Institute of Technology", "Purdue University", "Pennsylvania State University - University Park", "Michigan State University", "Indiana University - Bloomington", "University of Wisconsin", "University of North Carolina", "Georgia Institute of Technology", "Illinois Institute of Technology", "Lousinia State University", "John Hopkins University", "Kaplan Pathways", "Kings Education Pathways", "Shorelight Pathways", "New Jersey Institute of Technology", "University of California - Santa Barbara", "University of Minnesota - Twin Cities", "Washington University", "Georgetown University", "Kentucky University", "University of Maryland", "University of Oklahoma", "Tufts University", "Washington State University", "Syracuse University", "SUNY", "Rochester Institute of Technology", "Colorado State University", "Brandeis University", "University of Flordia", "Bentley College", "Georgia State University", "Texas Tech University", "University of New Hampshire", "Navitas Pathways", "INTO Pathways", "UMass - Dartmouth", "UMass - Boston", "UMass - Amherst", "University of Idaho", "UMass - Lowell"]; 
+
 
 
 class Loan extends PureComponent {
@@ -88,6 +90,11 @@ class Loan extends PureComponent {
   render() {
     const { step, form1, form2, submitted } = this.state;
 
+    const universitiesMenuItems = universitiesList.map((univ, i) => {
+      return <MenuItem value={univ} key={'univ-' + i}>{univ}</MenuItem>;
+    });
+
+
     const loanForm1 = (
       <Container className={styles.journey}>
         <h2 className={styles.subtitle}>Check if you qualify for a loan<span /></h2>
@@ -131,9 +138,7 @@ class Loan extends PureComponent {
                     onChange={(event) => {this.updateDropdownValue(event, 'form1', 'school');}}
                     input={<Input name="school" id="school-auto-width" />}
                     autoWidth>
-                    <MenuItem value={'CU'}>Cornell University</MenuItem>
-                    <MenuItem value={'CMU'}>Carnegie Melon</MenuItem>
-                    <MenuItem value={'NYU'}>New York University</MenuItem>
+                    { universitiesMenuItems }
                   </Select>
                 </FormControl>
               </Grid>
