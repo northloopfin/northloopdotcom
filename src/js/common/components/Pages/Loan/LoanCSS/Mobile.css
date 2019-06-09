@@ -35,26 +35,24 @@
           color: $body-color;
           font-size: 16px;
           margin-top: 10px;
-        } 
+        }
       }
-    } 
+    }
   }
-
   .creditCard {
     background-color: $bg-color;
-
     .subtitle {
-    margin-top: 30px;
-    font-size: 28px;
-    line-height: 28px;
-    font-weight: normal;
-    span {
-      width: 129px;
-      border: 3pt solid #a24a87;
-      border-radius: 16px;
-      display: block;
-      margin-top: 20px;
-    }
+      margin-top: 30px;
+      font-size: 28px;
+      line-height: 28px;
+      font-weight: normal;
+      span {
+        width: 129px;
+        border: 3pt solid #a24a87;
+        border-radius: 16px;
+        display: block;
+        margin-top: 20px;
+      }
     }
     .discoverHow {
       font-size: 18px;
@@ -62,7 +60,6 @@
       color: $brand-color;
       margin-top: 25px;
       padding-bottom: 30px;
-
     }
     .creditC {
       img {
@@ -70,7 +67,12 @@
       }
     }
   }
+  .noSchoolWarning {
+      margin-top: 1%;
+      text-align: center;
+  }
 }
+
 .Partners {
   margin-top: 30px;
   .subtitle {
@@ -91,26 +93,26 @@
     margin-top: 30px;
     margin-bottom: 50px;
     button {
-      &:first-child{
-        background-image:url('../../../../../../assets/images/leftArrow.png');
+      &:first-child {
+        background-image: url('../../../../../../assets/images/leftArrow.png');
         background-repeat: no-repeat;
         left: -15px;
       }
-      &:last-child{
-        background-image:url('../../../../../../assets/images/rightArrow.png');
+      &:last-child {
+        background-image: url('../../../../../../assets/images/rightArrow.png');
         background-repeat: no-repeat;
         right: -20px;
       }
-
       &:before {
         display: none;
       }
+    }
   }
 }
-}
+
 .appSection {
   padding-top: 30px;
-  background-image: linear-gradient(to right, #9e3669 , #b13442);
+  background-image: linear-gradient(to right, #9e3669, #b13442);
   background-color: #9e3669;
   .subtitle {
     color: white;
@@ -129,6 +131,7 @@
     }
   }
 }
+
 .journey {
   margin-top: 30px;
   .subtitle {
@@ -146,36 +149,37 @@
   }
   .container {
     margin-top: 30px;
-    > div {
-      > div {
+    >div {
+      >div {
         &:nth-child(even) {
-          > div {
+          >div {
             padding-right: 0;
           }
         }
-        > div {
+        >div {
           width: 100%;
           padding-right: 20px;
         }
       }
     }
-    input{
+    input {
       &:before {
         border-bottom: 2pt solid #e5e5e5!important;
       }
     }
     .button {
       margin-top: 20px;
-    height: 45px;
-    width: 201px;
-    text-transform: none;
-    font-size: 18px;
-    border-radius: 35px;
-    background-color: $btn-bg-color;
-    margin-bottom: 30px;
-    &:hover {
-      background-color: $btn--hover-bg-color;
-    }
+      height: 45px;
+      width: 201px;
+      text-transform: none;
+      font-size: 18px;
+      border-radius: 35px;
+      background-color: $btn-bg-color;
+      margin-bottom: 30px;
+      &:hover {
+        background-color: $btn--hover-bg-color;
+      }
     }
   }
 }
+

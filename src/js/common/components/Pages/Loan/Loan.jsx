@@ -7,6 +7,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Input from '@material-ui/core/Input';
+import FormControl from '@material-ui/core/FormControl';
 
 import styles from './LoanCSS/Loan.css';
 
@@ -16,7 +17,33 @@ class Loan extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      step: 1
+      step: 1,
+      form1: {
+        name: '',
+        email: '',
+        program: '',
+        school: '',
+        test: '',
+        testScore: ''
+      },
+      form2: {
+        gender: '',
+        dob: '',
+        address: '',
+        citizenship: '',
+        passportNumber: '',
+        ssn: ''
+      },
+      form3: {
+        coa: '',
+        scholarships: '',
+        loans: '',
+        requestedAmount: ''
+      },
+      form4: {
+        recentEmployment: '',
+        recentSalary: ''
+      }
     };
   }
 
@@ -32,13 +59,12 @@ class Loan extends PureComponent {
     });
   }
 
-
-  handleChange = (event) => {
-    console.log(event.target.value);
+  updateDropdownValue = (event, form, key) => {
+      this.setState(Object.assign(this.state[form], { [key]: event.target.value}));
   }
 
   render() {
-    const { step } = this.state;
+    const { step, form1, form2 } = this.state;
 
     const loanForm1 = (
       <Container className={styles.journey}>
@@ -48,38 +74,63 @@ class Loan extends PureComponent {
             <Grid container>
               <Grid item xs={6}>
                 <TextField
+                  onBlur={() => {this.updateDropdownValue(event, 'form1', 'name');}}
                   id="standard-dense"
                   label="Name"
                   margin="dense"/>
               </Grid>
               <Grid item xs={6}>
                 <TextField
+                  onBlur={() => {this.updateDropdownValue(event, 'form1', 'email');}}
                   id="email"
                   label="Email"
                   margin="dense"
                   type="email"/>
               </Grid>
               <Grid item xs={6}>
-                <Select
-                  value={10}
-                  onChange={this.handleChange}
-                  input={<Input name="age" id="age-helper" />}>
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
-                </Select>
+                <FormControl>
+                  <InputLabel htmlFor="program-auto-width">Program</InputLabel>
+                  <Select
+                    value={form1.program}
+                    onChange={(event) => {this.updateDropdownValue(event, 'form1', 'program');}}
+                    input={<Input name="program" id="program-auto-width" />}
+                    autoWidth>
+                    <MenuItem value={'MBA'}>MBA</MenuItem>
+                    <MenuItem value={'MSBA'}>MS - Business Analytics</MenuItem>
+                    <MenuItem value={'MSCS'}>MS - Computer Science</MenuItem>
+                  </Select>
+                </FormControl>
               </Grid>
               <Grid item xs={6}>
-                School
+                <FormControl>
+                  <InputLabel htmlFor="school-auto-width">School</InputLabel>
+                  <Select
+                    value={form1.school}
+                    onChange={(event) => {this.updateDropdownValue(event, 'form1', 'school');}}
+                    input={<Input name="school" id="school-auto-width" />}
+                    autoWidth>
+                    <MenuItem value={'CU'}>Cornell University</MenuItem>
+                    <MenuItem value={'CMU'}>Carnegie Melon</MenuItem>
+                    <MenuItem value={'NYU'}>New York University</MenuItem>
+                  </Select>
+                </FormControl>
               </Grid>
               <Grid item xs={6}>
-                Test Type
+                <FormControl>
+                  <InputLabel htmlFor="test-auto-width">Test Type</InputLabel>
+                  <Select
+                    value={form1.school}
+                    onChange={(event) => {this.updateDropdownValue(event, 'form1', 'test');}}
+                    input={<Input name="test" id="test-auto-width" />}
+                    autoWidth>
+                    <MenuItem value={'GMAT'}>GMAT</MenuItem>
+                    <MenuItem value={'GRE'}>GRE</MenuItem>
+                  </Select>
+                </FormControl>
               </Grid>
               <Grid item xs={6}>
                 <TextField
+                  onBlur={() => {this.updateDropdownValue(event, 'form1', 'testScore');}}
                   id="test-score"
                   label="Test Score"
                   margin="dense"
@@ -87,6 +138,7 @@ class Loan extends PureComponent {
               </Grid>
             </Grid>
           </form>
+          <p className={styles.noSchoolWarning}>Don’t see your school or program? We’re adding new programs and schools every week! Check back soon.</p>
         </Grid>
       </Container>);
 
@@ -97,10 +149,22 @@ const loanForm2 = (
           <form className={styles.container} noValidate autoComplete="off">
             <Grid container>
               <Grid item xs={6}>
-                Gender
+                <FormControl>
+                  <InputLabel htmlFor="gender-auto-width">Gender</InputLabel>
+                  <Select
+                    value={form2.gender}
+                    onChange={(event) => {this.updateDropdownValue(event, 'form2', 'gender');}}
+                    input={<Input name="gender" id="gender-auto-width" />}
+                    autoWidth>
+                    <MenuItem value={'M'}>Male</MenuItem>
+                    <MenuItem value={'F'}>Female</MenuItem>
+                    <MenuItem value={'O'}>Other</MenuItem>
+                  </Select>
+                </FormControl>
               </Grid>
               <Grid item xs={6}>
                 <TextField
+                  onBlur={() => {this.updateDropdownValue(event, 'form2', 'dob');}}
                   id="date"
                   label="Date of birth"
                   type="date"
@@ -110,24 +174,28 @@ const loanForm2 = (
               </Grid>
               <Grid item xs={6}>
                 <TextField
+                  onBlur={() => {this.updateDropdownValue(event, 'form2', 'address');}}
                   id="standard-dense"
                   label="Address"
                   margin="dense"/>
               </Grid>
               <Grid item xs={6}>
                 <TextField
+                  onBlur={() => {this.updateDropdownValue(event, 'form2', 'citizenship');}}
                   id="standard-dense"
                   label="Country of Citizenship"
                   margin="dense"/>
               </Grid>
               <Grid item xs={6}>
                 <TextField
+                  onBlur={() => {this.updateDropdownValue(event, 'form2', 'passportNumber');}}
                   id="standard-dense"
                   label="Passport Number"
                   margin="dense"/>
               </Grid>
               <Grid item xs={6}>
                 <TextField
+                  onBlur={() => {this.updateDropdownValue(event, 'form2', 'ssn');}}
                   id="standard-dense"
                   label="US Social Security Number (if available)"
                   margin="dense"/>
@@ -145,6 +213,7 @@ const loanForm3 = (
             <Grid container>
               <Grid item xs={6}>
                 <TextField
+                  onBlur={() => {this.updateDropdownValue(event, 'form3', 'coa');}}
                   id="costOfAttendance"
                   label="Cost of Attendance ($)"
                   type="Number"
@@ -152,6 +221,7 @@ const loanForm3 = (
               </Grid>
               <Grid item xs={6}>
                 <TextField
+                  onBlur={() => {this.updateDropdownValue(event, 'form3', 'scholarships');}}
                   id="standard-dense"
                   label="All Scholarships (if applicable)"
                   type="Number"
@@ -159,6 +229,7 @@ const loanForm3 = (
               </Grid>
               <Grid item xs={6}>
                 <TextField
+                  onBlur={() => {this.updateDropdownValue(event, 'form3', 'loans');}}
                   id="standard-dense"
                   label="All Loans (if applicable)"
                   type="Number"
@@ -166,6 +237,7 @@ const loanForm3 = (
               </Grid>
               <Grid item xs={6}>
                 <TextField
+                  onBlur={() => {this.updateDropdownValue(event, 'form3', 'requestedAmount');}}
                   id="standard-dense"
                   label="Amount You’re Requesting"
                   type="Number"
@@ -184,12 +256,14 @@ const loanForm4 = (
             <Grid container>
               <Grid item xs={6}>
                 <TextField
-                  id="costOfAttendance"
+                  onBlur={() => {this.updateDropdownValue(event, 'form4', 'recentEmployment');}}
+                  id="standard-dense"
                   label="Most Recent Employment"
                   margin="dense"/>
               </Grid>
               <Grid item xs={6}>
                 <TextField
+                  onBlur={() => {this.updateDropdownValue(event, 'form4', 'recentSalary');}}
                   id="standard-dense"
                   label="Most Recent Salary"
                   margin="dense"/>
@@ -201,15 +275,15 @@ const loanForm4 = (
 
     return (
       <div className={styles.homeOutput}>
-          { step == 1 && loanForm1}
-          { step == 2 && loanForm2}
-          { step == 3 && loanForm3}
-          { step == 4 && loanForm4}
-          <Container style={{'display': 'flex'}}>
-            <Grid>
-              { step > 1 && <Button onClick={this.decStep}>Prev</Button> }
+          { step == 1 && loanForm1 }
+          { step == 2 && loanForm2 }
+          { step == 3 && loanForm3 }
+          { step == 4 && loanForm4 }
+          <Container>
+            <Grid item sm={10} style={{'display': 'flex', 'justifyContent': 'flex-end', 'marginTop': '2%', 'marginBottom': '2%'}}>
+              { step > 1 && step < 5 && <Button onClick={this.decStep}>Prev</Button> }
               { step < 4  && <Button onClick={this.incStep}>Next</Button> }
-              { step == 4  && <Button onClick={this.incStep}>Submit</Button> }
+              { step == 4 && <Button onClick={this.incStep}>Submit</Button> }
             </Grid>
           </Container>
       </div>
