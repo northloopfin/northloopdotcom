@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
-
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Container from '@material-ui/core/Container';
 import styles from './Loading.css';
 
 class Loading extends PureComponent {
@@ -15,7 +16,13 @@ class Loading extends PureComponent {
         return <div>{errorMessage}</div>;
       }
       if (pastDelay) {
-        return <div className={styles.loader}>Loading...</div>;
+        return (
+            <Container>
+              <div style={{ 'display': 'flex', 'justifyContent': 'center', 'marginTop': '5%', 'marginBottom': '5%' }}>
+                <CircularProgress color="secondary" />
+              </div>
+            </Container>
+          );
       }
       return null;
     }
