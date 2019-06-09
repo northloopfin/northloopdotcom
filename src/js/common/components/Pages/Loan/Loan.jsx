@@ -8,6 +8,7 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Input from '@material-ui/core/Input';
 import FormControl from '@material-ui/core/FormControl';
+import axios from 'axios';
 
 import styles from './LoanCSS/Loan.css';
 
@@ -18,6 +19,7 @@ class Loan extends PureComponent {
     super(props);
     this.state = {
       step: 1,
+      submitted: false,
       form1: {
         name: '',
         email: '',
@@ -63,8 +65,28 @@ class Loan extends PureComponent {
       this.setState(Object.assign(this.state[form], { [key]: event.target.value}));
   }
 
+  submitForm = () => {
+      let formData = new FormData();
+      const userDataObj = Object.assign({}, this.state.form1, this.state.form2, this.state.form3, this.state.form4);
+      for ( var key in userDataObj ) {
+          formData.append(key, userDataObj[key]);
+      }
+      const options = {
+        method: 'POST',
+        data: formData,
+        headers: {'Content-Type': 'application/x-www-form-urlencoded' },
+        url: 'https://script.google.com/a/nolobank.com/macros/s/AKfycbzE-WrdRFqwVFWXR4d7Jisvr3t76I8ajqsEkZbj/exec'
+      };
+
+      axios(options).then(res => {
+        if (res.data && res.data.result === 'success') {
+          this.setState(Object.assign(this.state.submitted, { submitted: true, step: 0 }));
+        }
+      });
+  }
+
   render() {
-    const { step, form1, form2 } = this.state;
+    const { step, form1, form2, submitted } = this.state;
 
     const loanForm1 = (
       <Container className={styles.journey}>
@@ -119,7 +141,7 @@ class Loan extends PureComponent {
                 <FormControl>
                   <InputLabel htmlFor="test-auto-width">Test Type</InputLabel>
                   <Select
-                    value={form1.school}
+                    value={form1.test}
                     onChange={(event) => {this.updateDropdownValue(event, 'form1', 'test');}}
                     input={<Input name="test" id="test-auto-width" />}
                     autoWidth>
@@ -273,17 +295,23 @@ const loanForm4 = (
         </Grid>
       </Container>);
 
+const successMessage = (
+      <Container style={{'marginTop': '5%', 'marginBottom': '5%', 'display': 'flex', 'justifyContent': 'center', 'fontSize': 'large'}}>
+          <p>Thank you. Your application has been receive and we will be in touch with next steps!</p>
+      </Container>);
+
     return (
       <div className={styles.homeOutput}>
           { step == 1 && loanForm1 }
           { step == 2 && loanForm2 }
           { step == 3 && loanForm3 }
           { step == 4 && loanForm4 }
+          { submitted && successMessage }
           <Container>
             <Grid item sm={10} style={{'display': 'flex', 'justifyContent': 'flex-end', 'marginTop': '2%', 'marginBottom': '2%'}}>
               { step > 1 && step < 5 && <Button onClick={this.decStep}>Prev</Button> }
-              { step < 4  && <Button onClick={this.incStep}>Next</Button> }
-              { step == 4 && <Button onClick={this.incStep}>Submit</Button> }
+              { step > 0 && step < 4  && <Button onClick={this.incStep}>Next</Button> }
+              { step == 4 && <Button onClick={this.submitForm}>Submit</Button> }
             </Grid>
           </Container>
       </div>
