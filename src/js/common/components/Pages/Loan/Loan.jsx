@@ -9,6 +9,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Input from '@material-ui/core/Input';
 import FormControl from '@material-ui/core/FormControl';
 import axios from 'axios';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import styles from './LoanCSS/Loan.css';
 
@@ -21,6 +22,7 @@ class Loan extends PureComponent {
     super(props);
     this.state = {
       step: 1,
+      loading: false,
       submitted: false,
       form1: {
         name: '',
@@ -67,6 +69,11 @@ class Loan extends PureComponent {
       this.setState(Object.assign(this.state[form], { [key]: event.target.value}));
   }
 
+  showLoader = () => {
+      this.setState({ loading: true });
+      this.submitForm();
+  }
+
   submitForm = () => {
       let formData = new FormData();
       const userDataObj = Object.assign({}, this.state.form1, this.state.form2, this.state.form3, this.state.form4);
@@ -80,15 +87,17 @@ class Loan extends PureComponent {
         url: 'https://script.google.com/a/nolobank.com/macros/s/AKfycbzE-WrdRFqwVFWXR4d7Jisvr3t76I8ajqsEkZbj/exec'
       };
 
+      this.setState({ loading: true, step: 0 });
+
       axios(options).then(res => {
         if (res.data && res.data.result === 'success') {
-          this.setState(Object.assign(this.state.submitted, { submitted: true, step: 0 }));
+          this.setState(Object.assign(this.state.submitted, { submitted: true, loading: false }));
         }
       });
   }
 
   render() {
-    const { step, form1, form2, submitted } = this.state;
+    const { step, form1, form2, submitted, loading } = this.state;
 
     const universitiesMenuItems = universitiesList.map((univ, i) => {
       return <MenuItem value={univ} key={'univ-' + i}>{univ}</MenuItem>;
@@ -169,148 +178,154 @@ class Loan extends PureComponent {
         </Grid>
       </Container>);
 
-const loanForm2 = (
-      <Container className={styles.journey}>
-        <h2 className={styles.subtitle}>Check if you qualify for a loan<span /></h2>
-        <Grid item sm={10}>
-          <form className={styles.container} noValidate autoComplete="off">
-            <Grid container>
-              <Grid item xs={6}>
-                <FormControl>
-                  <InputLabel htmlFor="gender-auto-width">Gender</InputLabel>
-                  <Select
-                    value={form2.gender}
-                    onChange={(event) => {this.updateDropdownValue(event, 'form2', 'gender');}}
-                    input={<Input name="gender" id="gender-auto-width" />}
-                    autoWidth>
-                    <MenuItem value={'M'}>Male</MenuItem>
-                    <MenuItem value={'F'}>Female</MenuItem>
-                    <MenuItem value={'O'}>Other</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  onBlur={() => {this.updateDropdownValue(event, 'form2', 'dob');}}
-                  id="date"
-                  label="Date of birth"
-                  type="date"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}/>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  onBlur={() => {this.updateDropdownValue(event, 'form2', 'address');}}
-                  id="standard-dense"
-                  label="Address"
-                  margin="dense"/>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  onBlur={() => {this.updateDropdownValue(event, 'form2', 'citizenship');}}
-                  id="standard-dense"
-                  label="Country of Citizenship"
-                  margin="dense"/>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  onBlur={() => {this.updateDropdownValue(event, 'form2', 'passportNumber');}}
-                  id="standard-dense"
-                  label="Passport Number"
-                  margin="dense"/>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  onBlur={() => {this.updateDropdownValue(event, 'form2', 'ssn');}}
-                  id="standard-dense"
-                  label="US Social Security Number (if available)"
-                  margin="dense"/>
-              </Grid>
+    const loanForm2 = (
+          <Container className={styles.journey}>
+            <h2 className={styles.subtitle}>Check if you qualify for a loan<span /></h2>
+            <Grid item sm={10}>
+              <form className={styles.container} noValidate autoComplete="off">
+                <Grid container>
+                  <Grid item xs={6}>
+                    <FormControl>
+                      <InputLabel htmlFor="gender-auto-width">Gender</InputLabel>
+                      <Select
+                        value={form2.gender}
+                        onChange={(event) => {this.updateDropdownValue(event, 'form2', 'gender');}}
+                        input={<Input name="gender" id="gender-auto-width" />}
+                        autoWidth>
+                        <MenuItem value={'M'}>Male</MenuItem>
+                        <MenuItem value={'F'}>Female</MenuItem>
+                        <MenuItem value={'O'}>Other</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      onBlur={() => {this.updateDropdownValue(event, 'form2', 'dob');}}
+                      id="date"
+                      label="Date of birth"
+                      type="date"
+                      InputLabelProps={{
+                        shrink: true,
+                      }}/>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      onBlur={() => {this.updateDropdownValue(event, 'form2', 'address');}}
+                      id="standard-dense"
+                      label="Address"
+                      margin="dense"/>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      onBlur={() => {this.updateDropdownValue(event, 'form2', 'citizenship');}}
+                      id="standard-dense"
+                      label="Country of Citizenship"
+                      margin="dense"/>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      onBlur={() => {this.updateDropdownValue(event, 'form2', 'passportNumber');}}
+                      id="standard-dense"
+                      label="Passport Number"
+                      margin="dense"/>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      onBlur={() => {this.updateDropdownValue(event, 'form2', 'ssn');}}
+                      id="standard-dense"
+                      label="US Social Security Number (if available)"
+                      margin="dense"/>
+                  </Grid>
+                </Grid>
+              </form>
             </Grid>
-          </form>
-        </Grid>
-      </Container>);
+          </Container>);
 
-const loanForm3 = (
-      <Container className={styles.journey}>
-        <h2 className={styles.subtitle}>Check if you qualify for a loan<span /></h2>
-        <Grid item sm={10}>
-          <form className={styles.container} noValidate autoComplete="off">
-            <Grid container>
-              <Grid item xs={6}>
-                <TextField
-                  onBlur={() => {this.updateDropdownValue(event, 'form3', 'coa');}}
-                  id="costOfAttendance"
-                  label="Cost of Attendance ($)"
-                  type="Number"
-                  margin="dense"/>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  onBlur={() => {this.updateDropdownValue(event, 'form3', 'scholarships');}}
-                  id="standard-dense"
-                  label="All Scholarships (if applicable)"
-                  type="Number"
-                  margin="dense"/>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  onBlur={() => {this.updateDropdownValue(event, 'form3', 'loans');}}
-                  id="standard-dense"
-                  label="All Loans (if applicable)"
-                  type="Number"
-                  margin="dense"/>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  onBlur={() => {this.updateDropdownValue(event, 'form3', 'requestedAmount');}}
-                  id="standard-dense"
-                  label="Amount You’re Requesting"
-                  type="Number"
-                  margin="dense"/>
-              </Grid>
+    const loanForm3 = (
+          <Container className={styles.journey}>
+            <h2 className={styles.subtitle}>Check if you qualify for a loan<span /></h2>
+            <Grid item sm={10}>
+              <form className={styles.container} noValidate autoComplete="off">
+                <Grid container>
+                  <Grid item xs={6}>
+                    <TextField
+                      onBlur={() => {this.updateDropdownValue(event, 'form3', 'coa');}}
+                      id="costOfAttendance"
+                      label="Cost of Attendance ($)"
+                      type="Number"
+                      margin="dense"/>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      onBlur={() => {this.updateDropdownValue(event, 'form3', 'scholarships');}}
+                      id="standard-dense"
+                      label="All Scholarships (if applicable)"
+                      type="Number"
+                      margin="dense"/>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      onBlur={() => {this.updateDropdownValue(event, 'form3', 'loans');}}
+                      id="standard-dense"
+                      label="All Loans (if applicable)"
+                      type="Number"
+                      margin="dense"/>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      onBlur={() => {this.updateDropdownValue(event, 'form3', 'requestedAmount');}}
+                      id="standard-dense"
+                      label="Amount You’re Requesting"
+                      type="Number"
+                      margin="dense"/>
+                  </Grid>
+                </Grid>
+              </form>
             </Grid>
-          </form>
-        </Grid>
-      </Container>);
+          </Container>);
 
-const loanForm4 = (
-      <Container className={styles.journey}>
-        <h2 className={styles.subtitle}>Check if you qualify for a loan<span /></h2>
-        <Grid item sm={10}>
-          <form className={styles.container} noValidate autoComplete="off">
-            <Grid container>
-              <Grid item xs={6}>
-                <TextField
-                  onBlur={() => {this.updateDropdownValue(event, 'form4', 'recentEmployment');}}
-                  id="standard-dense"
-                  label="Most Recent Employment"
-                  margin="dense"/>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  onBlur={() => {this.updateDropdownValue(event, 'form4', 'recentSalary');}}
-                  id="standard-dense"
-                  label="Most Recent Salary"
-                  margin="dense"/>
-              </Grid>
+    const loanForm4 = (
+          <Container className={styles.journey}>
+            <h2 className={styles.subtitle}>Check if you qualify for a loan<span /></h2>
+            <Grid item sm={10}>
+              <form className={styles.container} noValidate autoComplete="off">
+                <Grid container>
+                  <Grid item xs={6}>
+                    <TextField
+                      onBlur={() => {this.updateDropdownValue(event, 'form4', 'recentEmployment');}}
+                      id="standard-dense"
+                      label="Most Recent Employment"
+                      margin="dense"/>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      onBlur={() => {this.updateDropdownValue(event, 'form4', 'recentSalary');}}
+                      id="standard-dense"
+                      label="Most Recent Salary"
+                      margin="dense"/>
+                  </Grid>
+                </Grid>
+              </form>
             </Grid>
-          </form>
-        </Grid>
-      </Container>);
+          </Container>);
 
-const successMessage = (
-      <Container style={{'marginTop': '5%', 'marginBottom': '5%', 'display': 'flex', 'justifyContent': 'center', 'fontSize': 'large'}}>
-          <p>Thank you. Your application has been receive and we will be in touch with next steps!</p>
-      </Container>);
+    const successMessage = (
+          <Container style={{'marginTop': '5%', 'marginBottom': '5%', 'display': 'flex', 'justifyContent': 'center', 'fontSize': 'large'}}>
+              <p>Thank you. Your application has been receive and we will be in touch with next steps!</p>
+          </Container>);
 
     return (
       <div className={styles.homeOutput}>
           { step == 1 && loanForm1 }
           { step == 2 && loanForm2 }
-          { step == 3 && loanForm3 }
+          { step == 3 && loanForm3 }  
           { step == 4 && loanForm4 }
+          { loading && 
+            <Container>
+              <div style={{ 'display': 'flex', 'justifyContent': 'center', 'marginTop': '5%', 'marginBottom': '5%' }}>
+                <CircularProgress color="secondary" />
+              </div>
+            </Container>}
           { submitted && successMessage }
           <Container>
             <Grid item sm={10} style={{'display': 'flex', 'justifyContent': 'flex-end', 'marginTop': '2%', 'marginBottom': '2%'}}>

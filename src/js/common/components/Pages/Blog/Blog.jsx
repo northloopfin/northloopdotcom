@@ -6,7 +6,8 @@ const blogContainerStyle = {
 	display: 'flex',
 	padding: '5%',
 	flexWrap: 'wrap',
-	alignItems: 'flex-start'
+	alignItems: 'flex-start',
+  justifyContent: 'space-evenly'
 };
 
 class Blog extends PureComponent {
