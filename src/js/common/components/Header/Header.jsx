@@ -164,7 +164,7 @@ function Header(props) {
 
         {!isBlogs && (<div className={styles.headerTextContainer}>
                           <Grid container>
-                            <Grid item xs={12} sm={8} className={styles.headerWithText}>
+                            <Grid item xs={12} sm={8} className={styles.headerWithText} style={ isLoans ? { 'paddingTop': '5%' } : {}}>
                               <h1 className={styles.title}>
                                 { ReactHtmlParser(title) }
                                 {' '}
@@ -189,13 +189,13 @@ function Header(props) {
                                 <img src={iPhone} alt="iPhone 6" />
                               </div>
                               ) :
-                              <div className={styles.loanHeaderAccessButton}>
-                                <div>
-                                  <Button variant="contained" color="primary" onClick={() => {sendToGSF();}} className={styles.button}>
-                                        { ReactHtmlParser(button) }
-                                  </Button>
-                                </div>
-                              </div> 
+                              (!isLoans && <div className={styles.loanHeaderAccessButton}>
+                                                              <div>
+                                                                <Button variant="contained" color="primary" onClick={() => {sendToGSF();}} className={styles.button}>
+                                                                      { ReactHtmlParser(button) }
+                                                                </Button>
+                                                              </div>
+                                                            </div> )
                             }
                             </Grid>
                           </Grid>
