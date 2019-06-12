@@ -34,7 +34,7 @@ function ResponsiveDialog(props) {
       <li style={isFooterItem ? liTextCenter : {}}><a onClick={handleClickOpen}>{footerLinkTitle}</a></li>
       <Dialog
         fullScreen={fullScreen}
-        style={{'zIndex': '2147483639'}}
+        style={{'zIndex': '2147483640'}}
         open={open}
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title">
@@ -53,8 +53,8 @@ function ResponsiveDialog(props) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary" autoFocus>
-            Close
+          <Button onClick={handleClose} autoFocus style={{'color': '#a24a87'}}>
+            <strong>Close</strong>
           </Button>
         </DialogActions>
       </Dialog>
