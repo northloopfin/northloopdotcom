@@ -10,6 +10,7 @@ import withMobileDialog from '@material-ui/core/withMobileDialog';
 import ReactHtmlParser from 'react-html-parser';
 import PrivacyContent from './PrivacyContent.jsx';
 import NoloQRCode from '../../../../assets/images/nolo-qr.jpg';
+const isMobile = window.innerWidth < 768;
 
 const liTextCenter = { 'textAlign': 'center', 'cursor': 'pointer' };
 
@@ -49,6 +50,17 @@ function ResponsiveDialog(props) {
           }
           {
             linkName === 'tos' && ReactHtmlParser(termsOfServiceContent)
+          }
+          {
+            linkName === 'wechat' && !isMobile && <p>Scan our code with the WeChat QR code scanner </p>
+          }
+          {
+            linkName === 'wechat' && isMobile &&
+            <ul>
+            	<li>Take a screenshot of our code</li>
+            	<li>Open WeChat & go to the discover tab</li>
+            	<li>Upload the screenshot via album on the top right</li>
+            </ul>
           }
           {
             linkName === 'wechat' && <img src={NoloQRCode} alt="Logo" />
