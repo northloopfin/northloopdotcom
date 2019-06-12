@@ -320,7 +320,7 @@ class Loan extends PureComponent {
 
     const successMessage = (
           <Container style={{'marginTop': '5%', 'marginBottom': '5%', 'display': 'flex', 'justifyContent': 'center', 'fontSize': 'large'}}>
-              <p>Thank you. Your application has been receive and we will be in touch with next steps!</p>
+              <p>Thank you. Your application has been received and we will be in touch with next steps!</p>
           </Container>);
 
     return (
