@@ -8,6 +8,7 @@ import RespDialog from '../RespDialog/RespDialog.jsx';
 import styles from './Footer.css';
 
 const liTextCenter = { 'textAlign': 'center' };
+const isMobile = window.innerWidth < 768;
 
 class Footer extends PureComponent {
   render() {
@@ -41,6 +42,11 @@ class Footer extends PureComponent {
                   <span>help@nolobank.com</span>
                   <span>+1 (831) 740-8126</span>
                 </li>
+                { !isMobile ? <RespDialog isFooterItem title="North Loop WeChat" linkName="wechat" footerLinkTitle="WeChat"/> : 
+                  <li style={liTextCenter} className={styles.contactUsLi}>
+                    <a href="https://u.wechat.com/IGMQBuL0jSX0pU4AJGcHpq4" target="_blank">WeChat</a>
+                  </li>
+                }
               </ul>
             </Grid>
           </Grid>

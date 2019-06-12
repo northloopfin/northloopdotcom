@@ -9,6 +9,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
 import ReactHtmlParser from 'react-html-parser';
 import PrivacyContent from './PrivacyContent.jsx';
+import NoloQRCode from '../../../../assets/images/nolo-qr.jpg';
 
 const liTextCenter = { 'textAlign': 'center', 'cursor': 'pointer' };
 
@@ -33,6 +34,7 @@ function ResponsiveDialog(props) {
       <li style={isFooterItem ? liTextCenter : {}}><a onClick={handleClickOpen}>{footerLinkTitle}</a></li>
       <Dialog
         fullScreen={fullScreen}
+        style={{'zIndex': '2147483639'}}
         open={open}
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title">
@@ -44,6 +46,9 @@ function ResponsiveDialog(props) {
           }
           {
             linkName === 'tos' && ReactHtmlParser(termsOfServiceContent)
+          }
+          {
+            linkName === 'wechat' && <img src={NoloQRCode} alt="Logo" />
           }
           </DialogContentText>
         </DialogContent>
