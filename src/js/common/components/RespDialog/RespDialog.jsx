@@ -20,6 +20,9 @@ function ResponsiveDialog(props) {
   const [open, setOpen] = React.useState(false);
 
   function handleClickOpen() {
+  	if( ga ) {
+      ga('send', 'event', 'PageView', linkName + 'PageView', linkName + '-Page-View-Label', 1);
+    }
     setOpen(true);
   }
 
