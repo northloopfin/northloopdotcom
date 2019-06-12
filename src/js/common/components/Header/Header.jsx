@@ -25,6 +25,24 @@ const divStyle = {
 function sendToGSF() {
   growsurf.open();
 }
+// ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue], [fieldsObject]);
+
+function onGsfSignup() {
+  console.log('AG');
+  if( document.getElementsByClassName('grsf-inline-error').length < 1 ) {
+    ga('send', 'event', 'signup', 'email-registered', 'email-registered-label', 1);
+  }
+}
+
+setTimeout(function(){
+  const grsrfBtn = document.getElementById('grsf-signup-button');
+  console.log(document.getElementById('grsf-signup-button'));
+  if (grsrfBtn) {
+    grsrfBtn.addEventListener("click", function(){
+      onGsfSignup();
+    });
+  }
+}, 2000);
 
 // setTimeout(function(){
 //   if (window.innerWidth < 768 && growsurf) {
