@@ -29,6 +29,7 @@ class Loan extends PureComponent {
         email: '',
         program: '',
         school: '',
+        duration: '',
         test: '',
         testScore: ''
       },
@@ -150,6 +151,14 @@ class Loan extends PureComponent {
                     { universitiesMenuItems }
                   </Select>
                 </FormControl>
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  onBlur={() => {this.updateDropdownValue(event, 'form1', 'duration');}}
+                  id="program-length"
+                  label="Duration (years)"
+                  margin="dense"
+                  type="Number"/>
               </Grid>
               <Grid item xs={6}>
                 <FormControl>
