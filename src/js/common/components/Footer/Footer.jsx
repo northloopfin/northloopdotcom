@@ -44,7 +44,7 @@ class Footer extends PureComponent {
                 </li>
                 { !isMobile ? <RespDialog isFooterItem title="North Loop WeChat" linkName="wechat" footerLinkTitle="WeChat"/> : 
                   <li style={liTextCenter} className={styles.contactUsLi}>
-                    <a href="https://u.wechat.com/IGMQBuL0jSX0pU4AJGcHpq4" target="_blank">WeChat</a>
+                    <a href="https://msng.link/wc/northloop">WeChat</a>
                   </li>
                 }
               </ul>
