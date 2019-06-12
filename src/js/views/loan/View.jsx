@@ -13,6 +13,10 @@ class LoanView extends Component {
     // Note for i18n and i10n
     // if `id` is found, it will use the matched message
     // otherwise, it will use defaultMessage as fallback
+    // ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue], [fieldsObject]);
+    if ( ga ) {
+      ga('send', 'event', 'PageView', 'LoansPageView', 'Loans-Page-View-Label', 1);
+    }
 
     return (
       <div>

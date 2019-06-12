@@ -32,6 +32,9 @@ class HomeView extends Component {
 
   render() {
     const { myArbitraryNumber, currentTime } = this.state
+    if ( ga ) {
+      ga('send', 'event', 'PageView', 'HomePageView', 'Home-Page-View-Label', 1);
+    }
 
     // Note for i18n and i10n
     // if `id` is found, it will use the matched message

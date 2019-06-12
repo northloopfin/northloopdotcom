@@ -92,6 +92,9 @@ class Loan extends PureComponent {
 
       axios(options).then(res => {
         if (res.data && res.data.result === 'success') {
+          if ( ga ) {
+            ga('send', 'event', 'loan-signup', 'loan-registered', 'loan-registered-label', 1);
+          }
           this.setState(Object.assign(this.state.submitted, { submitted: true, loading: false }));
         }
       });

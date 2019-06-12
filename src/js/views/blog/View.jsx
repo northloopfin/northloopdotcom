@@ -25,6 +25,9 @@ class BlogView extends Component {
     // Note for i18n and i10n
     // if `id` is found, it will use the matched message
     // otherwise, it will use defaultMessage as fallback
+    if ( ga ) {
+      ga('send', 'event', 'PageView', 'BlogPageView', 'Blog-Page-View-Label', 1);
+    }
 
     return (
       <div>
