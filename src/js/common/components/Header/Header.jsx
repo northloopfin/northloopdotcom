@@ -23,21 +23,17 @@ const divStyle = {
 };
 
 function sendToGSF() {
-  // const userEmail = document.getElementById('standard-textarea').value;
   growsurf.open();
-  // if (growsurf && userEmail.length > 0 && userEmail.includes('@') && userEmail.includes('.')) {
-  //       growsurf.addParticipant(userEmail);
-  // }
 }
 
-setTimeout(function(){
-  if (window.innerWidth < 768 && growsurf) {
-    const growsurfWidget = document.getElementById('grsf-widget');
-    growsurfWidget.style.top = '20%';
-    growsurfWidget.style.width = '80px';
-    growsurfWidget.style.fontSize = '11px';
-  }
-}, 2000);
+// setTimeout(function(){
+//   if (window.innerWidth < 768 && growsurf) {
+//     const growsurfWidget = document.getElementById('grsf-widget');
+//     growsurfWidget.style.top = '20%';
+//     growsurfWidget.style.width = '80px';
+//     growsurfWidget.style.fontSize = '11px';
+//   }
+// }, 2000);
 
 
 function Header(props) {
