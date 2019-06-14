@@ -1,5 +1,13 @@
 @import "../../../../../../style/configs/color";
 @media screen and (max-width: 600px) {
+  .journey {
+    .container {
+      label {
+        color: red;
+        font-size: xx-small;
+      }
+    }
+  }
   .servicesWrapper {
     padding-top: 30px;
     padding-bottom: 30px;
@@ -182,4 +190,3 @@
     }
   }
 }
-

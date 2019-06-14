@@ -10,11 +10,14 @@ import Input from '@material-ui/core/Input';
 import FormControl from '@material-ui/core/FormControl';
 import axios from 'axios';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import styles from './LoanCSS/Loan.css';
+const isMobile = window.innerWidth < 768;
 
 const universitiesList = [ "Northeastern University",  "Pace University", "Arizona State University", "New York University", "University of Southern California", "UCLA", "Northwestern University", "Cornell University", "Columbia University", "University of Illinois - Urbana Champaign", "Ohio State University", "University of Pennsylvania", "Harvard University", "Carnegie Mellon University", "Stanford University", "Princeton University", "Dartmouth College", "Yale University", "Brown University", "University of Michigan - Ann Arbor", "Boston College", "Boston University", "American University", "Drexel University", "Duke University", "Emory University", "George Washington University", "Iowa State University", "University of California - Davis", "University of California - Berkeley", "University of California - Irvine", "University of California - San Diego", "MIT", "Rutger's University", "Rice University", "SUNY Buffalo", "Stony Brook University", "Texas A&M", "University of Texas - Dallas", "University of Chicago", "University of Iowa", "Florida International University", "University of Notre Dame", "University of Texas - Arlington", "University of Texas - Austin", "University of Washington", "University of Virginia", "Vanderbilt University", "California Institute of Technology", "Purdue University", "Pennsylvania State University - University Park", "Michigan State University", "Indiana University - Bloomington", "University of Wisconsin", "University of North Carolina", "Georgia Institute of Technology", "Illinois Institute of Technology", "Lousinia State University", "John Hopkins University", "Kaplan Pathways", "Kings Education Pathways", "Shorelight Pathways", "New Jersey Institute of Technology", "University of California - Santa Barbara", "University of Minnesota - Twin Cities", "Washington University", "Georgetown University", "Kentucky University", "University of Maryland", "University of Oklahoma", "Tufts University", "Washington State University", "Syracuse University", "SUNY", "Rochester Institute of Technology", "Colorado State University", "Brandeis University", "University of Flordia", "Bentley College", "Georgia State University", "Texas Tech University", "University of New Hampshire", "Navitas Pathways", "INTO Pathways", "UMass - Dartmouth", "UMass - Boston", "UMass - Amherst", "University of Idaho", "UMass - Lowell"]; 
-
+const currenciesList = ['USD', 'INR', 'AED', 'CNY', 'EUR']; 
 
 
 class Loan extends PureComponent {
@@ -49,7 +52,11 @@ class Loan extends PureComponent {
       },
       form4: {
         recentEmployment: '',
-        recentSalary: ''
+        salaryCurrency: '',
+        recentSalary: '',
+        dateTo: '',
+        dateFrom: '',
+        currentJob: false
       }
     };
   }
@@ -68,6 +75,10 @@ class Loan extends PureComponent {
 
   updateDropdownValue = (event, form, key) => {
       this.setState(Object.assign(this.state[form], { [key]: event.target.value}));
+  }
+
+  updateCheckBox = (event, form, key) => {
+      this.setState(Object.assign(this.state[form], { [key]: !this.state[form][key] }));
   }
 
   showLoader = () => {
@@ -101,10 +112,14 @@ class Loan extends PureComponent {
   }
 
   render() {
-    const { step, form1, form2, submitted, loading } = this.state;
+    const { step, form1, form2, form3, form4, submitted, loading } = this.state;
 
     const universitiesMenuItems = universitiesList.map((univ, i) => {
       return <MenuItem value={univ} key={'univ-' + i}>{univ}</MenuItem>;
+    });
+
+    const currencyMenuItems = currenciesList.map((curr, i) => {
+      return <MenuItem value={curr} key={'curr-' + i}>{curr}</MenuItem>;
     });
 
 
@@ -306,15 +321,51 @@ class Loan extends PureComponent {
                     <TextField
                       onBlur={() => {this.updateDropdownValue(event, 'form4', 'recentEmployment');}}
                       id="standard-dense"
-                      label="Most Recent Employment"
-                      margin="dense"/>
+                      label="Most Recent Employment"/>
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid item xs={6} style={{ 'display': 'flex' }}>
+                   <FormControl style={{ 'flex': 1 }} >
+                    <InputLabel htmlFor="salary-currency-auto-width">Currency</InputLabel>
+                    <Select
+                      value={form4.salaryCurrency}
+                      onChange={(event) => {this.updateDropdownValue(event, 'form4', 'salaryCurrency');}}
+                      input={<Input name="school" id="salary-currency-auto-width" />}
+                      autoWidth>
+                      { currencyMenuItems }
+                    </Select>
+                  </FormControl>
                     <TextField
                       onBlur={() => {this.updateDropdownValue(event, 'form4', 'recentSalary');}}
                       id="standard-dense"
-                      label="Most Recent Salary"
-                      margin="dense"/>
+                      style={{ 'flex': isMobile ? 1 : 3 }}
+                      label="Most Recent Salary"/>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      onBlur={() => {this.updateDropdownValue(event, 'form4', 'dateFrom');}}
+                      id="employment-date-from"
+                      label="Start Date"
+                      type="date"
+                      InputLabelProps={{
+                        shrink: true,
+                      }}/>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      onBlur={() => {this.updateDropdownValue(event, 'form4', 'dateTo');}}
+                      id="employment-date-to"
+                      label="End Date"
+                      type="date"
+                      InputLabelProps={{
+                        shrink: true,
+                      }}/>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <FormControl >
+                      <FormControlLabel
+                        control={<Checkbox checked={form4.currentJob} onChange={() => {this.updateCheckBox(event, 'form4', 'currentJob');}} value={true} />}
+                        label="I Currently work here"/>
+                    </FormControl>
                   </Grid>
                 </Grid>
               </form>
