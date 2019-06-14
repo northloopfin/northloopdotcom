@@ -56,7 +56,8 @@ class Loan extends PureComponent {
         recentSalary: '',
         dateTo: '',
         dateFrom: '',
-        currentJob: false
+        currentJob: false,
+        salaryAfterGrad: ''
       }
     };
   }
@@ -333,7 +334,7 @@ class Loan extends PureComponent {
                       autoWidth>
                       { currencyMenuItems }
                     </Select>
-                  </FormControl>
+                   </FormControl>
                     <TextField
                       onBlur={() => {this.updateDropdownValue(event, 'form4', 'recentSalary');}}
                       id="standard-dense"
@@ -366,6 +367,12 @@ class Loan extends PureComponent {
                         control={<Checkbox checked={form4.currentJob} onChange={() => {this.updateCheckBox(event, 'form4', 'currentJob');}} value={true} />}
                         label="I Currently work here"/>
                     </FormControl>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      onBlur={() => {this.updateDropdownValue(event, 'form4', 'salaryAfterGrad');}}
+                      id="standard-dense"
+                      label="Salary After Graduation (only if you have a guaranteed job)"/>
                   </Grid>
                 </Grid>
               </form>
