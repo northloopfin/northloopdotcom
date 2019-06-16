@@ -58,6 +58,14 @@ class Loan extends PureComponent {
         dateFrom: '',
         currentJob: false,
         salaryAfterGrad: ''
+      },
+      form5: {
+        assetsCurrency: '',
+        assets: '',
+        savingsCurrency: '',
+        savings: '',
+        otherAssetsCurrency: '',
+        otherAssets: ''
       }
     };
   }
@@ -89,7 +97,7 @@ class Loan extends PureComponent {
 
   submitForm = () => {
       let formData = new FormData();
-      const userDataObj = Object.assign({}, this.state.form1, this.state.form2, this.state.form3, this.state.form4);
+      const userDataObj = Object.assign({}, this.state.form1, this.state.form2, this.state.form3, this.state.form4, this.state.form5);
       for ( var key in userDataObj ) {
           formData.append(key, userDataObj[key]);
       }
@@ -113,7 +121,7 @@ class Loan extends PureComponent {
   }
 
   render() {
-    const { step, form1, form2, form3, form4, submitted, loading } = this.state;
+    const { step, form1, form2, form3, form4, form5, submitted, loading } = this.state;
 
     const universitiesMenuItems = universitiesList.map((univ, i) => {
       return <MenuItem value={univ} key={'univ-' + i}>{univ}</MenuItem>;
@@ -379,6 +387,72 @@ class Loan extends PureComponent {
             </Grid>
           </Container>);
 
+    const loanForm5 = (
+          <Container className={styles.journey}>
+            <h2 className={styles.subtitle}>Check if you qualify for a loan<span /></h2>
+            <Grid item sm={10}>
+              <form className={styles.container} noValidate autoComplete="off">
+                <Grid container>
+
+                  <Grid item xs={8} style={{ 'display': 'flex' }}>
+                   <FormControl style={{ 'flex': 1 }} >
+                    <InputLabel htmlFor="assets-currency-auto-width">Currency</InputLabel>
+                    <Select
+                      value={form5.assetsCurrency}
+                      onChange={(event) => {this.updateDropdownValue(event, 'form5', 'assetsCurrency');}}
+                      input={<Input name="assets" id="assets-currency-auto-width" />}
+                      autoWidth>
+                      { currencyMenuItems }
+                    </Select>
+                   </FormControl>
+                    <TextField
+                      onBlur={() => {this.updateDropdownValue(event, 'form5', 'assets');}}
+                      id="standard-dense"
+                      style={{ 'flex': isMobile ? 1 : 3 }}
+                      label="Value of property that you or your co-signer owns"/>
+                  </Grid>
+
+                  <Grid item xs={8} style={{ 'display': 'flex' }}>
+                    <FormControl style={{ 'flex': 1, 'paddingRight': isMobile ? 20 : 98 }} >
+                      <InputLabel htmlFor="savings-currency-auto-width">Currency</InputLabel>
+                      <Select
+                        value={form5.savingsCurrency}
+                        onChange={(event) => {this.updateDropdownValue(event, 'form5', 'savingsCurrency');}}
+                        input={<Input name="savings" id="savings-currency-auto-width" />}
+                        autoWidth>
+                        { currencyMenuItems }
+                      </Select>
+                     </FormControl>
+                     <TextField
+                          onBlur={() => {this.updateDropdownValue(event, 'form5', 'savings');}}
+                          id="standard-dense"
+                          style={{ 'flex': isMobile ? 1 : 3, 'paddingRight': isMobile ? 20 : 98}}
+                          label="Total value of savings"/>
+                  </Grid>
+
+                  <Grid item xs={8} style={{ 'display': 'flex' }}>
+                   <FormControl style={{ 'flex': 1 }} >
+                    <InputLabel htmlFor="other-assets-auto-width">Currency</InputLabel>
+                    <Select
+                      value={form5.otherAssetsCurrency}
+                      onChange={(event) => {this.updateDropdownValue(event, 'form5', 'otherAssetsCurrency');}}
+                      input={<Input name="otherAssets" id="other-assets-currency-auto-width" />}
+                      autoWidth>
+                      { currencyMenuItems }
+                    </Select>
+                   </FormControl>
+                    <TextField
+                      onBlur={() => {this.updateDropdownValue(event, 'form5', 'otherAssets');}}
+                      id="standard-dense"
+                      style={{ 'flex': isMobile ? 1 : 3 }}
+                      label="Total value of other assets"/>
+                  </Grid>
+
+                </Grid>
+              </form>
+            </Grid>
+          </Container>);
+
     const successMessage = (
           <Container style={{'marginTop': '5%', 'marginBottom': '5%', 'display': 'flex', 'justifyContent': 'center', 'fontSize': 'large'}}>
               <p>Thank you. Your application has been received and we will be in touch with next steps!</p>
@@ -390,18 +464,19 @@ class Loan extends PureComponent {
           { step == 2 && loanForm2 }
           { step == 3 && loanForm3 }  
           { step == 4 && loanForm4 }
+          { step == 5 && loanForm5 }
           { loading && 
             <Container>
               <div style={{ 'display': 'flex', 'justifyContent': 'center', 'marginTop': '5%', 'marginBottom': '5%' }}>
                 <CircularProgress color="secondary" />
               </div>
-            </Container>}
+            </Container> }
           { submitted && successMessage }
           <Container>
             <Grid item sm={10} style={{'display': 'flex', 'justifyContent': 'flex-end', 'marginTop': '2%', 'marginBottom': '2%'}}>
-              { step > 1 && step < 5 && <Button onClick={this.decStep}>Prev</Button> }
-              { step > 0 && step < 4  && <Button onClick={this.incStep}>Next</Button> }
-              { step == 4 && <Button onClick={this.submitForm}>Submit</Button> }
+              { step > 1 && step < 6 && <Button onClick={this.decStep}>Prev</Button> }
+              { step > 0 && step < 5  && <Button onClick={this.incStep}>Next</Button> }
+              { step == 5 && <Button onClick={this.submitForm}>Submit</Button> }
             </Grid>
           </Container>
       </div>
