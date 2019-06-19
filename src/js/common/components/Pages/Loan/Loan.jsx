@@ -17,7 +17,8 @@ import styles from './LoanCSS/Loan.css';
 const isMobile = window.innerWidth < 768;
 
 const universitiesList = [ "Northeastern University",  "Pace University", "Arizona State University", "New York University", "University of Southern California", "UCLA", "Northwestern University", "Cornell University", "Columbia University", "University of Illinois - Urbana Champaign", "Ohio State University", "University of Pennsylvania", "Harvard University", "Carnegie Mellon University", "Stanford University", "Princeton University", "Dartmouth College", "Yale University", "Brown University", "University of Michigan - Ann Arbor", "Boston College", "Boston University", "American University", "Drexel University", "Duke University", "Emory University", "George Washington University", "Iowa State University", "University of California - Davis", "University of California - Berkeley", "University of California - Irvine", "University of California - San Diego", "MIT", "Rutger's University", "Rice University", "SUNY Buffalo", "Stony Brook University", "Texas A&M", "University of Texas - Dallas", "University of Chicago", "University of Iowa", "Florida International University", "University of Notre Dame", "University of Texas - Arlington", "University of Texas - Austin", "University of Washington", "University of Virginia", "Vanderbilt University", "California Institute of Technology", "Purdue University", "Pennsylvania State University - University Park", "Michigan State University", "Indiana University - Bloomington", "University of Wisconsin", "University of North Carolina", "Georgia Institute of Technology", "Illinois Institute of Technology", "Lousinia State University", "John Hopkins University", "Kaplan Pathways", "Kings Education Pathways", "Shorelight Pathways", "New Jersey Institute of Technology", "University of California - Santa Barbara", "University of Minnesota - Twin Cities", "Washington University", "Georgetown University", "Kentucky University", "University of Maryland", "University of Oklahoma", "Tufts University", "Washington State University", "Syracuse University", "SUNY", "Rochester Institute of Technology", "Colorado State University", "Brandeis University", "University of Flordia", "Bentley College", "Georgia State University", "Texas Tech University", "University of New Hampshire", "Navitas Pathways", "INTO Pathways", "UMass - Dartmouth", "UMass - Boston", "UMass - Amherst", "University of Idaho", "UMass - Lowell"]; 
-const currenciesList = ['USD', 'INR', 'AED', 'CNY', 'EUR']; 
+const currenciesList = ['USD', 'INR', 'AED', 'CNY', 'EUR'];
+const fieldsToValidate = ["name", "email", "program", "school", "duration", "test", "testScore", "gender", "dob", "address", "citizenship", "passportNumber", "requestedAmount"];
 
 
 class Loan extends PureComponent {
@@ -66,14 +67,25 @@ class Loan extends PureComponent {
         savings: '',
         otherAssetsCurrency: '',
         otherAssets: ''
-      }
+      },
+      emptyErrorFields: []
     };
   }
 
   incStep = () => {
-    this.setState({
-      step: this.state.step + 1
-    });
+    const errorArray = this.formEmptyCheck('form' + this.state.step);
+
+    if (errorArray.length < 1) {
+      this.setState({
+        step: this.state.step + 1,
+        emptyErrorFields: []
+      });
+    } else {
+      this.setState({
+        emptyErrorFields: errorArray
+      });
+    }
+
   }
 
   decStep = () => {
@@ -93,6 +105,21 @@ class Loan extends PureComponent {
   showLoader = () => {
       this.setState({ loading: true });
       this.submitForm();
+  }
+
+  isFieldEmpty = (field) => {
+      return this.state.emptyErrorFields.includes(field);
+  }
+
+  formEmptyCheck = (form) => {
+      const newErrorArray = [];
+      for ( var key in this.state[form] ) {
+          if (fieldsToValidate.includes(key) && this.state[form][key].trim().length < 1) {
+            newErrorArray.push(key);
+          }
+      }
+
+      return newErrorArray;
   }
 
   submitForm = () => {
@@ -121,7 +148,7 @@ class Loan extends PureComponent {
   }
 
   render() {
-    const { step, form1, form2, form3, form4, form5, submitted, loading } = this.state;
+    const { step, form1, form2, form3, form4, form5, submitted, loading, emptyErrorFields } = this.state;
 
     const universitiesMenuItems = universitiesList.map((univ, i) => {
       return <MenuItem value={univ} key={'univ-' + i}>{univ}</MenuItem>;
@@ -143,7 +170,8 @@ class Loan extends PureComponent {
                   onBlur={() => {this.updateDropdownValue(event, 'form1', 'name');}}
                   id="standard-dense"
                   label="Name"
-                  margin="dense"/>
+                  margin="dense"
+                  error={this.isFieldEmpty('name')} />
               </Grid>
               <Grid item xs={6}>
                 <TextField
@@ -151,11 +179,12 @@ class Loan extends PureComponent {
                   id="email"
                   label="Email"
                   margin="dense"
-                  type="email"/>
+                  type="email"
+                  error={this.isFieldEmpty('email')} />
               </Grid>
               <Grid item xs={6}>
                 <FormControl>
-                  <InputLabel htmlFor="program-auto-width">Program</InputLabel>
+                  <InputLabel error={this.isFieldEmpty('program')}  htmlFor="program-auto-width">Program</InputLabel>
                   <Select
                     value={form1.program}
                     onChange={(event) => {this.updateDropdownValue(event, 'form1', 'program');}}
@@ -169,7 +198,7 @@ class Loan extends PureComponent {
               </Grid>
               <Grid item xs={6}>
                 <FormControl>
-                  <InputLabel htmlFor="school-auto-width">School</InputLabel>
+                  <InputLabel error={this.isFieldEmpty('school')} htmlFor="school-auto-width">School</InputLabel>
                   <Select
                     value={form1.school}
                     onChange={(event) => {this.updateDropdownValue(event, 'form1', 'school');}}
@@ -185,11 +214,12 @@ class Loan extends PureComponent {
                   id="program-length"
                   label="Duration (years)"
                   margin="dense"
-                  type="Number"/>
+                  type="Number"
+                  error={this.isFieldEmpty('duration')} />
               </Grid>
               <Grid item xs={6}>
                 <FormControl>
-                  <InputLabel htmlFor="test-auto-width">Test Type</InputLabel>
+                  <InputLabel error={this.isFieldEmpty('test')} htmlFor="test-auto-width">Test Type</InputLabel>
                   <Select
                     value={form1.test}
                     onChange={(event) => {this.updateDropdownValue(event, 'form1', 'test');}}
@@ -206,7 +236,8 @@ class Loan extends PureComponent {
                   id="test-score"
                   label="Test Score"
                   margin="dense"
-                  type="Number"/>
+                  type="Number"
+                  error={this.isFieldEmpty('testScore')} />
               </Grid>
             </Grid>
           </form>
@@ -222,7 +253,7 @@ class Loan extends PureComponent {
                 <Grid container>
                   <Grid item xs={6}>
                     <FormControl>
-                      <InputLabel htmlFor="gender-auto-width">Gender</InputLabel>
+                      <InputLabel error={this.isFieldEmpty('gender')} htmlFor="gender-auto-width">Gender</InputLabel>
                       <Select
                         value={form2.gender}
                         onChange={(event) => {this.updateDropdownValue(event, 'form2', 'gender');}}
@@ -240,6 +271,7 @@ class Loan extends PureComponent {
                       id="date"
                       label="Date of birth"
                       type="date"
+                      error={this.isFieldEmpty('dob')}
                       InputLabelProps={{
                         shrink: true,
                       }}/>
@@ -249,28 +281,31 @@ class Loan extends PureComponent {
                       onBlur={() => {this.updateDropdownValue(event, 'form2', 'address');}}
                       id="standard-dense"
                       label="Address"
-                      margin="dense"/>
+                      margin="dense"
+                      error={this.isFieldEmpty('address')} />
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
                       onBlur={() => {this.updateDropdownValue(event, 'form2', 'citizenship');}}
                       id="standard-dense"
                       label="Country of Citizenship"
-                      margin="dense"/>
+                      margin="dense"
+                      error={this.isFieldEmpty('citizenship')} />
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
                       onBlur={() => {this.updateDropdownValue(event, 'form2', 'passportNumber');}}
                       id="standard-dense"
                       label="Passport Number"
-                      margin="dense"/>
+                      margin="dense"
+                      error={this.isFieldEmpty('passportNumber')} />
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
                       onBlur={() => {this.updateDropdownValue(event, 'form2', 'ssn');}}
                       id="standard-dense"
                       label="US Social Security Number (if available)"
-                      margin="dense"/>
+                      margin="dense" />
                   </Grid>
                 </Grid>
               </form>
@@ -313,7 +348,8 @@ class Loan extends PureComponent {
                       id="standard-dense"
                       label="Amount You’re Requesting"
                       type="Number"
-                      margin="dense"/>
+                      margin="dense"
+                      error={this.isFieldEmpty('requestedAmount')} />
                   </Grid>
                 </Grid>
               </form>
@@ -465,6 +501,12 @@ class Loan extends PureComponent {
           { step == 3 && loanForm3 }  
           { step == 4 && loanForm4 }
           { step == 5 && loanForm5 }
+          { emptyErrorFields.length > 0 && 
+            <Container>
+              <p className={styles.noSchoolWarning} style={{color: 'red'}}>
+                Please fill out mandatory fields!
+              </p>
+            </Container> }
           { loading && 
             <Container>
               <div style={{ 'display': 'flex', 'justifyContent': 'center', 'marginTop': '5%', 'marginBottom': '5%' }}>
