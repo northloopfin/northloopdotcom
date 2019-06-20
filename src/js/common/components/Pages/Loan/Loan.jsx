@@ -95,7 +95,15 @@ class Loan extends PureComponent {
   }
 
   updateDropdownValue = (event, form, key) => {
-      this.setState(Object.assign(this.state[form], { [key]: event.target.value}));
+
+      let updatedErrorArray = [];
+      const currentErrorArray = Object.assign(this.state.emptyErrorFields, {});
+      
+      if (fieldsToValidate.includes(key) && event.target.value.length > 0) {
+            updatedErrorArray = currentErrorArray.filter((e) => { return e !== key });
+      }
+
+      this.setState(Object.assign(this.state[form], { [key]: event.target.value }, { emptyErrorFields: updatedErrorArray }));
   }
 
   updateCheckBox = (event, form, key) => {
