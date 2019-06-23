@@ -64,6 +64,7 @@ function Header(props) {
   const isHighYieldSavings = pathname === '/high-yield-savings';
   const isLoans = pathname === '/loans';
   const isBlogs = pathname === '/blogs';
+  const isManualSignup = pathname === '/manual-signup';
   const isMobile = window.innerWidth < 768;
 
   // Content for each pages
@@ -89,6 +90,13 @@ function Header(props) {
     subtitle = 'The more people you refer, the higher you move up the waitlist.<br />The first 5,000 people get access to 5% APY<br />The next 5,000 get access to 5%. It’ll keep dropping until 2%. Hurry.';
     button = 'Join the waitlist';
   }
+
+  if (isManualSignup) {
+    title = 'North Loop Account Registration';
+    subtitle = 'Receive a $10 Uber voucher when your account is approved!';
+    button = '';
+  }
+
   const divStyle = {
     background: '#fff6fc',
     paddingTop: '5px!important',
@@ -122,7 +130,6 @@ function Header(props) {
           </li>
           </ul>
         </nav>
-
       </div>
     </div>
   );
@@ -184,7 +191,7 @@ function Header(props) {
                               </h1>
                               <div className={styles.subHeader}>{  isLoans ? loanContent : ReactHtmlParser(subtitle) }</div>
                               {
-                                !isMobile && !isLoans && (
+                                !isMobile && !isLoans && !isManualSignup && (
                                   <div className={styles.buttonInputWrapper}>
                                     <form className={styles.bannerForm} noValidate autoComplete="off">
                                       <Button variant="contained" color="primary" onClick={() => {sendToGSF();}} className={styles.button}>
@@ -196,12 +203,12 @@ function Header(props) {
                               }
                             </Grid>
                             <Grid item xs={12} sm={4} className={styles.headerIphone}>
-                              {!isLoans ? (
+                              {!isLoans && !isManualSignup ? (
                               <div className={styles.iPhoneContainer}>
                                 <img src={iPhone} alt="iPhone 6" />
                               </div>
                               ) :
-                              (!isLoans && <div className={styles.loanHeaderAccessButton}>
+                              (!isLoans && !isManualSignup && <div className={styles.loanHeaderAccessButton}>
                                                               <div>
                                                                 <Button variant="contained" color="primary" onClick={() => {sendToGSF();}} className={styles.button}>
                                                                       { ReactHtmlParser(button) }
