@@ -124,7 +124,6 @@ class ManualSignup extends PureComponent {
 
   render() {
     const { form1, submitted, loading, emptyErrorFields } = this.state;
-    console.log(form1, submitted);
 
     const universitiesMenuItems = universitiesList.map((univ, i) => {
       return <MenuItem value={univ} key={'univ-' + i}>{univ}</MenuItem>;
