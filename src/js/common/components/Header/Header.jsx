@@ -15,12 +15,41 @@ import ReactHtmlParser from 'react-html-parser';
 import styles from './CSS/Header.css';
 import Logo from '../../../../assets/images/logo.png';
 import iPhone from '../../../../assets/images/iphone-6.png';
+import hundredFreeIcon from '../../../../assets/images/hundredFreeIcon.svg';
 
 const divStyle = {
-  background: '#fff6fc',
   paddingTop: '5px!important',
   padding: '0',
 };
+
+const tnpStyle = {
+  container: {
+    marginTop: '10%'
+  },
+  title: {
+    color: '#C75561',
+    fontFamily: 'Muli ExtraBold',
+    fontSize: '20px',
+    fontWeight: 'bold'
+  },
+  content: {
+    color: '#4A494B',
+    fontSize: 'medium',
+    marginTop: '1%'
+  }
+};
+
+const imgIconStyle = {
+  outerContainer: {
+    display: 'flex',
+    marginTop: '10%'
+  },
+  icon: {
+    height: '76px',
+    width: '64px'
+  }
+}
+
 
 function sendToGSF() {
   growsurf.open();
@@ -68,8 +97,9 @@ function Header(props) {
   const isMobile = window.innerWidth < 768;
 
   // Content for each pages
-  let title = 'Banking for international students in the US';
-  let subtitle = '<ul><li>No wire fees. No social security number needed.</li><ul>';
+  let title = 'Ultimate International Student Account';
+  let title2 = 'The simplest bank account ever!';
+  let subtitle = '<ul><li>No Incoming Wire Fees</li><ul>';
   let button = 'Get Early Access';
   let loanContent;
 
@@ -98,7 +128,6 @@ function Header(props) {
   }
 
   const divStyle = {
-    background: '#fff6fc',
     paddingTop: '5px!important',
     padding: '0',
   }
@@ -136,101 +165,203 @@ function Header(props) {
 
   return (
     <header className={styles.globalHeader}>
-      { isMobile
-        && (
+
+      {isMobile && (
         <div>
-          <AppBar position="fixed" className={styles.newappBar} style={ divStyle }>
+          <AppBar position="fixed" className={styles.newappBar} style={divStyle}>
             <Toolbar variant="dense">
               <Typography variant="h6" color="inherit">
                 <ul className={styles.brandLogo}>
                   <img src={Logo} alt="Nort Loop" />
                 </ul>
               </Typography>
-              <IconButton onClick={toggleDrawer('left', true)} edge="end" className={styles.menuButton} color="inherit" aria-label="Menu">
+              <IconButton
+                onClick={toggleDrawer("left", true)}
+                edge="end"
+                className={styles.menuButton}
+                color="inherit"
+                aria-label="Menu"
+              >
                 <MenuIcon />
               </IconButton>
             </Toolbar>
           </AppBar>
-          <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
-            {sideList('left')}
+          <Drawer open={state.left} onClose={toggleDrawer("left", false)}>
+            {sideList("left")}
           </Drawer>
         </div>
-        )
-      }
+      )}
+
       <Container className={styles.marginTop}>
-        { !isMobile && (
+        {!isMobile && (
           <div>
             <ul className={styles.brandLogo}>
               <img src={Logo} alt="Nort Loop" />
             </ul>
             <nav>
               <ul>
-                <li className={!isHome ? styles.active : ''}>
-                  {isHome ? 'Students' : <Link to="/">Students</Link>}
+                <li className={!isHome ? styles.active : ""}>
+                  {isHome ? "Students" : <Link to="/">Students</Link>}
                 </li>
-                <li className={!isJoinUs ? styles.active : ''}>
-                  {isJoinUs ? 'Join Us' : <a href="https://www.linkedin.com/company/35694537/admin/" target="_blank">Join Us</a>}
+                <li className={!isJoinUs ? styles.active : ""}>
+                  {isJoinUs ? (
+                    "Join Us"
+                  ) : (
+                    <a
+                      href="https://www.linkedin.com/company/35694537/admin/"
+                      target="_blank"
+                    >
+                      Join Us
+                    </a>
+                  )}
                 </li>
-                <li className={!isLoans ? styles.active : ''}>
-                  {isLoans ? 'Loans' : <Link to="/loans">Loans</Link>}
+                <li className={!isLoans ? styles.active : ""}>
+                  {isLoans ? "Loans" : <Link to="/loans">Loans</Link>}
                 </li>
               </ul>
             </nav>
           </div>
-        )
-}
+        )}
 
+        {!isBlogs && (
+          <div className={styles.headerTextContainer}>
+            <Grid container>
+              <Grid item xs={12} sm={8} className={styles.headerWithText} style={isLoans ? { paddingTop: "5%" } : {}}>
+                <h1 className={styles.title}>{ReactHtmlParser(title)} </h1>
+                <div className={styles.subHeader}>
+                  {isLoans ? loanContent : ReactHtmlParser(subtitle)}
+                </div>
+                <div className="title-and-paragraph" style={tnpStyle.container}>
+                  <div className="sign-up-in-5-min" style={tnpStyle.title}>
+                    Sign up in just 5 minutes
+                  </div>
+                  <p style={tnpStyle.content}>
+                    Sign up before coming to the US. Your card will be waiting for
+                    you when you land. <br /> We will give you a T-mobile SIM card
+                    before you fly.
+                  </p>
+                </div>
+                {!isMobile && !isLoans && !isManualSignup && (
+                  <div className={styles.buttonInputWrapper}>
+                    <form
+                      className={styles.bannerForm}
+                      noValidate
+                      autoComplete="off">
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={() => {
+                          sendToGSF();
+                        }}
+                        className={styles.button}>
+                        {ReactHtmlParser(button)}
+                      </Button>
+                    </form>
+                  </div>
+                )}
+              </Grid>
+              <Grid item xs={12} sm={4} className={styles.headerIphone}>
+                {!isLoans && !isManualSignup ? (
+                  <div className={styles.iPhoneContainer}>
+                    <img src={iPhone} alt="iPhone 6" />
+                  </div>
+                ) : (
+                  !isLoans &&
+                  !isManualSignup && (
+                    <div className={styles.loanHeaderAccessButton}>
+                      <div>
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          onClick={() => {
+                            sendToGSF();
+                          }}
+                          className={styles.button}
+                        >
+                          {ReactHtmlParser(button)}
+                        </Button>
+                      </div>
+                    </div>
+                  )
+                )}
+              </Grid>
+            </Grid>
+          </div>
+        )}
 
-        {!isBlogs && (<div className={styles.headerTextContainer}>
-                          <Grid container>
-                            <Grid item xs={12} sm={8} className={styles.headerWithText} style={ isLoans ? { 'paddingTop': '5%' } : {}}>
-                              <h1 className={styles.title}>
-                                { ReactHtmlParser(title) }
-                                {' '}
-                                <span />
-                              </h1>
-                              <div className={styles.subHeader}>{  isLoans ? loanContent : ReactHtmlParser(subtitle) }</div>
-                              {
-                                !isMobile && !isLoans && !isManualSignup && (
-                                  <div className={styles.buttonInputWrapper}>
-                                    <form className={styles.bannerForm} noValidate autoComplete="off">
-                                      <Button variant="contained" color="primary" onClick={() => {sendToGSF();}} className={styles.button}>
-                                        { ReactHtmlParser(button) }
-                                      </Button>
-                                    </form>
-                                  </div> 
-                                )
-                              }
-                            </Grid>
-                            <Grid item xs={12} sm={4} className={styles.headerIphone}>
-                              {!isLoans && !isManualSignup ? (
-                              <div className={styles.iPhoneContainer}>
-                                <img src={iPhone} alt="iPhone 6" />
-                              </div>
-                              ) :
-                              (!isLoans && !isManualSignup && <div className={styles.loanHeaderAccessButton}>
-                                                              <div>
-                                                                <Button variant="contained" color="primary" onClick={() => {sendToGSF();}} className={styles.button}>
-                                                                      { ReactHtmlParser(button) }
-                                                                </Button>
-                                                              </div>
-                                                            </div> )
-                            }
-                            </Grid>
-                          </Grid>
-                        </div>)}
-      { isBlogs && (
-        <div style={{marginTop: '5%'}}>
-          <h1>North Loop Blogs</h1>
-          <p>
-            Useful insights to ease your move to the US
-          </p>
-        </div>
-      )}
-
+        {!isBlogs && (
+          <div className={styles.headerTextContainer}>
+            <Grid container>
+              <Grid item xs={12} sm={8} className={styles.headerWithText} style={isLoans ? { paddingTop: "5%" } : {}}>
+                <h1 className={styles.title}>{ReactHtmlParser(title2)} </h1>
+                <div className="title-and-paragraph" style={imgIconStyle.outerContainer}>
+                  <img src={hundredFreeIcon} style={imgIconStyle.icon} />
+                  <div className="sign-up-in-5-min" style={tnpStyle.title}>
+                    100% Free
+                  </div>
+                  <p style={tnpStyle.content}>
+                    Sign up before coming to the US. Your card will be waiting for
+                    you when you land. <br /> We will give you a T-mobile SIM card
+                    before you fly.
+                  </p>
+                </div>
+                {!isMobile && !isLoans && !isManualSignup && (
+                  <div className={styles.buttonInputWrapper}>
+                    <form
+                      className={styles.bannerForm}
+                      noValidate
+                      autoComplete="off">
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={() => {
+                          sendToGSF();
+                        }}
+                        className={styles.button}>
+                        {ReactHtmlParser(button)}
+                      </Button>
+                    </form>
+                  </div>
+                )}
+              </Grid>
+              <Grid item xs={12} sm={4} className={styles.headerIphone}>
+                {!isLoans && !isManualSignup ? (
+                  <div className={styles.iPhoneContainer}>
+                    <img src={iPhone} alt="iPhone 6" />
+                  </div>
+                ) : (
+                  !isLoans &&
+                  !isManualSignup && (
+                    <div className={styles.loanHeaderAccessButton}>
+                      <div>
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          onClick={() => {
+                            sendToGSF();
+                          }}
+                          className={styles.button}
+                        >
+                          {ReactHtmlParser(button)}
+                        </Button>
+                      </div>
+                    </div>
+                  )
+                )}
+              </Grid>
+            </Grid>
+          </div>
+        )}
+        {isBlogs && (
+          <div style={{ marginTop: "5%" }}>
+            <h1>North Loop Blogs</h1>
+            <p>Useful insights to ease your move to the US</p>
+          </div>
+        )}
       </Container>
     </header>
-  );
+
+    );
 }
 
 export default Header;
