@@ -156,6 +156,49 @@ const globalFeaturesStyle = {
   }
 }
 
+const testimonialsStyle = {
+  outerContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    marginTop: '10%'
+  },
+  container: {
+    display: 'flex',
+    height: '107.64px',
+    width: '247.76px',
+    borderRadius: '3.68px',
+    background: 'linear-gradient(315.52deg, #C861AD 0%, #FF7987 100%)',
+    boxShadow: '0 10px 25px 0 rgba(176,73,149,0.32)',
+  },
+  inactiveContainer: {
+    display: 'flex',
+    height: '107.64px',
+    width: '247.76px',
+    borderRadius: '3.68px',
+    background: 'linear-gradient(180deg, #D6D4D7 0%, #A4A2A7 100%)',
+    boxShadow: '0 10px 25px 0 rgba(176,73,149,0.32)',
+  },
+  img: {
+    height: '100px',
+    width: '100px'
+  },
+  personContainer: {
+    flex: '1'
+  },
+  name: {
+    color: '#FFFFFF',
+    fontFamily: 'Muli ExtraBold',
+    fontSize: '16px',
+    lineHeight: '20px'
+  },
+  university: {
+    color: '#FFFFFF',
+    fontFamily: 'Muli ExtraBold',
+    fontSize: '15px',
+    lineHeight: '20px'
+  }
+}
+
 
 function sendToGSF() {
   growsurf.open();
@@ -209,6 +252,7 @@ function Header(props) {
   const title4 = 'Get access to the best rewards possible';
   const title5 = 'Start Banking in 3 Steps';
   const title6 = 'A Global Account for Global Citizens';
+  const title7 = 'Join thousands of students';
 
   let subtitle = '<ul><li>No Incoming Wire Fees</li><ul>';
   let button = 'Get Early Access';
@@ -649,6 +693,45 @@ function Header(props) {
                     <img src={iPhone3} alt="iPhone 6" />
                   </div>
                 )}
+              </Grid>
+            </Grid>
+          </div>
+        )}
+
+        {!isBlogs && (
+          <div className={styles.headerTextContainer}>
+            <Grid container>
+              <Grid item xs={12} sm={8} className={styles.headerWithText} style={isLoans ? { paddingTop: "5%" } : {}}>
+                <h1 className={styles.title}>{ReactHtmlParser(title7)} </h1>
+                
+                <div className="testimonial-outer-container" style={testimonialsStyle.outerContainer}>
+                  <div className="testimonial-container" style={testimonialsStyle.container}>
+                    <img src={iconSecure} style={testimonialsStyle.img} />
+                    <div className="testimonial-person-container" style={testimonialsStyle.personContainer}>
+                      <h3 style={testimonialsStyle.name}>Simon Wood</h3>
+                      <p style={testimonialsStyle.university}>Northwestern University</p>
+                    </div>
+                  </div>
+
+                  <div className="testimonial-container" style={testimonialsStyle.inactiveContainer}>
+                    <img src={iconSecure} style={testimonialsStyle.img} />
+                    <div className="testimonial-person-container" style={testimonialsStyle.personContainer}>
+                      <h3 style={testimonialsStyle.name}>Sebastian Paul</h3>
+                      <p style={testimonialsStyle.university}>Stanford University</p>
+                    </div>
+                  </div>
+
+                  <div className="testimonial-container" style={testimonialsStyle.inactiveContainer}>
+                    <img src={iconSecure} style={testimonialsStyle.img} />
+                    <div className="testimonial-person-container" style={testimonialsStyle.personContainer}>
+                      <div>
+                        <h3 style={testimonialsStyle.name}>Jai Menon</h3>
+                        <p style={testimonialsStyle.university}>University of Michigan</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
               </Grid>
             </Grid>
           </div>
