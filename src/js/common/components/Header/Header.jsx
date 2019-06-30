@@ -118,6 +118,17 @@ const securityFeaturesStyle = {
   },
 }
 
+const rewardsFeaturesStyle = {
+  icon: {
+    height: '24px',
+    width: '24px'
+  },
+  content: {
+    color: '#4A494B',
+    fontSize: 'medium'
+  }
+}
+
 
 function sendToGSF() {
   growsurf.open();
@@ -168,6 +179,7 @@ function Header(props) {
   let title = 'Ultimate International Student Account';
   let title2 = 'The simplest bank account ever!';
   let title3 = 'Industry leading security';
+  let title4 = 'Get access to the best rewards possible';
   let subtitle = '<ul><li>No Incoming Wire Fees</li><ul>';
   let button = 'Get Early Access';
   let loanContent;
@@ -467,6 +479,79 @@ function Header(props) {
                   </div>
                 </div>
                 
+              </Grid>
+              <Grid item xs={12} sm={4} className={styles.headerIphone}>
+                {!isLoans && !isManualSignup && (
+                  <div className={styles.iPhoneContainer}>
+                    <img src={iPhone3} alt="iPhone 6" />
+                  </div>
+                )}
+              </Grid>
+            </Grid>
+          </div>
+        )}
+
+        {!isBlogs && (
+          <div className={styles.headerTextContainer}>
+            <Grid container>
+              <Grid item xs={12} sm={8} className={styles.headerWithText} style={isLoans ? { paddingTop: "5%" } : {}}>
+                <h1 className={styles.title}>{ReactHtmlParser(title4)} </h1>
+
+                <div className="title-and-paragraph" style={securityFeaturesStyle.outerContainer}>
+                  <img src={iconSecure} style={rewardsFeaturesStyle.icon} />
+                  <div style={bankFeaturesStyle.outerContainer}>
+                    <div className="security-feature-container" >
+                      <p style={rewardsFeaturesStyle.content}>
+                        5% cashback on your first $1,000 of purchases
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="title-and-paragraph" style={securityFeaturesStyle.outerContainer}>
+                  <img src={iconSecure} style={rewardsFeaturesStyle.icon} />
+                  <div style={bankFeaturesStyle.outerContainer}>
+                    <div className="security-feature-container" >
+                      <p style={rewardsFeaturesStyle.content}>
+                        CampusCashback® at your favorite stores and restaurants
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="title-and-paragraph" style={securityFeaturesStyle.outerContainer}>
+                  <img src={iconSecure} style={rewardsFeaturesStyle.icon} />
+                  <div style={bankFeaturesStyle.outerContainer}>
+                    <div className="security-feature-container" >
+                      <p style={rewardsFeaturesStyle.content}>
+                        Discounted T-Mobile Cellular Bill
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="title-and-paragraph" style={securityFeaturesStyle.outerContainer}>
+                  <img src={iconSecure} style={rewardsFeaturesStyle.icon} />
+                  <div style={bankFeaturesStyle.outerContainer}>
+                    <div className="security-feature-container" >
+                      <p style={rewardsFeaturesStyle.content}>
+                        Free Amazon Prime Student
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="title-and-paragraph" style={securityFeaturesStyle.outerContainer}>
+                  <img src={iconSecure} style={rewardsFeaturesStyle.icon} />
+                  <div style={bankFeaturesStyle.outerContainer}>
+                    <div className="security-feature-container" >
+                      <p style={rewardsFeaturesStyle.content}>
+                        Discounted Housing
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
               </Grid>
               <Grid item xs={12} sm={4} className={styles.headerIphone}>
                 {!isLoans && !isManualSignup && (
