@@ -16,8 +16,13 @@ import styles from './CSS/Header.css';
 import Logo from '../../../../assets/images/logo.png';
 import iPhone from '../../../../assets/images/iphone-6.png';
 import iPhone2 from '../../../../assets/images/iphone-6-two.png';
+import iPhone3 from '../../../../assets/images/iphone-6-three.png';
 import hundredFreeIcon from '../../../../assets/images/hundredFreeIcon.svg';
 import atmNetworkIcon from '../../../../assets/images/atmNetwork.svg';
+import instantNotificationIcon from '../../../../assets/images/instantNotification.svg';
+import visaCardIcon from '../../../../assets/images/visaCard.svg';
+import lockCardIcon from '../../../../assets/images/lockYourCard.svg';
+import iconSecure from '../../../../assets/images/iconSecure.svg';
 
 const divStyle = {
   paddingTop: '5px!important',
@@ -91,6 +96,28 @@ const bankFeaturesStyle = {
 
 }
 
+const securityFeaturesStyle = {
+  title: {
+    color: '#C75561',
+    fontFamily: 'Muli ExtraBold',
+    fontSize: '16px',
+    fontWeight: 'bold'
+  },
+  content: {
+    color: '#4A494B',
+    fontSize: 'medium',
+    marginTop: '1%'
+  },
+  icon: {
+    height: '54px',
+    width: '54px'
+  },
+  outerContainer: {
+    display: 'flex',
+    marginTop: '3%'
+  },
+}
+
 
 function sendToGSF() {
   growsurf.open();
@@ -140,6 +167,7 @@ function Header(props) {
   // Content for each pages
   let title = 'Ultimate International Student Account';
   let title2 = 'The simplest bank account ever!';
+  let title3 = 'Industry leading security';
   let subtitle = '<ul><li>No Incoming Wire Fees</li><ul>';
   let button = 'Get Early Access';
   let loanContent;
@@ -365,59 +393,92 @@ function Header(props) {
                     </div>
                   </div>
                 </div>
-                {!isMobile && !isLoans && !isManualSignup && (
-                  <div className={styles.buttonInputWrapper}>
-                    <form
-                      className={styles.bannerForm}
-                      noValidate
-                      autoComplete="off">
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={() => {
-                          sendToGSF();
-                        }}
-                        className={styles.button}>
-                        {ReactHtmlParser(button)}
-                      </Button>
-                    </form>
-                  </div>
-                )}
               </Grid>
               <Grid item xs={12} sm={4} className={styles.headerIphone}>
-                {!isLoans && !isManualSignup ? (
+                {!isLoans && !isManualSignup && (
                   <div className={styles.iPhoneContainer}>
                     <img src={iPhone2} alt="iPhone 6" />
                   </div>
-                ) : (
-                  !isLoans &&
-                  !isManualSignup && (
-                    <div className={styles.loanHeaderAccessButton}>
-                      <div>
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          onClick={() => {
-                            sendToGSF();
-                          }}
-                          className={styles.button}
-                        >
-                          {ReactHtmlParser(button)}
-                        </Button>
-                      </div>
-                    </div>
-                  )
                 )}
               </Grid>
             </Grid>
           </div>
         )}
-        {isBlogs && (
-          <div style={{ marginTop: "5%" }}>
-            <h1>North Loop Blogs</h1>
-            <p>Useful insights to ease your move to the US</p>
+
+        {!isBlogs && (
+          <div className={styles.headerTextContainer}>
+            <Grid container>
+              <Grid item xs={12} sm={8} className={styles.headerWithText} style={isLoans ? { paddingTop: "5%" } : {}}>
+                <h1 className={styles.title}>{ReactHtmlParser(title3)} </h1>
+                
+                <div className="title-and-paragraph" style={securityFeaturesStyle.outerContainer}>
+                  <img src={iconSecure} style={securityFeaturesStyle.icon} />
+                  <div style={bankFeaturesStyle.outerContainer}>
+                    <div className="security-feature-container" >
+                      <div className="security-feature-title" style={securityFeaturesStyle.title}>
+                        100% Secure
+                      </div>
+                      <p style={securityFeaturesStyle.content}>
+                        All accounts are FDIC insured (US Government) up to $250,000.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="title-and-paragraph" style={securityFeaturesStyle.outerContainer}>
+                  <img src={visaCardIcon} style={securityFeaturesStyle.icon} />
+                  <div style={bankFeaturesStyle.outerContainer}>
+                    <div className="security-feature-container" >
+                      <div className="security-feature-title" style={securityFeaturesStyle.title}>
+                        Your VISA® Debit Card
+                      </div>
+                      <p style={securityFeaturesStyle.content}>
+                        Your card comes with an EMV chip and is enabled with VISA® Zero Liability. 
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="title-and-paragraph" style={securityFeaturesStyle.outerContainer}>
+                  <img src={lockCardIcon} style={securityFeaturesStyle.icon} />
+                  <div style={bankFeaturesStyle.outerContainer}>
+                    <div className="security-feature-container" >
+                      <div className="security-feature-title" style={securityFeaturesStyle.title}>
+                        Lock Your Card
+                      </div>
+                      <p style={securityFeaturesStyle.content}>
+                        Lost or misplaced your card? Lock it with a single tap. Found it? Unlock it with another tap.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="title-and-paragraph" style={securityFeaturesStyle.outerContainer}>
+                  <img src={instantNotificationIcon} style={securityFeaturesStyle.icon} />
+                  <div style={bankFeaturesStyle.outerContainer}>
+                    <div className="security-feature-container" >
+                      <div className="security-feature-title" style={securityFeaturesStyle.title}>
+                        Instant Notifications
+                      </div>
+                      <p style={securityFeaturesStyle.content}>
+                        Get a notification every time you make a purchase. You’re in control of your money.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+              </Grid>
+              <Grid item xs={12} sm={4} className={styles.headerIphone}>
+                {!isLoans && !isManualSignup && (
+                  <div className={styles.iPhoneContainer}>
+                    <img src={iPhone3} alt="iPhone 6" />
+                  </div>
+                )}
+              </Grid>
+            </Grid>
           </div>
         )}
+
       </Container>
     </header>
 
