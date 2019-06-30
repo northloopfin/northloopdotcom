@@ -17,12 +17,16 @@ import Logo from '../../../../assets/images/logo.png';
 import iPhone from '../../../../assets/images/iphone-6.png';
 import iPhone2 from '../../../../assets/images/iphone-6-two.png';
 import iPhone3 from '../../../../assets/images/iphone-6-three.png';
+import iPhone4 from '../../../../assets/images/iphone-6-four.png';
 import hundredFreeIcon from '../../../../assets/images/hundredFreeIcon.svg';
 import atmNetworkIcon from '../../../../assets/images/atmNetwork.svg';
 import instantNotificationIcon from '../../../../assets/images/instantNotification.svg';
 import visaCardIcon from '../../../../assets/images/visaCard.svg';
 import lockCardIcon from '../../../../assets/images/lockYourCard.svg';
 import iconSecure from '../../../../assets/images/iconSecure.svg';
+import redRibbon from '../../../../assets/images/redRibbon.svg';
+import yellowRibbon from '../../../../assets/images/yellowRibbon.svg';
+import purpleRibbon from '../../../../assets/images/purpleRibbon.svg';
 
 const divStyle = {
   paddingTop: '5px!important',
@@ -129,6 +133,29 @@ const rewardsFeaturesStyle = {
   }
 }
 
+const globalFeaturesStyle = {
+  icon: {
+    height: '91px',
+    width: '54px',
+    position: 'relative',
+    right: '4%',
+    bottom: '10%'
+  },
+  content: {
+    color: '#4A494B',
+    fontSize: 'medium'
+  },
+  outerContainer: {
+    display: 'flex',
+    marginTop: '5%',
+    marginLeft: '3%',
+    height: '120px',
+    width: '593px',
+    backgroundColor: '#FFFFFF',
+    boxShadow: '0 10px 25px 0 rgba(172,185,196,0.28)'
+  }
+}
+
 
 function sendToGSF() {
   growsurf.open();
@@ -177,9 +204,12 @@ function Header(props) {
 
   // Content for each pages
   let title = 'Ultimate International Student Account';
-  let title2 = 'The simplest bank account ever!';
-  let title3 = 'Industry leading security';
-  let title4 = 'Get access to the best rewards possible';
+  const title2 = 'The simplest bank account ever!';
+  const title3 = 'Industry leading security';
+  const title4 = 'Get access to the best rewards possible';
+  const title5 = 'Start Banking in 3 Steps';
+  const title6 = 'A Global Account for Global Citizens';
+
   let subtitle = '<ul><li>No Incoming Wire Fees</li><ul>';
   let button = 'Get Early Access';
   let loanContent;
@@ -552,6 +582,66 @@ function Header(props) {
                   </div>
                 </div>
 
+              </Grid>
+              <Grid item xs={12} sm={4} className={styles.headerIphone}>
+                {!isLoans && !isManualSignup && (
+                  <div className={styles.iPhoneContainer}>
+                    <img src={iPhone3} alt="iPhone 6" />
+                  </div>
+                )}
+              </Grid>
+            </Grid>
+          </div>
+        )}
+
+        {!isBlogs && (
+          <div className={styles.headerTextContainer}>
+            <Grid container>
+              <Grid item xs={12} sm={8} className={styles.headerWithText} style={isLoans ? { paddingTop: "5%" } : {}}>
+                <h1 className={styles.title}>{ReactHtmlParser(title6)} </h1>
+                
+                <div className="title-and-paragraph" style={globalFeaturesStyle.outerContainer}>
+                  <img src={redRibbon} style={globalFeaturesStyle.icon} />
+                  <div style={bankFeaturesStyle.outerContainer}>
+                    <div className="security-feature-container" >
+                      <div className="security-feature-title" style={securityFeaturesStyle.title}>
+                        Receive Money for Free
+                      </div>
+                      <p style={securityFeaturesStyle.content}>
+                        Zero incoming wire fees. Unlimited incoming international wires. Receive 100% of what your family sends you. Most other banks charge $25.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="title-and-paragraph" style={globalFeaturesStyle.outerContainer}>
+                  <img src={purpleRibbon} style={globalFeaturesStyle.icon} />
+                  <div style={bankFeaturesStyle.outerContainer}>
+                    <div className="security-feature-container" >
+                      <div className="security-feature-title" style={securityFeaturesStyle.title}>
+                        Receive Money Instantly
+                      </div>
+                      <p style={securityFeaturesStyle.content}>
+                        Need money ASAP? Receive wire transfers in minutes rather than in days.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="title-and-paragraph" style={globalFeaturesStyle.outerContainer}>
+                  <img src={yellowRibbon} style={globalFeaturesStyle.icon} />
+                  <div style={bankFeaturesStyle.outerContainer}>
+                    <div className="security-feature-container" >
+                      <div className="security-feature-title" style={securityFeaturesStyle.title}>
+                        No International Fees
+                      </div>
+                      <p style={securityFeaturesStyle.content}>
+                        No fees when you travel and spend with your North Loop card.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
               </Grid>
               <Grid item xs={12} sm={4} className={styles.headerIphone}>
                 {!isLoans && !isManualSignup && (
