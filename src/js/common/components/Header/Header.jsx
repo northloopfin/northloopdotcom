@@ -27,6 +27,9 @@ import iconSecure from '../../../../assets/images/iconSecure.svg';
 import redRibbon from '../../../../assets/images/redRibbon.svg';
 import yellowRibbon from '../../../../assets/images/yellowRibbon.svg';
 import purpleRibbon from '../../../../assets/images/purpleRibbon.svg';
+import quoteIcon from '../../../../assets/images/quote.svg';
+import jaiImage from '../../../../assets/images/jai.jpeg';
+import mrinalImage from '../../../../assets/images/mrinal.png';
 
 const divStyle = {
   paddingTop: '5px!important',
@@ -160,30 +163,44 @@ const testimonialsStyle = {
   outerContainer: {
     display: 'flex',
     justifyContent: 'space-between',
-    marginTop: '10%'
+    marginTop: '10%',
+    width: '130%'
   },
   container: {
     display: 'flex',
-    height: '107.64px',
-    width: '247.76px',
+    height: '100px',
+    width: '300px',
     borderRadius: '3.68px',
     background: 'linear-gradient(315.52deg, #C861AD 0%, #FF7987 100%)',
     boxShadow: '0 10px 25px 0 rgba(176,73,149,0.32)',
   },
   inactiveContainer: {
     display: 'flex',
-    height: '107.64px',
-    width: '247.76px',
+    height: '100px',
+    width: '300px',
     borderRadius: '3.68px',
     background: 'linear-gradient(180deg, #D6D4D7 0%, #A4A2A7 100%)',
     boxShadow: '0 10px 25px 0 rgba(176,73,149,0.32)',
   },
   img: {
-    height: '100px',
-    width: '100px'
+    height: '89px',
+    width: '89px',
+    borderRadius: '44.5px'
+  },
+  imgContainer: {
+    flex: '1',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   personContainer: {
-    flex: '1'
+    flex: '1.5'
+  },
+  innerPersonContainer: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
   },
   name: {
     color: '#FFFFFF',
@@ -196,7 +213,30 @@ const testimonialsStyle = {
     fontFamily: 'Muli ExtraBold',
     fontSize: '15px',
     lineHeight: '20px'
+  },
+  quoteContainer: {
+    marginTop: '5%'
+  },
+  quoteMessage: {
+    color: '#252827', 
+    fontFamily: 'Avenir',
+    fontSize: '20px',
+    fontWeight: '300',
+    lineHeight: '30px'
+  },
+  quoteAuthor: {
+    color: '#C75561',
+    fontFamily: 'Muli ExtraBold',
+    fontSize: '15px',
+    lineHeight: '19px'
+  },
+  quoteIcon: {
+    height: '54px',
+    width: '66px',
+    opacity: '0.1',
+    backgroundColor: '#A4A2A7'
   }
+
 }
 
 
@@ -234,6 +274,7 @@ function Header(props) {
 
   const [state, setState] = React.useState({
     left: false,
+    testimonialSelection: 1
   });
   const { location } = props;
   const { pathname } = location;
@@ -253,6 +294,21 @@ function Header(props) {
   const title5 = 'Start Banking in 3 Steps';
   const title6 = 'A Global Account for Global Citizens';
   const title7 = 'Join thousands of students';
+  const testimonialContent = {
+    1: {
+      quote: 'I have paid so much to my bank in wire fees everytime my family sends me money. No wire fees from North Loop? I’m definitely signing up!',
+      author: 'Jai Nanavati, University of Michigan'
+    },
+    2: {
+      quote: 'I have paid so much to my bank in wire fees everytime my family sends me money. No wire fees from North Loop? I’m definitely signing up!',
+      author: 'Mrinal Mohanka, Columbia University'
+    },
+    3: {
+      quote: 'When I came to the US, I was without a debit card for over 10 days. Can’t wait to use North Loop - this will solve so many problems!',
+      author: 'Kevin Chen, Northwestern University'
+    }
+  }
+  let testimonialSelection = 1;
 
   let subtitle = '<ul><li>No Incoming Wire Fees</li><ul>';
   let button = 'Get Early Access';
@@ -292,6 +348,10 @@ function Header(props) {
     }
 
     setState({ ...state, [side]: open });
+  };
+
+  const updateTestimonialSelection = (newSelection) => {
+    setState({ ...state, 'testimonialSelection': newSelection });
   };
 
   const sideList = (side) => (
@@ -705,33 +765,50 @@ function Header(props) {
                 <h1 className={styles.title}>{ReactHtmlParser(title7)} </h1>
                 
                 <div className="testimonial-outer-container" style={testimonialsStyle.outerContainer}>
-                  <div className="testimonial-container" style={testimonialsStyle.container}>
-                    <img src={iconSecure} style={testimonialsStyle.img} />
-                    <div className="testimonial-person-container" style={testimonialsStyle.personContainer}>
-                      <h3 style={testimonialsStyle.name}>Simon Wood</h3>
-                      <p style={testimonialsStyle.university}>Northwestern University</p>
-                    </div>
-                  </div>
 
-                  <div className="testimonial-container" style={testimonialsStyle.inactiveContainer}>
-                    <img src={iconSecure} style={testimonialsStyle.img} />
-                    <div className="testimonial-person-container" style={testimonialsStyle.personContainer}>
-                      <h3 style={testimonialsStyle.name}>Sebastian Paul</h3>
-                      <p style={testimonialsStyle.university}>Stanford University</p>
+                  <div className="testimonial-container" style={testimonialsStyle[state.testimonialSelection == '1' ? 'container' : 'inactiveContainer']} onClick={() => { updateTestimonialSelection('1'); }}>
+                    <div style={testimonialsStyle.imgContainer}>
+                      <img src={jaiImage} style={testimonialsStyle.img} />
                     </div>
-                  </div>
-
-                  <div className="testimonial-container" style={testimonialsStyle.inactiveContainer}>
-                    <img src={iconSecure} style={testimonialsStyle.img} />
                     <div className="testimonial-person-container" style={testimonialsStyle.personContainer}>
-                      <div>
-                        <h3 style={testimonialsStyle.name}>Jai Menon</h3>
+                      <div style={testimonialsStyle.innerPersonContainer}>
+                        <h3 style={testimonialsStyle.name}>Jai Nanavati</h3>
                         <p style={testimonialsStyle.university}>University of Michigan</p>
                       </div>
                     </div>
                   </div>
+
+                  <div className="testimonial-container" style={testimonialsStyle[state.testimonialSelection == '2' ? 'container' : 'inactiveContainer']} onClick={() => { updateTestimonialSelection('2'); }}>
+                    <div style={testimonialsStyle.imgContainer}>
+                      <img src={mrinalImage} style={testimonialsStyle.img} />
+                    </div>
+                    <div className="testimonial-person-container" style={testimonialsStyle.personContainer}>
+                      <div style={testimonialsStyle.innerPersonContainer}>
+                        <h3 style={testimonialsStyle.name}>Mrinal Mohanka</h3>
+                        <p style={testimonialsStyle.university}>Columbia University</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="testimonial-container" style={testimonialsStyle[state.testimonialSelection == '3' ? 'container' : 'inactiveContainer']} onClick={() => { updateTestimonialSelection('3'); }}>
+                    <div style={testimonialsStyle.imgContainer}>
+                      <img src={iconSecure} style={testimonialsStyle.img} />
+                    </div>
+                    <div className="testimonial-person-container" style={testimonialsStyle.personContainer}>
+                      <div style={testimonialsStyle.innerPersonContainer}>
+                        <h3 style={testimonialsStyle.name}>Kevin Chen</h3>
+                        <p style={testimonialsStyle.university}>Northwestern University</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                
+
+                <div style={testimonialsStyle.quoteContainer}>
+                  <img src={quoteIcon}/>
+                  <p style={testimonialsStyle.quoteMessage}>{testimonialContent[state.testimonialSelection].quote}</p>
+                  <p style={testimonialsStyle.quoteAuthor}>{testimonialContent[state.testimonialSelection].author}</p>
+                </div>
+
               </Grid>
             </Grid>
           </div>
