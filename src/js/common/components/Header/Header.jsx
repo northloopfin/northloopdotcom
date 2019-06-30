@@ -15,7 +15,9 @@ import ReactHtmlParser from 'react-html-parser';
 import styles from './CSS/Header.css';
 import Logo from '../../../../assets/images/logo.png';
 import iPhone from '../../../../assets/images/iphone-6.png';
+import iPhone2 from '../../../../assets/images/iphone-6-two.png';
 import hundredFreeIcon from '../../../../assets/images/hundredFreeIcon.svg';
+import atmNetworkIcon from '../../../../assets/images/atmNetwork.svg';
 
 const divStyle = {
   paddingTop: '5px!important',
@@ -48,6 +50,45 @@ const imgIconStyle = {
     height: '76px',
     width: '64px'
   }
+}
+
+const bankFeaturesStyle = {
+  title: {
+    color: '#C75561',
+    fontFamily: 'Muli ExtraBold',
+    fontSize: '16px',
+    fontWeight: 'bold'
+  },
+  title2: {
+    color: '#B04995',
+    fontFamily: 'Muli ExtraBold',
+    fontSize: '16px',
+    fontWeight: 'bold'
+  },
+  outerContainer: {
+    width: '75%',
+    marginLeft: '2%'
+  },
+  container: {
+    display: 'flex'
+  },
+  feature1: {
+    fontSize: '14px',
+    marginBottom: '1%',
+    flex: '1'
+  },
+  feature2: {
+    fontSize: '14px',
+    marginBottom: '1%',
+    flex: '2'
+  },
+  noColor: {
+    color: '#C75561'
+  },
+  noColor2: {
+    color: '#B04995'
+  }
+
 }
 
 
@@ -296,14 +337,33 @@ function Header(props) {
                 <h1 className={styles.title}>{ReactHtmlParser(title2)} </h1>
                 <div className="title-and-paragraph" style={imgIconStyle.outerContainer}>
                   <img src={hundredFreeIcon} style={imgIconStyle.icon} />
-                  <div className="sign-up-in-5-min" style={tnpStyle.title}>
-                    100% Free
+                  <div style={bankFeaturesStyle.outerContainer}>
+                    <div className="sign-up-in-5-min" style={bankFeaturesStyle.title}>
+                      100% Free
+                    </div>
+                    <div className="bank-features-container" style={bankFeaturesStyle.container}>
+                      <div style={bankFeaturesStyle.feature1}><span style={bankFeaturesStyle.noColor}>No</span> account fees</div>
+                      <div style={bankFeaturesStyle.feature2}><span style={bankFeaturesStyle.noColor}>No</span> ATM fees</div>
+                    </div>
+                    <div className="bank-features-container" style={bankFeaturesStyle.container}>
+                      <div style={bankFeaturesStyle.feature1}><span style={bankFeaturesStyle.noColor}>No</span> account minimums</div>
+                      <div style={bankFeaturesStyle.feature2}><span style={bankFeaturesStyle.noColor}>No</span> incoming wire fees</div>
+                    </div>
                   </div>
-                  <p style={tnpStyle.content}>
-                    Sign up before coming to the US. Your card will be waiting for
-                    you when you land. <br /> We will give you a T-mobile SIM card
-                    before you fly.
-                  </p>
+                </div>
+                <div className="title-and-paragraph" style={imgIconStyle.outerContainer}>
+                  <img src={atmNetworkIcon} style={imgIconStyle.icon} />
+                  <div style={bankFeaturesStyle.outerContainer}>
+                    <div className="sign-up-in-5-min" style={bankFeaturesStyle.title2}>
+                      ATM Network
+                    </div>
+                    <div className="bank-features-container" style={bankFeaturesStyle.container}>
+                      <div style={bankFeaturesStyle.feature1}><span style={bankFeaturesStyle.noColor2}>Get</span> nation wide ATM network</div>
+                    </div>
+                    <div className="bank-features-container" style={bankFeaturesStyle.container}>
+                      <div style={bankFeaturesStyle.feature1}><span style={bankFeaturesStyle.noColor2}>Get</span> access to 32, 000 ATMs across the US</div>
+                    </div>
+                  </div>
                 </div>
                 {!isMobile && !isLoans && !isManualSignup && (
                   <div className={styles.buttonInputWrapper}>
@@ -327,7 +387,7 @@ function Header(props) {
               <Grid item xs={12} sm={4} className={styles.headerIphone}>
                 {!isLoans && !isManualSignup ? (
                   <div className={styles.iPhoneContainer}>
-                    <img src={iPhone} alt="iPhone 6" />
+                    <img src={iPhone2} alt="iPhone 6" />
                   </div>
                 ) : (
                   !isLoans &&
