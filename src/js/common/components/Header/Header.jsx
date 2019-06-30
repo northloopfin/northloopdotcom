@@ -228,7 +228,9 @@ const testimonialsStyle = {
     color: '#C75561',
     fontFamily: 'Muli ExtraBold',
     fontSize: '15px',
-    lineHeight: '19px'
+    lineHeight: '19px',
+    marginTop: '2%',
+    fontWeight: 'bold'
   },
   quoteIcon: {
     height: '54px',
