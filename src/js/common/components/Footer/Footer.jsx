@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 
-import FDICLogo from '../../../../assets/images/bottom.png';
+import FDICLogo from '../../../../assets/images/fdic.png';
 import Logo from '../../../../assets/images/logo.png';
 import mobileIcon from '../../../../assets/images/icon-mobile.svg';
 import emailIcon from '../../../../assets/images/icon-email.svg';
@@ -14,6 +14,8 @@ import twitterIcon from '../../../../assets/images/icon-twitter.svg';
 import facebookIcon from '../../../../assets/images/icon-facebook.svg';
 import youtubeIcon from '../../../../assets/images/icon-youtube.svg';
 import iPhone2 from '../../../../assets/images/iphone-6-two.png';
+import appStoreImage from '../../../../assets/images/appstore.png';
+import playStoreImage from '../../../../assets/images/playstore.png';
 import RespDialog from '../RespDialog/RespDialog.jsx';
 import styles from './Footer.css';
 
@@ -59,19 +61,14 @@ const socialMediaStyles = {
     width: '20px'
   },
   footerLinkContainer: {
-    marginTop: '10%'
+    marginTop: '10%',
+    maxHeight: '400px',
+    overflow: 'hidden'
   },
   footerLink: {
     color: '#4A494B',
-    fontSize: '13px',
-    textAlign: 'center'
+    fontSize: '13px'
   }
-}
-
-const copyRightContainer = {
-  width: '55%',
-  bottom: '5%',
-  position: 'absolute'
 }
 
 const copyRightContent = {
@@ -88,11 +85,51 @@ const footerLogoContainer = {
   justifyContent: 'space-between'
 }
 
+const downloadAppFooter = {
+  container: {
+    height: '70px',
+    backgroundColor: '#FFFFFF',
+    boxShadow: '0 2px 15px 0 rgba(172,185,196,0.69)'
+  },
+  text: {
+    height: '24px',
+    width: '454px',
+    color: '#C75561',
+    fontFamily: 'Muli SemiBold',
+    fontSize: '24px',
+    lineHeight: '24px'
+  },
+  storeImg: {
+    height: '38px',
+    width: '127px'
+  },
+  storeImg2: {
+    height: '38px',
+    width: '127px',
+    marginLeft: '5%'
+  },
+  innerContainer: {
+    display: 'flex',
+    alignItems: 'center'
+  }
+}
+
+function sendToGSF() {
+  growsurf.open();
+}
+
 class Footer extends PureComponent {
   render() {
     const { location } = this.props;
     const { pathname } = location;
-    const isBlog = pathname === '/blog';
+    const isBlog = pathname === '/blogs';
+    const isHome = pathname === '/';
+
+    const copyRightContainer = {
+      width: '40%',
+      bottom: (isHome ? '2%' : '5%'),
+      position: 'absolute'
+    }
 
     return (
       <footer className={styles.globalFooter}>
@@ -114,7 +151,7 @@ class Footer extends PureComponent {
                     </div>
                     <div style={socialMediaStyles.iconContainer}>
                       <img src={weChatIcon} style={socialMediaStyles.callIcon} />
-                      <span style={socialMediaStyles.iconDescription}>+1(831)740-8126</span>
+                      <span style={socialMediaStyles.iconDescription}>WeChat</span>
                     </div>
                     <div style={socialMediaStyles.iconContainer}>
                       <img src={whatsappIcon} style={socialMediaStyles.callIcon} />
@@ -141,19 +178,16 @@ class Footer extends PureComponent {
               <Grid container>
               <Grid item xs={12} sm={4}>
                   <ul>
-                    <li style={socialMediaStyles.footerLink}><a>Company</a></li>
-                    <li style={socialMediaStyles.footerLink}><a href="https://www.facebook.com/northloopbank/" target="_blank">Careers</a></li>
-                    <li style={socialMediaStyles.footerLink}><a href="/#/blogs" target="_blank">Blog</a></li>
-                    <li style={socialMediaStyles.footerLink}><a href="https://twitter.com/NorthLoop11" target="_blank">Partners</a></li>
-                    <li style={socialMediaStyles.footerLink}><a href="https://twitter.com/NorthLoop11" target="_blank">Press</a></li>
+                    <li style={socialMediaStyles.footerLink}><a><strong>Company</strong></a></li>
+                    <li style={socialMediaStyles.footerLink}><a href="https://www.linkedin.com/company/35694537/admin/" target="_blank">Careers</a></li>
+                    <li style={socialMediaStyles.footerLink}><a href="/#/blogs">Blog</a></li>
                   </ul>  
                 </Grid>
                 <Grid item xs={12} sm={4}>
                   <ul>
-                    <li style={socialMediaStyles.footerLink}><a href="">Legal</a></li>
-                    <RespDialog isFooterItem title="North Loop Consumer Privacy Notice" linkName="pp" fullScreen footerLinkTitle="Privacy"/>
-                    <RespDialog isFooterItem title="Terms of Service" linkName="tos" fullScreen footerLinkTitle="Terms of Service"/>
-                    <li style={socialMediaStyles.footerLink}><a href="">Help</a></li>
+                    <li style={socialMediaStyles.footerLink}><a href=""><strong>Legal</strong></a></li>
+                    <RespDialog title="North Loop Consumer Privacy Notice" linkName="pp" fullScreen footerLinkTitle="Privacy"/>
+                    <RespDialog title="Terms of Service" linkName="tos" fullScreen footerLinkTitle="Terms of Service"/>
                   </ul> 
                 </Grid>
                 <Grid item xs={12} sm={4} className={styles.headerIphone}>
@@ -165,13 +199,24 @@ class Footer extends PureComponent {
                   <p style={copyRightContent} className={styles.copy}>© 2019 North Loop Technologies, Inc. The North Loop checking accounts are opened and maintained with, and the North Loop debit card is issued by, Evolve Bank & Trust, member FDIC. Cashback on North Loop debit card purchases are calculated each calendar month.</p>      
                   <div style={footerLogoContainer}>
                     <img src={Logo}/>
-                    <img src={FDICLogo}/>
+                    <img src={FDICLogo} style={{marginLeft: '5%'}}/>
                   </div>
                 </div>
               </Grid>
             </div>
           </nav>
         </Container>
+        <div style={downloadAppFooter.container}>
+          <Container className={styles.footerSection}>
+            <div style={downloadAppFooter.innerContainer}>
+              <div style={downloadAppFooter.text}>
+                Get the app installed in your mobile now
+              </div>
+              <img src={playStoreImage} onClick={() => { sendToGSF();}} style={downloadAppFooter.storeImg} />
+              <img src={appStoreImage} onClick={() => { sendToGSF();}} style={downloadAppFooter.storeImg2} />
+            </div>
+          </Container>
+        </div>
       </footer>
     );
   }

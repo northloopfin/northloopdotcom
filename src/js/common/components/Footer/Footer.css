@@ -1,6 +1,7 @@
 @import "../../../../style/configs/color";
 @media only screen and (min-width: 600px)  {
 .globalFooter {
+  margin-top: 15%;
   background-color: $bg-color;
   .footerSection {
     padding-top: 18px;
@@ -38,6 +39,7 @@
 }
 @media only screen and (max-width: 600px)  {
   .globalFooter {
+    margin-top: 15%;
     background-color: $bg-color;
     .footerSection {
       padding-top: 20px;

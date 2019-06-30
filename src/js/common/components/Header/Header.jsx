@@ -127,12 +127,13 @@ const securityFeaturesStyle = {
 
 const rewardsFeaturesStyle = {
   icon: {
-    height: '24px',
-    width: '24px'
+    height: '54px',
+    width: '54px'
   },
   content: {
     color: '#4A494B',
-    fontSize: 'medium'
+    fontSize: 'medium',
+    lineHeight: '50px'
   }
 }
 
@@ -179,8 +180,7 @@ const testimonialsStyle = {
     height: '100px',
     width: '300px',
     borderRadius: '3.68px',
-    background: 'linear-gradient(180deg, #D6D4D7 0%, #A4A2A7 100%)',
-    boxShadow: '0 10px 25px 0 rgba(176,73,149,0.32)',
+    background: 'linear-gradient(180deg, #D6D4D7 0%, #A4A2A7 100%)'
   },
   img: {
     height: '89px',
@@ -289,12 +289,12 @@ function Header(props) {
   const isMobile = window.innerWidth < 768;
 
   // Content for each pages
-  let title = 'Ultimate International Student Account';
-  const title2 = 'The simplest bank account ever!';
+  let title = 'The Ultimate International Student Account';
+  const title2 = 'The simplest bank account ever';
   const title3 = 'Industry leading security';
   const title4 = 'Get access to the best rewards possible';
   const title5 = 'Start Banking in 3 Steps';
-  const title6 = 'A Global Account for Global Citizens';
+  const title6 = 'A global account for global citizens';
   const title7 = 'Join thousands of students';
   const testimonialContent = {
     1: {
@@ -302,7 +302,7 @@ function Header(props) {
       author: 'Jai Nanavati, University of Michigan'
     },
     2: {
-      quote: 'I have paid so much to my bank in wire fees everytime my family sends me money. No wire fees from North Loop? I’m definitely signing up!',
+      quote: 'The app is so simple to use. No account fees and no wire fees saves me hundreds of dollars!',
       author: 'Mrinal Mohanka, Columbia University'
     },
     3: {
@@ -440,7 +440,7 @@ function Header(props) {
           </div>
         )}
 
-        {!isBlogs && (
+        {!isBlogs && !isLoans && (
           <div className={styles.headerTextContainer}>
             <Grid container>
               <Grid item xs={12} sm={8} className={styles.headerWithText} style={isLoans ? { paddingTop: "5%" } : {}}>
@@ -454,8 +454,7 @@ function Header(props) {
                   </div>
                   <p style={tnpStyle.content}>
                     Sign up before coming to the US. Your card will be waiting for
-                    you when you land. <br /> We will give you a T-mobile SIM card
-                    before you fly.
+                    you when you land. <br /> Get a T-Mobile SIM card before you fly.
                   </p>
                 </div>
                 {!isMobile && !isLoans && !isManualSignup && (
@@ -506,7 +505,7 @@ function Header(props) {
           </div>
         )}
 
-        {!isBlogs && (
+        {!isBlogs &&  !isLoans && (
           <div className={styles.headerTextContainer}>
             <Grid container>
               <Grid item xs={12} sm={8} className={styles.headerWithText} style={isLoans ? { paddingTop: "5%" } : {}}>
@@ -534,10 +533,10 @@ function Header(props) {
                       ATM Network
                     </div>
                     <div className="bank-features-container" style={bankFeaturesStyle.container}>
-                      <div style={bankFeaturesStyle.feature1}><span style={bankFeaturesStyle.noColor2}>Get</span> nation wide ATM network</div>
+                      <div style={bankFeaturesStyle.feature1}><span style={bankFeaturesStyle.noColor2}>Get</span> nationwide ATM network</div>
                     </div>
                     <div className="bank-features-container" style={bankFeaturesStyle.container}>
-                      <div style={bankFeaturesStyle.feature1}><span style={bankFeaturesStyle.noColor2}>Get</span> access to 32, 000 ATMs across the US</div>
+                      <div style={bankFeaturesStyle.feature1}><span style={bankFeaturesStyle.noColor2}>Get</span> access to 32,000 ATMs across the US</div>
                     </div>
                   </div>
                 </div>
@@ -553,7 +552,7 @@ function Header(props) {
           </div>
         )}
 
-        {!isBlogs && (
+        {!isBlogs && !isLoans && (
           <div className={styles.headerTextContainer}>
             <Grid container>
               <Grid item xs={12} sm={8} className={styles.headerWithText} style={isLoans ? { paddingTop: "5%" } : {}}>
@@ -627,7 +626,7 @@ function Header(props) {
           </div>
         )}
 
-        {!isBlogs && (
+        {!isBlogs &&  !isLoans && (
           <div className={styles.headerTextContainer}>
             <Grid container>
               <Grid item xs={12} sm={8} className={styles.headerWithText} style={isLoans ? { paddingTop: "5%" } : {}}>
@@ -636,10 +635,8 @@ function Header(props) {
                 <div className="title-and-paragraph" style={securityFeaturesStyle.outerContainer}>
                   <img src={iconSecure} style={rewardsFeaturesStyle.icon} />
                   <div style={bankFeaturesStyle.outerContainer}>
-                    <div className="security-feature-container" >
-                      <p style={rewardsFeaturesStyle.content}>
-                        5% cashback on your first $1,000 of purchases
-                      </p>
+                    <div className="security-feature-container" style={rewardsFeaturesStyle.content}>
+                      Up to 5% cashback every month
                     </div>
                   </div>
                 </div>
@@ -700,7 +697,7 @@ function Header(props) {
           </div>
         )}
 
-        {!isBlogs && (
+        {!isBlogs &&  !isLoans && (
           <div className={styles.headerTextContainer}>
             <Grid container>
               <Grid item xs={12} sm={8} className={styles.headerWithText} style={isLoans ? { paddingTop: "5%" } : {}}>
@@ -760,7 +757,7 @@ function Header(props) {
           </div>
         )}
 
-        {!isBlogs && (
+        {!isBlogs &&  !isLoans && (
           <div className={styles.headerTextContainer}>
             <Grid container>
               <Grid item xs={12} sm={8} className={styles.headerWithText} style={isLoans ? { paddingTop: "5%" } : {}}>
