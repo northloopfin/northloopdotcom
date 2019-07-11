@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="84px" height="84px" viewBox="0 0 84 84" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 55.2 (78181) - https://sketchapp.com -->
+    <title>C0A3B7B4-AE1B-4DA3-BD02-C68235D5CC82</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <filter x="-72.2%" y="-72.2%" width="244.4%" height="244.4%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="5" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="7.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.929093071   0 0 0 0 0.35156117   0 0 0 0 0.412354002  0 0 0 0.444493007 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="3.061617e-15%" id="linearGradient-2">
+            <stop stop-color="#C861AD" offset="0%"></stop>
+            <stop stop-color="#FF7987" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Website" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Homepage_full" transform="translate(-168.000000, -2626.000000)">
+            <g id="03" transform="translate(0.000000, 2048.000000)">
+                <g id="Group-5" transform="translate(145.000000, 237.000000)">
+                    <g id="Group-6-Copy-2" transform="translate(1.000000, 320.000000)">
+                        <g id="03-icon-LockYourCard" filter="url(#filter-1)" transform="translate(37.000000, 31.000000)">
+                            <circle id="Oval" fill="url(#linearGradient-2)" cx="27" cy="27" r="27"></circle>
+                            <rect id="Rectangle" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x="19" y="25" width="16" height="12" rx="2"></rect>
+                            <path d="M22,24.5 L22,23.9975586 L22,20.5 C22,18.0147186 24.0147186,16 26.5,16 L26.5,16 L27.5,16 C29.9852814,16 32,18.0147186 32,20.5 L32,24.0449219 L32,24.5" id="Path" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <rect id="Rectangle" fill="#FFFFFF" x="26" y="29" width="2" height="5" rx="1"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

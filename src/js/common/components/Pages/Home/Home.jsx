@@ -244,9 +244,8 @@ class Home extends PureComponent {
         { true
         && (
         <section>
-          <div>{NewServices}</div>
-          { !isLoans && <div>{NewCreditCard}</div>
-          }
+          <div>{false && NewServices}</div>
+          { false && !isLoans && <div>{NewCreditCard}</div> }
         </section>
         )}
       </div>

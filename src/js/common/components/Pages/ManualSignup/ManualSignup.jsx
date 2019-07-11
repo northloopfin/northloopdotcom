@@ -17,8 +17,8 @@ import styles from './ManualSignupCSS/ManualSignup.css';
 const isMobile = window.innerWidth < 768;
 
 const universitiesList = [ "Northeastern University",  "Pace University", "Arizona State University", "New York University", "University of Southern California", "UCLA", "Northwestern University", "Cornell University", "Columbia University", "University of Illinois - Urbana Champaign", "Ohio State University", "University of Pennsylvania", "Harvard University", "Carnegie Mellon University", "Stanford University", "Princeton University", "Dartmouth College", "Yale University", "Brown University", "University of Michigan - Ann Arbor", "Boston College", "Boston University", "American University", "Drexel University", "Duke University", "Emory University", "George Washington University", "Iowa State University", "University of California - Davis", "University of California - Berkeley", "University of California - Irvine", "University of California - San Diego", "MIT", "Rutger's University", "Rice University", "SUNY Buffalo", "Stony Brook University", "Texas A&M", "University of Texas - Dallas", "University of Chicago", "University of Iowa", "Florida International University", "University of Notre Dame", "University of Texas - Arlington", "University of Texas - Austin", "University of Washington", "University of Virginia", "Vanderbilt University", "California Institute of Technology", "Purdue University", "Pennsylvania State University - University Park", "Michigan State University", "Indiana University - Bloomington", "University of Wisconsin", "University of North Carolina", "Georgia Institute of Technology", "Illinois Institute of Technology", "Lousinia State University", "John Hopkins University", "Kaplan Pathways", "Kings Education Pathways", "Shorelight Pathways", "New Jersey Institute of Technology", "University of California - Santa Barbara", "University of Minnesota - Twin Cities", "Washington University", "Georgetown University", "Kentucky University", "University of Maryland", "University of Oklahoma", "Tufts University", "Washington State University", "Syracuse University", "SUNY", "Rochester Institute of Technology", "Colorado State University", "Brandeis University", "University of Flordia", "Bentley College", "Georgia State University", "Texas Tech University", "University of New Hampshire", "Navitas Pathways", "INTO Pathways", "UMass - Dartmouth", "UMass - Boston", "UMass - Amherst", "University of Idaho", "UMass - Lowell"]; 
-
 const fieldsToValidate = ["pwd", "email", "usAddressStreet", "usAddressCity", "usAddressState", "usAddressZip",  "firstName", "lastName", "school", "dob", "homeAddress", "citizenship", "phoneNumberHome", "dateOfArrival"];
+const countriesList = ['Afghanistan','Åland Islands','Albania','Algeria','American Samoa','Andorra','Angola','Anguilla','Antarctica','Antigua and Barbuda','Argentina','Armenia','Aruba','Australia','Austria','Azerbaijan','Bahamas','Bahrain','Bangladesh','Barbados','Belgium','Belize','Benin','Bermuda','Bhutan','Bolivia (Plurinational State of)','Bonaire','Sint Eustatius and Saba','Bosnia and Herzegovina','Botswana','Bouvet Island','Brazil','British Indian Ocean Territory','United States Minor Outlying Islands','Virgin Islands (British)','Virgin Islands (U.S.)','Brunei Darussalam','Bulgaria','Burkina Faso','Cambodia','Cameroon','Canada','Cabo Verde','Cayman Islands','Chad','Chile','China','Christmas Island','Cocos (Keeling) Islands','Colombia','Comoros','Cook Islands','Costa Rica','Croatia','Curaçao','Cyprus','Czech Republic','Denmark','Djibouti','Dominica','Dominican Republic','Ecuador','Egypt','El Salvador','Equatorial Guinea','Eritrea','Estonia','Ethiopia','Falkland Islands (Malvinas)','Faroe Islands','Fiji','Finland','France','French Guiana','French Polynesia','French Southern Territories','Gabon','Gambia','Georgia','Germany','Ghana','Gibraltar','Greece','Greenland','Grenada','Guadeloupe','Guam','Guatemala','Guernsey','Guinea','Guinea-Bissau','Guyana','Haiti','Heard Island and McDonald Islands','Holy See','Honduras','Hong Kong','Hungary','Iceland','India','Indonesia',"Côte d'Ivoire",'Ireland','Isle of Man','Israel','Italy','Jamaica','Japan','Jersey','Jordan','Kazakhstan','Kenya','Kiribati','Kuwait','Kyrgyzstan',"Lao People's Democratic Republic",'Latvia','Lebanon','Lesotho','Liberia','Liechtenstein','Lithuania','Luxembourg','Macao','Macedonia (the former Yugoslav Republic of)','Madagascar','Malawi','Malaysia','Maldives','Mali','Malta','Marshall Islands','Martinique','Mauritania','Mauritius','Mayotte','Mexico','Micronesia (Federated States of)','Moldova (Republic of)','Monaco','Mongolia','Montenegro','Montserrat','Morocco','Mozambique','Myanmar','Namibia','Nauru','Nepal','Netherlands','New Caledonia','New Zealand','Niger','Nigeria','Niue','Norfolk Island','Northern Mariana Islands','Norway','Oman','Palau','Palestine','Panama','Papua New Guinea','Paraguay','Peru','Philippines','Pitcairn','Poland','Portugal','Puerto Rico','Qatar','Republic of Kosovo','Réunion','Romania','Russian Federation','Rwanda','Saint Barthélemy','Saint Helena, Ascension and Tristan da Cunha','Saint Kitts and Nevis','Saint Lucia','Saint Martin (French part)','Saint Pierre and Miquelon','Saint Vincent and the Grenadines','Samoa','San Marino','Sao Tome and Principe','Saudi Arabia','Senegal','Serbia','Seychelles','Sierra Leone','Singapore','Sint Maarten (Dutch part)','Slovakia','Slovenia','Solomon Islands','South Africa','South Georgia and the South Sandwich Islands','Korea (Republic of)','South Sudan','Spain','Sri Lanka','Sudan','Suriname','Svalbard and Jan Mayen','Swaziland','Sweden','Switzerland','Taiwan','Tajikistan','Tanzania','Thailand','Timor-Leste','Togo','Tokelau','Tonga','Trinidad and Tobago','Tunisia','Turkey','Turkmenistan','Turks and Caicos Islands','Tuvalu','Uganda','Ukraine','United Arab Emirates','United Kingdom of Great Britain and Northern Ireland','United States of America','Uruguay','Uzbekistan','Vanuatu','Viet Nam','Wallis and Futuna','Western Sahara','Zambia'];
 
 
 class ManualSignup extends PureComponent {
@@ -129,6 +129,10 @@ class ManualSignup extends PureComponent {
       return <MenuItem value={univ} key={'univ-' + i}>{univ}</MenuItem>;
     });
 
+    const countriesMenuItems = countriesList.map((cntry, i) => {
+      return <MenuItem value={cntry} key={'country-' + i}>{cntry}</MenuItem>;
+    });
+
 
     const loanForm1 = (
       <Container className={styles.journey}>
@@ -171,12 +175,16 @@ class ManualSignup extends PureComponent {
                   error={this.isFieldEmpty('lastName')} />
               </Grid>
               <Grid item xs={6}>
-                <TextField
-                  onBlur={() => {this.updateDropdownValue(event, 'form1', 'citizenship');}}
-                  id="standard-dense"
-                  label="Country of Citizenship"
-                  margin="dense"
-                  error={this.isFieldEmpty('citizenship')} />
+                <FormControl>
+                  <InputLabel error={this.isFieldEmpty('citizenship')} htmlFor="Citizenship-auto-width">Country of Citizenship</InputLabel>
+                  <Select
+                    value={form1.citizenship}
+                    onChange={(event) => {this.updateDropdownValue(event, 'form1', 'citizenship');}}
+                    input={<Input name="citizenship" id="citizenship-auto-width" />}
+                    autoWidth>
+                    { countriesMenuItems }
+                  </Select>
+                </FormControl>
               </Grid>
               <Grid item xs={6}>
                 <TextField
@@ -190,16 +198,12 @@ class ManualSignup extends PureComponent {
                 }}/>
               </Grid>   
               <Grid item xs={6}>
-                <FormControl>
-                  <InputLabel error={this.isFieldEmpty('school')} htmlFor="school-auto-width">University</InputLabel>
-                  <Select
-                    value={form1.school}
-                    onChange={(event) => {this.updateDropdownValue(event, 'form1', 'school');}}
-                    input={<Input name="school" id="school-auto-width" />}
-                    autoWidth>
-                    { universitiesMenuItems }
-                  </Select>
-                </FormControl>
+                <TextField
+                    onBlur={() => {this.updateDropdownValue(event, 'form1', 'school');}}
+                    id="standard-dense"
+                    label="University"
+                    margin="dense"
+                    error={this.isFieldEmpty('school')} />
               </Grid>
               <Grid item xs={6}>
                 <TextField
