@@ -1,6 +1,33 @@
 @import "configs/color";
 @import "configs/font-faces";
 
+
+M/*uli-BlackItalic.ttf
+
+Muli-BoldItalic.ttf
+
+Muli-ExtraBoldItalic.ttf
+Muli-ExtraLight.ttf
+Muli-ExtraLightItalic.ttf
+Muli-Italic.ttf
+Muli-Light.ttf
+Muli-LightItalic.ttf
+
+Muli-SemiBoldItalic.ttf*/
+
+   /*src: url('../../../public/fonts/Miriam.eot?#iefix') format('embedded-opentype'),
+       url('../../../public/fonts/miriam-libre-v2-latin-regular.eot') format('woff2'),
+       url('../../../public/fonts/miriam-libre-v2-latin-regular.woff') format('woff'),
+       url('../../../public/fonts/miriam-libre-v2-latin-regular.ttf') format('truetype'),
+       url('../../../public/fonts/miriam-libre-v2-latin-regular.svg') format('svg');*/
+
+@font-face {
+   src: url('../assets/fonts/Muli-ExtraBold.ttf'),
+        url('../assets/fonts/Muli-SemiBold.ttf'),
+        url('../assets/fonts/Muli-Regular.ttf'),
+        url('../assets/fonts/Muli-Bold.ttf');
+}
+
 * {
   -webkit-touch-callout: none;
   -webkit-box-sizing: border-box;

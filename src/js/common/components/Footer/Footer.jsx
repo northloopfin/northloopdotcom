@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 
-import FDICLogo from '../../../../assets/images/fdic.png';
+import FDICLogo from '../../../../assets/images/fdicImg.png';
 import Logo from '../../../../assets/images/logo.png';
 import mobileIcon from '../../../../assets/images/icon-mobile.svg';
 import emailIcon from '../../../../assets/images/icon-email.svg';
@@ -14,7 +14,7 @@ import twitterIcon from '../../../../assets/images/icon-twitter.svg';
 import facebookIcon from '../../../../assets/images/icon-facebook.svg';
 import youtubeIcon from '../../../../assets/images/icon-youtube.svg';
 import iPhone2 from '../../../../assets/images/iphone-6-two.png';
-import appStoreImage from '../../../../assets/images/appstore.png';
+import appStoreImage from '../../../../assets/images/appStore.png';
 import playStoreImage from '../../../../assets/images/playstore.png';
 import RespDialog from '../RespDialog/RespDialog.jsx';
 import styles from './Footer.css';
@@ -49,12 +49,20 @@ const socialMediaStyles = {
     alignItems: 'center',
     justifyContent: 'center'
   },
+  onlyIconContainerHighlighted: {
+    display: 'flex',
+    flex: '0.5',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#B04995',
+    color: '#fff'
+  },
   iconDescription: {
-      color: '#4A494B',
-      fontFamily: 'Muli',
-      fontSize: '14px',
-      lineHeight: '24px',
-      marginLeft: '2%'
+    color: '#4A494B',
+    fontFamily: 'Muli',
+    fontSize: '14px',
+    lineHeight: '24px',
+    marginLeft: '2%'
   },
   callIcon: {
     height: '20px',
@@ -114,14 +122,37 @@ const downloadAppFooter = {
   }
 }
 
+const brandLogo = {
+  display: 'inline-block',
+  padding: '0',
+  margin: '0'
+}
+
 function sendToGSF() {
   growsurf.open();
 }
 
 class Footer extends PureComponent {
+  constructor(props) {
+        super(props);
+        this.state = { 
+            hover: {
+              fb: false,
+              ig: false,
+              youtube: false,
+              twitter: false
+            }
+        };
+  }
+
+  highlightIcon = (socialMedia, state) => {
+    this.setState(Object.assign(this.state.hover, { [socialMedia]: state } ));
+  }
+
   render() {
     const { location } = this.props;
     const { pathname } = location;
+    const { hover } = this.state;
     const isBlog = pathname === '/blogs';
     const isHome = pathname === '/';
 
@@ -157,16 +188,16 @@ class Footer extends PureComponent {
                       <img src={whatsappIcon} style={socialMediaStyles.callIcon} />
                       <span style={socialMediaStyles.iconDescription}>+1(831)740-8126</span>
                     </div>
-                    <div style={socialMediaStyles.onlyIconContainer} onClick={() => { window.open('https://www.instagram.com/northloopbank/', '_blank'); }}>
+                    <div style={socialMediaStyles[hover.ig ? 'onlyIconContainerHighlighted' : 'onlyIconContainer']} onMouseOut={() => { this.highlightIcon('ig', false); }} onMouseOver={() => { this.highlightIcon('ig', true); }} onClick={() => { window.open('https://www.instagram.com/northloopbank/', '_blank'); }}>
                       <img src={igIcon} style={socialMediaStyles.callIcon} />
                     </div>
-                    <div style={socialMediaStyles.onlyIconContainer} onClick={() => { window.open('https://www.facebook.com/northloopbank/', '_blank'); }}>
+                    <div style={socialMediaStyles[hover.fb ? 'onlyIconContainerHighlighted' : 'onlyIconContainer']} onMouseOut={() => { this.highlightIcon('fb', false); }} onMouseOver={() => { this.highlightIcon('fb', true); }} onClick={() => { window.open('https://www.facebook.com/northloopbank/', '_blank'); }}>
                       <img src={facebookIcon} style={socialMediaStyles.callIcon} />
                     </div>
-                    <div style={socialMediaStyles.onlyIconContainer} onClick={() => { window.open('https://twitter.com/NorthLoop11', '_blank'); }}>
+                    <div style={socialMediaStyles[hover.twitter ? 'onlyIconContainerHighlighted' : 'onlyIconContainer']} onMouseOut={() => { this.highlightIcon('twitter', false); }} onMouseOver={() => { this.highlightIcon('twitter', true); }} onClick={() => { window.open('https://twitter.com/NorthLoop11', '_blank'); }}>
                       <img src={twitterIcon} style={socialMediaStyles.callIcon} />
                     </div>
-                    <div style={socialMediaStyles.onlyIconContainer} onClick={() => { window.open('https://www.youtube.com/channel/UCiZGeovSnqQktykrNpLui4A', '_blank'); }}>
+                    <div style={socialMediaStyles[hover.youtube ? 'onlyIconContainerHighlighted' : 'onlyIconContainer']} onMouseOut={() => { this.highlightIcon('youtube', false); }} onMouseOver={() => { this.highlightIcon('youtube', true); }} onClick={() => { window.open('https://www.youtube.com/channel/UCiZGeovSnqQktykrNpLui4A', '_blank'); }}>
                       <img src={youtubeIcon} style={socialMediaStyles.callIcon} />
                     </div>
 
@@ -198,8 +229,8 @@ class Footer extends PureComponent {
                 <div style={copyRightContainer}>
                   <p style={copyRightContent} className={styles.copy}>© 2019 North Loop Technologies, Inc. The North Loop checking accounts are opened and maintained with, and the North Loop debit card is issued by, Evolve Bank & Trust, member FDIC. Cashback on North Loop debit card purchases are calculated each calendar month.</p>      
                   <div style={footerLogoContainer}>
-                    <img src={Logo}/>
-                    <img src={FDICLogo} style={{marginLeft: '5%'}}/>
+                    <img src={Logo} alt="North Loop" style={{objectFit: 'scale-down'}} />
+                    <img src={FDICLogo} style={{marginLeft: '5%', objectFit: 'scale-down'}} />
                   </div>
                 </div>
               </Grid>
@@ -223,6 +254,8 @@ class Footer extends PureComponent {
 }
 
 export default Footer;
+// <ul className={brandLogo}>
+//                     </ul>
 
 // <Grid item xs={12} sm={4}>
 //           <ul>

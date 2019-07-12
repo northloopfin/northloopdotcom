@@ -9,14 +9,14 @@ import ReactHtmlParser from 'react-html-parser';
 import styles from './HomeCSS/Home.css';
 import ZeroFees from '../../../../../assets/images/zero-fees.png';
 import whenYouLand from '../../../../../assets/images/when-you-land.png';
-import FDIC from '../../../../../assets/images/FDIC.png';
+import FDIC from '../../../../../assets/images/fdicImg.png';
 import CreditCardImg from '../../../../../assets/images/creditCard.png';
 import Audio from '../../../../../assets/images/audio.png';
 import Conecto from '../../../../../assets/images/conecto.png';
 import goWithLow from '../../../../../assets/images/goWithLow.png';
 import syfuel from '../../../../../assets/images/syfuel.png';
 import playground from '../../../../../assets/images/playground.png';
-import AppStore from '../../../../../assets/images/AppStore.png';
+import AppStore from '../../../../../assets/images/appStore.png';
 import GooglePlay from '../../../../../assets/images/GooglePlay.png';
 
 function Partners() {
