@@ -22,9 +22,6 @@ Muli-SemiBoldItalic.ttf*/
        url('../../../public/fonts/miriam-libre-v2-latin-regular.svg') format('svg');*/
 
 @font-face {
-   font-family: 'Miriam';
-   font-style: normal;
-   font-weight: 400;
    src: url('../assets/fonts/Muli-ExtraBold.ttf'),
         url('../assets/fonts/Muli-SemiBold.ttf'),
         url('../assets/fonts/Muli-Regular.ttf'),

@@ -29,7 +29,7 @@ import yellowRibbon from '../../../../assets/images/yellowRibbon.svg';
 import purpleRibbon from '../../../../assets/images/purpleRibbon.svg';
 import quoteIcon from '../../../../assets/images/quote.svg';
 import jaiImage from '../../../../assets/images/jai.jpeg';
-import mrinalImage from '../../../../assets/images/mrinal.png';
+import chanImage from '../../../../assets/images/chan.jpeg';
 import ayeshaImage from '../../../../assets/images/ayesha.png';
 
 const divStyle = {
@@ -303,7 +303,7 @@ function Header(props) {
     },
     2: {
       quote: 'The app is so simple to use. No account fees and no wire fees saves me hundreds of dollars!',
-      author: 'Mrinal Mohanka, Columbia University'
+      author: 'Arturo Chan, Northwestern University'
     },
     3: {
       quote: 'When I came to the US, I was without a debit card for over 10 days. Can’t wait to use North Loop - this will solve so many problems!',
@@ -779,12 +779,12 @@ function Header(props) {
 
                   <div className="testimonial-container" style={testimonialsStyle[state.testimonialSelection == '2' ? 'container' : 'inactiveContainer']} onClick={() => { updateTestimonialSelection('2'); }}>
                     <div style={testimonialsStyle.imgContainer}>
-                      <img src={mrinalImage} style={testimonialsStyle.img} />
+                      <img src={chanImage} style={testimonialsStyle.img} />
                     </div>
                     <div className="testimonial-person-container" style={testimonialsStyle.personContainer}>
                       <div style={testimonialsStyle.innerPersonContainer}>
-                        <h3 style={testimonialsStyle.name}>Mrinal Mohanka</h3>
-                        <p style={testimonialsStyle.university}>Columbia University</p>
+                        <h3 style={testimonialsStyle.name}>Arturo Chan</h3>
+                        <p style={testimonialsStyle.university}>Northwestern University</p>
                       </div>
                     </div>
                   </div>
