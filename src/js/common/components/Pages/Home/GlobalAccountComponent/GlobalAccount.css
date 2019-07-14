@@ -26,10 +26,11 @@
 .row{
   margin-bottom: 1.8vw;
   padding-bottom: 1vw;
+  width:80%;
   box-shadow: 0 10px 25px 0 rgba(172,185,196,0.28);
 }
-.textPadding{
-  padding-left: 10px;
+.bookmark{
+  transform: translate(-39%,-10px);
 }
 @media screen and (max-width: 768px) {
   .mainBlock{
@@ -42,5 +43,10 @@
   .text{
     font-size: calc(10px + 0.5vw);
     line-height: normal;
+  }
+  .row{
+    width: 90%;
+    padding-right: 10px;
+    padding-bottom: 10px;
   }
 }

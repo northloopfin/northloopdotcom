@@ -35,6 +35,11 @@
    padding-left:0;
  }
  .text{
+   font-size: calc(11px + 0.5vw);
+ }
+}
+@media screen and (max-width: 599px) {
+ .text{
    text-align: center;
    font-size: calc(11px + 0.5vw);
  }

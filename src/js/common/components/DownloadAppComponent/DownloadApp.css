@@ -28,7 +28,8 @@
   align-items: center;
 }
 .footerSection {
-  padding-top: 18px;
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 .message{
   padding: 0 40px;

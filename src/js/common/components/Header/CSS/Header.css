@@ -6,6 +6,7 @@
   nav {
     display: inline-block;
     float: right;
+    padding-right: calc(5vw + 20px);
     ul {
       list-style: none;
       display: inline-block;
@@ -15,6 +16,7 @@
         display: inline-block;
         cursor: default;
         position:relative;
+        font-size: 15px;
         &.active{
           padding-bottom: 5px;
         }
@@ -43,7 +45,9 @@
     display: inline-block;
     padding: 0;
     margin: 0;
-
+    img{
+      max-width: 113px;
+    }
   }
 
   .marginTop {

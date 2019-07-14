@@ -2,6 +2,7 @@ import React, { useState, Fragment } from 'react'
 import arturoChan from '../../../../assets/images/arturo_chan.jpeg'
 import jaiNanavati from '../../../../assets/images/jai_nanavati.jpeg'
 import ayeshaKad from '../../../../assets/images/ayesha_kad.png'
+import punctuation from '../../../../assets/images/icons/icon-punctuation.svg'
 import styles from './Testimonial.css'
 
 const Testimonial = () => {
@@ -52,6 +53,7 @@ const Testimonial = () => {
         ))}
       </div>
       <div className={styles.textBlock}>
+        <img src={punctuation} alt="quete" />
         <p className={styles.text}>{reviews[value].text}</p>
         <p className={styles.textAuthor}>{reviews[value].author}</p>
       </div>

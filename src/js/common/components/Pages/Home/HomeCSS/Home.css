@@ -22,7 +22,6 @@
   line-height: 30px;
 }
 .headerIphone {
-  padding-top: 136px;
   div {
     text-align: right;
   }
@@ -30,12 +29,13 @@
     max-height: 660px;
   }
 }
-.button {
+button.button {
    padding: 12px 37px;
    text-transform: none;
    font-size: 24px;
    border-radius: 25px;
    background-color: $btn-bg-color;
+   box-shadow:none;
    color: #FFFFFF;	
    text-align: center;
    font-weight:bold;
@@ -47,6 +47,24 @@
    &:hover {
      background-color: $btn--hover-bg-color;
    }
+}
+.dots{
+  position: fixed;
+  right: 27px;
+  top:50%;
+  transform: translateY(-50%);
+}
+.dot{
+  margin-bottom: 20px;
+  height: 12px;	
+  width: 12px;	
+  border: 2px solid #E0DCE4;
+  border-radius: 50%;
+  transition: $transition;
+  cursor: pointer;
+  &:hover{
+    border-color: #4A494B;
+  }
 }
 @media screen and (max-width: 768px) {
 .title{
