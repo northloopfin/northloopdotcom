@@ -32,3 +32,37 @@ ul {
     }
   }
 }
+
+.main{
+  margin-top: 6.8vw;
+  margin-bottom: 18vw;
+}
+.titleBlock{
+  margin-top:40px;    
+  margin-bottom:60px;    
+}
+
+.title {
+  font-size: 50px;
+  max-width: 538px;
+  line-height: 56px;
+  font-weight: normal;
+  margin-bottom: 0px;
+  span {
+    width: 152px;
+    display: block;
+    margin-top: 20px;
+    border: 3pt solid #a24a87;
+    border-radius: 16px;
+  }
+}
+
+.headerIphone {
+  padding-top: 136px;
+  div {
+    text-align: right;
+  }
+  img {
+    max-height: 660px;
+  }
+}

@@ -17,6 +17,7 @@ import signUpIphone from '../../../../../assets/images/signUp-iphone.png'
 import styles from './HomeCSS/Home.css'
 import DownloadApp from '../../DownloadAppComponent/DownloadApp'
 
+/*refactor_me*/
 const HomeSection = ({
   children, image, title, subtitle,
 }) => (

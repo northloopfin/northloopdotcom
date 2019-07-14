@@ -13,6 +13,13 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
+import Footer from '../../Footer/Footer'
+import Testimonial from '../../TestimonialComponent/Testimonial'
+import DownloadApp from '../../DownloadAppComponent/DownloadApp'
+import LeadingSecurity from '../../Pages/Home/LeadingSecurityComponent/LeadingSecurity'
+
+import scanIphone from '../../../../../assets/images/scan_ip_iphone.png'
+
 import styles from './LoanCSS/Loan.css';
 const isMobile = window.innerWidth < 768;
 
@@ -20,7 +27,25 @@ const universitiesList = [ "Northeastern University",  "Pace University", "Arizo
 const currenciesList = ['USD', 'INR', 'AED', 'CNY', 'EUR'];
 const fieldsToValidate = ["name", "email", "program", "school", "duration", "test", "testScore", "gender", "dob", "address", "citizenship", "passportNumber", "requestedAmount"];
 
-
+/*refactor_me*/
+const HomeSection = ({
+  children, image, title, subtitle,
+}) => (
+  <Container className={styles.main}>
+    <Grid container>
+      <Grid item xs={12} sm={8}>
+        <div className={styles.titleBlock}>
+          <p className={styles.title} dangerouslySetInnerHTML={{ __html: title }} />
+          {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
+        </div>
+        {children}
+      </Grid>
+      <Grid item xs={12} sm={4} className={styles.headerIphone}>
+        <img src={image} alt="iPhone 6" />
+      </Grid>
+    </Grid>
+  </Container>
+)
 class Loan extends PureComponent {
   constructor(props) {
     super(props);
@@ -529,6 +554,23 @@ class Loan extends PureComponent {
               { step == 5 && <Button onClick={this.submitForm}>Submit</Button> }
             </Grid>
           </Container>
+          <HomeSection image={scanIphone} title="Achieve Your Dreams">
+            <LeadingSecurity />
+          </HomeSection>
+          <Container className={styles.main}>
+            <Grid container>
+              <Grid item xs={12} sm={8}>
+                <div className={styles.titleBlock}>
+                  <p className={styles.title}>Student Testimonials</p>
+                </div>
+              </Grid>
+              <Grid item xs={12}>
+                <Testimonial />
+              </Grid>
+            </Grid>
+          </Container>
+          <Footer />
+          <DownloadApp />
       </div>
     );
   }
