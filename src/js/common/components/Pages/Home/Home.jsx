@@ -39,6 +39,16 @@ class Home extends Component {
   render() {
     return (
       <div>
+        <div className={styles.dots}>
+          <div className={styles.dot}></div>
+          <div className={styles.dot}></div>
+          <div className={styles.dot}></div>
+          <div className={styles.dot}></div>
+          <div className={styles.dot}></div>
+          <div className={styles.dot}></div>
+          <div className={styles.dot}></div>
+          <div className={styles.dot}></div>
+        </div>
         <HomeSection
           image={iPhone}
           title={'The Ultimate International <br /> Student Account'}

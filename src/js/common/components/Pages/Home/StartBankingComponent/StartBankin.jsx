@@ -12,25 +12,27 @@ const StartBanking = () => (
     <Grid item xs={12}>
       <div className={styles.wrapper}>
         <img src={iconSuccess} alt="icon-success" className={styles.success} />
-        <div className={styles.successBlock}>
-          <img src={tick} alt="rick" className={styles.successIcon1} />
-          <div className={styles.gradient1} />
-          <img src={tick} alt="rick" className={styles.successIcon2} />
-          <div className={styles.gradient2} />
-          <img src={tick} alt="rick" className={styles.successIcon3} />
-        </div>
-        <div className={styles.stepBlock}>
-          <div>
-            <img src={iconDownloadApp} alt="download app" />
-            <p>Download the app</p>
+        <div className={styles.shadow}>
+          <div className={styles.successBlock}>
+            <img src={tick} alt="rick" className={styles.successIcon1} />
+            <div className={styles.gradient1} />
+            <img src={tick} alt="rick" className={styles.successIcon2} />
+            <div className={styles.gradient2} />
+            <img src={tick} alt="rick" className={styles.successIcon3} />
           </div>
-          <div>
-            <img src={iconScanID} alt="scan id" />
-            <p>Sign Up & Scan Your ID</p>
-          </div>
-          <div>
-            <img src={iocnStartBanking} alt="start banking" />
-            <p>Start Banking</p>
+          <div className={styles.stepBlock}>
+            <div>
+              <img src={iconDownloadApp} alt="download app" />
+              <p>Download the app</p>
+            </div>
+            <div>
+              <img src={iconScanID} alt="scan id" />
+              <p>Sign Up & Scan Your ID</p>
+            </div>
+            <div>
+              <img src={iocnStartBanking} alt="start banking" />
+              <p>Start Banking</p>
+            </div>
           </div>
         </div>
       </div>

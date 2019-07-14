@@ -18,6 +18,9 @@
   margin-bottom:22px;
 }
 @media screen and (max-width: 768px) {
+  .rowSpacing{
+    margin-bottom: 0;
+  }
   .imagePaddingLeft{
     padding-left:0;
     padding-top: 5px;

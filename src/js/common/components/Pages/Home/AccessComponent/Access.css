@@ -1,7 +1,6 @@
 .row{
   display: flex;
   align-items: center;
-  margin-bottom: 5px;
   img{
     margin-right: 15px;
   }
@@ -14,9 +13,12 @@
   color: #252827;	
   font-size: 16px;
   font-weight: 300;
-  line-height: 50px;
+  line-height: 40px;
 }
 @media screen and (max-width: 768px) {
+ .mobileMarginTop{
+  margin-top: 15px;  
+ }
 .text{
     font-size: calc(11px + 0.5vw);
     line-height: normal;

@@ -14,7 +14,7 @@ const textArray = [
 ]
 
 const Access = () => (
-  <div>
+  <div className={styles.mobileMarginTop}>
     {textArray.map((text, index) => (
       <Grid container spacing={3} key={index}>
         <Grid item xs={12} className={styles.row}>
