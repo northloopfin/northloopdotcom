@@ -1,0 +1,194 @@
+@import "../../../../../../style/configs/color";
+@media screen and (min-width: 600px) {
+  .servicesWrapper {
+    padding-top: 99px;
+    .subtitle {
+      font-size: 36px;
+      line-height: 40px;
+      font-weight: normal;
+      margin-bottom: 0px;
+      span {
+        width: 82px;
+        display: inline-block;
+        border: 3pt solid #a24a87;
+        border-radius: 16px;
+        margin-left: 75px;
+      }
+    }
+    .servicesGrid {
+      margin-top: 89px;
+      margin-bottom: 70px;
+      .icon {
+        text-align: center;
+      }
+      .servicesRow {
+        &:last-child {
+          padding-right: 0;
+        }
+        h3 {
+          margin-top: 33px;
+          font-size: 24px;
+          font-weight: 600;
+          color: $brand-color;
+          line-height: 28px;
+        }
+        p {
+          color: $body-color;
+          font-size: 18px;
+          margin-top: 18px;
+        }
+        .maxWidthFirst,
+        .maxWidthSec,
+        .maxWidthThird {
+          max-width: 200px;
+        }
+        .maxWidthThird {
+          margin-left: 200px;
+        }
+        .maxWidthSec {
+          margin-left: 100px;
+          margin-right: 100px;
+        }
+      }
+    }
+  }
+  .creditCard {
+    background-color: $bg-color;
+    .subtitle {
+      margin-top: 48px;
+      font-size: 44px;
+      line-height: 48px;
+      font-weight: normal;
+      max-width: 363px;
+      span {
+        width: 129px;
+        display: inline-block;
+        border: 3pt solid #a24a87;
+        border-radius: 16px;
+        display: block;
+        margin-top: 20px;
+      }
+    }
+    .discoverHow {
+      font-size: 22px;
+      font-weight: 600;
+      color: $brand-color;
+      margin-top: 73px;
+      padding-bottom: 84px;
+    }
+    .creditC {
+      margin-top: -50px;
+      text-align: right;
+      img {
+        width: auto;
+      }
+    }
+  }
+  .Partners {
+    margin-top: 80px;
+    .subtitle {
+      font-size: 36px;
+      line-height: 40px;
+      font-weight: normal;
+      margin-bottom: 0px;
+      span {
+        width: 91px;
+        display: inline-block;
+        border: 3pt solid #a24a87;
+        border-radius: 16px;
+        display: block;
+        margin-top: 18px;
+      }
+    }
+    .partnerSlider {
+      margin-top: 87px;
+      margin-bottom: 128px;
+      button {
+        &:first-child {
+          background-image: url('../../../../../../assets/images/leftArrow.png');
+          background-repeat: no-repeat;
+        }
+        &:last-child {
+          background-image: url('../../../../../../assets/images/rightArrow.png');
+          background-repeat: no-repeat;
+        }
+        &:before {
+          display: none;
+        }
+      }
+    }
+  }
+  .appSection {
+    padding-top: 53px;
+    background-image: linear-gradient(to right, #9e3669, #b13442);
+    background-color: #9e3669;
+    .subtitle {
+      color: white;
+      font-size: 44px;
+      line-height: 48px;
+      font-weight: normal;
+      text-align: center;
+    }
+    ul {
+      text-align: center;
+      margin-top: 76px;
+      padding-bottom: 75px;
+      li {
+        display: inline-block;
+        padding-right: 74px;
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+  .journey {
+    margin-top: 80px;
+    .subtitle {
+      font-size: 36px;
+      line-height: 40px;
+      font-weight: normal;
+      margin-bottom: 0px;
+      span {
+        width: 60px;
+        display: inline-block;
+        border: 3pt solid #a24a87;
+        border-radius: 16px;
+        margin-left: 30px;
+      }
+    }
+    .container {
+      margin-top: 90px;
+      >div {
+        >div {
+          >div {
+            width: 100%;
+            padding-right: 98px;
+          }
+        }
+      }
+      input {
+        &:before {
+          border-bottom: 2pt solid #e5e5e5!important;
+        }
+      }
+      .button {
+        margin-top: 38px;
+        height: 68px;
+        width: 201px;
+        text-transform: none;
+        font-size: 24px;
+        border-radius: 35px;
+        background-color: $btn-bg-color;
+        margin-bottom: 80px;
+        &:hover {
+          background-color: $btn--hover-bg-color;
+        }
+      }
+    }
+  }
+  .noSchoolWarning {
+      margin-top: 1%;
+      text-align: center;
+  }
+}

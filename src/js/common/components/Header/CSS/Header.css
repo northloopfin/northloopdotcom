@@ -1,0 +1,100 @@
+@import "../../../../../style/configs/color.css";
+@import "../CSS/Desktop.css";
+@import "../CSS/Mobile.css";
+
+.globalHeader {
+  nav {
+    display: inline-block;
+    float: right;
+    ul {
+      list-style: none;
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+      li {
+        display: inline-block;
+        cursor: default;
+        position:relative;
+        &.active{
+          padding-bottom: 5px;
+        }
+        &.active::after{
+          content:'';
+          position:absolute;
+          bottom:0;
+          left:0;
+          right:0;
+          background:#B04995;
+          height:4px;
+          border-radius: 2px;
+        }
+  
+        a {
+          text-decoration: none;
+          color: #3c3b3c;
+          &:hover {
+            color: #cc96bc;
+          }
+        }
+      }
+    }
+  }
+  ul.brandLogo {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+
+  }
+
+  .marginTop {
+    padding-top: 34px;
+  }
+}
+h1, h2, h3, h4, h5, h6, p{
+  margin: 0;
+  padding: 0;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.bannerForm {
+  > div {
+    > div {
+      &::before, &::after {
+        display: none;
+      }
+    }
+  }
+}
+.loanHeaderAccessButton {
+  button {
+        height: 70px;
+        border-radius: 35px;
+        padding: 0 24px;
+        font-size: 20px;
+        background-color: #a24a87;
+        &:hover {
+          background-color: #b24a87;
+        }
+      span {
+        text-transform: none;
+        }
+      }
+}
+header {
+  padding-bottom: 20px;
+}
+.newappBar {
+  background-color: $bg-color;
+  padding-top: 5px!important;
+  padding: 0;
+  img {
+    max-width: 90px;
+  }
+  button {
+    color: #000;
+    position: absolute;
+    right: 12px;
+  }
+}

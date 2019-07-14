@@ -1,0 +1,41 @@
+.text{
+  font-size: 16px;
+  line-height: 30px;
+  color: #4A494B;
+}
+.freeTextColored{
+  color: #C75561;
+  font-weight:bold;
+}
+.atmTextColored{
+  color: #B04995;
+  font-weight: bold;
+}
+.bankWrapper{
+  padding: 0 1vw;
+}
+.rowSpacing{
+  margin-bottom: 3vw;
+}
+.imagePadding{
+  padding-top: 1.5vw;
+}
+.textLeftPadding{
+  padding-left:13px;
+}
+@media screen and (max-width: 768px) {
+  .mobileAligment{
+    margin: auto;
+  }
+ .iconMobile{
+   margin:auto;
+   display:block;
+ }
+ .textLeftPadding{
+   padding-left:0;
+ }
+ .text{
+   text-align: center;
+   font-size: calc(11px + 0.5vw);
+ }
+}

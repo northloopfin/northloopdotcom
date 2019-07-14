@@ -1,0 +1,88 @@
+@import "../../../../style/configs/variables";
+
+.contactSection{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  box-shadow: rgba(172, 185, 196, 0.28) 0px 10px 25px 0px;
+  margin: 4.7vw auto 0;
+  width: 95%;
+}
+.contactBlock{
+  display: flex;
+  align-items: center;
+  img{
+    margin-right:14px;
+  }
+}
+.socialWrapper{
+  display:flex;
+  max-width:100%;
+}
+.social{
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor:pointer;
+  transition: $transition;
+  &:hover{
+    svg g[fill]{
+      fill: #FFF;
+    }
+    background:#B04995;
+  }
+}
+.footerNav{
+  color: #4A494B;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 30px;
+  list-style-type: none;
+  padding-left: 0;
+  li{
+    cursor: pointer;
+    transition: $transition;
+    &:hover{
+      color: #a24a87;
+    }
+  }
+}
+.copyrightext{
+  margin-top: 8vw;
+  margin-bottom: 2vw;
+  color: #A4A2A7;	
+  font-size: 12px;
+  line-height: 18px;
+}
+.navSection{
+  margin-top: 10vw;
+}
+@media screen and (max-width: 1000px) {
+  .socialWrapper{
+    margin:0 auto;
+  }
+  .contactBlock{
+    flex-basis: 28%;
+  }
+  .contactBlock:nth-child(3){
+    flex-basis: 16%;
+  }
+  
+}
+@media screen and (max-width: 768px) {
+  .contactBlock{
+    justify-content: center;
+    flex-basis: 50% !important;
+    margin-bottom: 10px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .footerNav{
+    margin: 0 auto;
+  }
+  .contactBlock{
+    flex-basis: 100% !important;
+  }
+}

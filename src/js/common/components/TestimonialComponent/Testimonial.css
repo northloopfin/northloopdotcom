@@ -1,0 +1,99 @@
+.tabRow{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4.8vw;
+}
+.tab{
+    display: flex;
+    padding: 10px 20px;
+    align-items: center;
+    cursor: pointer;
+    max-width: 350px;
+    width:100%;
+    border-radius: 10px;
+    background: linear-gradient(rgb(214, 212, 215) 0%, rgb(164, 162, 167) 100%);
+}
+.activeTab{
+    display: flex;
+    padding: 10px 20px;
+    align-items: center;
+    cursor: pointer;
+    max-width: 350px;
+    width:100%;
+    border-radius: 10px;
+    background: linear-gradient(315.52deg, rgb(200, 97, 173) 0%, rgb(255, 121, 135) 100%);
+    box-shadow: rgba(176, 73, 149, 0.32)
+}
+.tabAvatar{
+    max-height: 89px;
+    max-width: 89px;
+    border-radius: 50%;
+}
+.tabTextBlock{
+  margin-left: 9%;
+}
+.textAuthor{
+ color: #C75561;
+ font-weight: bold;
+ font-size: 15px;
+ line-height: 19px;
+}
+.text{
+  color: #252827;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 30px;
+  margin-bottom: 20px;
+}
+.name{
+  color: #FFFFFF;	
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom:5px;
+  user-select: none;
+}
+.location{
+  user-select: none;
+  color: #FFFFFF;
+  font-size: 15px;
+  line-height: 24px;
+}
+
+@media screen and (max-width: 1130px) {
+  .textBlock{
+    flex-basis: 70%;
+    padding-left: 10px;
+    flex-direction: column;
+  }
+  .tab,.activeTab{
+    margin-bottom: 15px;
+  }
+  .tabRow{
+    flex-basis:300px;
+    flex-direction: column;
+  }
+  .mainWrapper{
+    margin-top:20px;
+    display: flex;
+  }
+}
+@media screen and (max-width: 768px) {
+  .text{
+    font-size: calc(13px + 1vw);
+    line-height: normal;
+  }
+  .textBlock{
+    flex-basis: 80%;
+  }
+  .tabRow{
+    flex-basis:20%;
+  }
+  .textAuthor{
+    font-size: calc(11px + 0.6vw);
+    line-height: normal;
+  }
+  .tab,.activeTab{
+    flex-direction:column;
+  }
+}
