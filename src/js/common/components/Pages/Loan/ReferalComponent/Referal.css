@@ -1,0 +1,72 @@
+.tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 110px;
+  width: 349px;
+  border-radius: 10px;
+  background: linear-gradient(313.61deg, #FDA361 0%, #FFC787 100%);
+  box-shadow: 0 15px 25px 0 rgba(176,73,149,0.25);
+}
+
+.tab:nth-child(2n) {
+  background: linear-gradient(315deg, #EB6573 0%, #FF8794 100%);
+}
+
+.tab:nth-child(1) {
+  background: linear-gradient(315.47deg, #B04995 0%, #D25BB3 100%);
+}
+
+.tabRow{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2vw;
+}
+.tabText{
+  height: 48px;
+  width: 228px;
+  color: #FFFFFF;
+  font-family: "Muli";
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+}
+
+@media screen and (max-width: 1130px) {
+  .textBlock{
+    flex-basis: 70%;
+    padding-left: 10px;
+    flex-direction: column;
+  }
+  .tab,.activeTab{
+    margin-bottom: 15px;
+  }
+  .tabRow{
+    flex-basis:300px;
+    flex-direction: column;
+  }
+  .mainWrapper{
+    margin-top:20px;
+    display: flex;
+  }
+}
+@media screen and (max-width: 768px) {
+  .text{
+    font-size: calc(13px + 1vw);
+    line-height: normal;
+  }
+  .textBlock{
+    flex-basis: 80%;
+  }
+  .tabRow{
+    flex-basis:20%;
+  }
+  .textAuthor{
+    font-size: calc(11px + 0.6vw);
+    line-height: normal;
+  }
+  .tab,.activeTab{
+    flex-direction:column;
+  }
+}

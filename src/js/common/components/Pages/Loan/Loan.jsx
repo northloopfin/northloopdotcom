@@ -9,16 +9,25 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Input from '@material-ui/core/Input';
 import FormControl from '@material-ui/core/FormControl';
 import axios from 'axios';
+import Card from '@material-ui/core/Card'
+import CardHeader from '@material-ui/core/CardHeader'
+import CardContent from '@material-ui/core/CardContent'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { withStyles } from '@material-ui/core/styles';
+
+
+import buttonStyles from '../Home/HomeCSS/Home.css'
 
 import Footer from '../../Footer/Footer'
+import Referal from './ReferalComponent/Referal';
+import Schools from './SchoolsComponent/Schools';
 import Testimonial from '../../TestimonialComponent/Testimonial'
 import DownloadApp from '../../DownloadAppComponent/DownloadApp'
-import LeadingSecurity from '../../Pages/Home/LeadingSecurityComponent/LeadingSecurity'
+import AchieveDreams from './AchieveDreamsComponent/AchieveDreams'
 
-import scanIphone from '../../../../../assets/images/scan_ip_iphone.png'
+import happyStudents from '../../../../../assets/images/happy_students.png'
 
 import styles from './LoanCSS/Loan.css';
 const isMobile = window.innerWidth < 768;
@@ -46,6 +55,22 @@ const HomeSection = ({
     </Grid>
   </Container>
 )
+
+const StyledCard = withStyles({
+  root: { marginTop: '90px', 	boxShadow: '0 10px 25px 0 rgba(172,185,196,0.28)' }
+})(Card);
+
+const StyledCardHeader = withStyles({
+  root: { background: 'linear-gradient(270deg, #C75561 0%, #A1598E 100%)' },
+  title: { color:' #FFFFFF', fontFamily: "Muli", fontWeight: 'bold', fontSize: '20px',	lineHeight: '24px', marginLeft: '3%' },
+  subheader: { color: '#FFFFFF',	fontFamily: "Muli",	fontSize: '15px', lineHeight: '24px', marginLeft: '3%' }
+})(CardHeader);
+
+const formStyle = {
+  display: 'flex',
+  paddingTop: '20px'
+}
+
 class Loan extends PureComponent {
   constructor(props) {
     super(props);
@@ -194,90 +219,112 @@ class Loan extends PureComponent {
 
     const loanForm1 = (
       <Container className={styles.journey}>
-        <h2 className={styles.subtitle}>Check if you qualify for a loan<span /></h2>
-        <Grid item sm={10}>
-          <form className={styles.container} noValidate autoComplete="off">
-            <Grid container>
-              <Grid item xs={6}>
-                <TextField
-                  onBlur={() => {this.updateDropdownValue(event, 'form1', 'name');}}
-                  id="standard-dense"
-                  label="Name"
-                  margin="dense"
-                  error={this.isFieldEmpty('name')} />
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  onBlur={() => {this.updateDropdownValue(event, 'form1', 'email');}}
-                  id="email"
-                  label="Email"
-                  margin="dense"
-                  type="email"
-                  error={this.isFieldEmpty('email')} />
-              </Grid>
-              <Grid item xs={6}>
-                <FormControl>
-                  <InputLabel error={this.isFieldEmpty('program')}  htmlFor="program-auto-width">Program</InputLabel>
-                  <Select
-                    value={form1.program}
-                    onChange={(event) => {this.updateDropdownValue(event, 'form1', 'program');}}
-                    input={<Input name="program" id="program-auto-width" />}
-                    autoWidth>
-                    <MenuItem value={'MBA'}>MBA</MenuItem>
-                    <MenuItem value={'MSBA'}>MS - Business Analytics</MenuItem>
-                    <MenuItem value={'MSCS'}>MS - Computer Science</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item xs={6}>
-                <FormControl>
-                  <InputLabel error={this.isFieldEmpty('school')} htmlFor="school-auto-width">School</InputLabel>
-                  <Select
-                    value={form1.school}
-                    onChange={(event) => {this.updateDropdownValue(event, 'form1', 'school');}}
-                    input={<Input name="school" id="school-auto-width" />}
-                    autoWidth>
-                    { universitiesMenuItems }
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  onBlur={() => {this.updateDropdownValue(event, 'form1', 'duration');}}
-                  id="program-length"
-                  label="Duration (years)"
-                  margin="dense"
-                  type="Number"
-                  error={this.isFieldEmpty('duration')} />
-              </Grid>
-              <Grid item xs={6}>
-                <FormControl>
-                  <InputLabel error={this.isFieldEmpty('test')} htmlFor="test-auto-width">Test Type</InputLabel>
-                  <Select
-                    value={form1.test}
-                    onChange={(event) => {this.updateDropdownValue(event, 'form1', 'test');}}
-                    input={<Input name="test" id="test-auto-width" />}
-                    autoWidth>
-                    <MenuItem value={'GMAT'}>GMAT</MenuItem>
-                    <MenuItem value={'GRE'}>GRE</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  onBlur={() => {this.updateDropdownValue(event, 'form1', 'testScore');}}
-                  id="test-score"
-                  label="Test Score"
-                  margin="dense"
-                  type="Number"
-                  error={this.isFieldEmpty('testScore')} />
-              </Grid>
+        <p className={styles.title}>Interational Student Loan and Refinancing</p>
+        <p className={styles.pageSubTitle}>
+          We help students achieve their dreams by funding their education. Remove the stress of paying for an education with North Loop loans.
+        </p>
+        <p className={styles.pageSubTitle}>
+          North Loop education loans help students from across the world pay for their education in the US. With the lowest interest rates possible, we can help you save thousands of dollars every year.
+        </p>
+        <StyledCard>
+          <StyledCardHeader
+            title="Apply for a Loan in just 5 minutes"
+            subheader="Get approved in the quickest time possible"
+          />
+          <CardContent>
+            <Grid item sm={12}>
+              <form className={styles.container} noValidate autoComplete="off">
+                <Grid container style={{ marginBottom: '35px' }}>
+                  <Grid item xs={4} justify="center" style={formStyle}>
+                    <TextField
+                      onBlur={() => {this.updateDropdownValue(event, 'form1', 'name');}}
+                      id="standard-dense"
+                      label="Name"
+                      margin="dense"
+                      error={this.isFieldEmpty('name')} />
+                  </Grid>
+                  <Grid item xs={4} justify="center" style={formStyle}>
+                    <FormControl>
+                      <InputLabel error={this.isFieldEmpty('school')} htmlFor="school-auto-width">School</InputLabel>
+                      <Select
+                        value={form1.school}
+                        onChange={(event) => {this.updateDropdownValue(event, 'form1', 'school');}}
+                        input={<Input name="school" id="school-auto-width" />}
+                        autoWidth>
+                        { universitiesMenuItems }
+                      </Select>
+                    </FormControl>
+                  </Grid>
+                  <Grid item xs={4} justify="center" style={formStyle}>
+                    <TextField
+                      onBlur={() => {this.updateDropdownValue(event, 'form1', 'testScore');}}
+                      id="test-score"
+                      label="Test Score"
+                      margin="dense"
+                      type="Number"
+                      error={this.isFieldEmpty('testScore')} />
+                  </Grid>
+                  <Grid item xs={4} justify="center" style={formStyle}>
+                    <TextField
+                      onBlur={() => {this.updateDropdownValue(event, 'form1', 'email');}}
+                      id="email"
+                      label="Email"
+                      margin="dense"
+                      type="email"
+                      error={this.isFieldEmpty('email')} />
+                  </Grid>
+                  <Grid item xs={4} justify="center" style={formStyle}>
+                    <TextField
+                      onBlur={() => {this.updateDropdownValue(event, 'form1', 'duration');}}
+                      id="program-length"
+                      label="Duration (years)"
+                      margin="dense"
+                      type="Number"
+                      error={this.isFieldEmpty('duration')} />
+                  </Grid>
+                  <Grid item xs={4} justify="center" style={formStyle}>
+                    <FormControl>
+                      <InputLabel error={this.isFieldEmpty('program')}  htmlFor="program-auto-width">Program</InputLabel>
+                      <Select
+                        value={form1.program}
+                        onChange={(event) => {this.updateDropdownValue(event, 'form1', 'program');}}
+                        input={<Input name="program" id="program-auto-width" />}
+                        autoWidth>
+                        <MenuItem value={'MBA'}>MBA</MenuItem>
+                        <MenuItem value={'MSBA'}>MS - Business Analytics</MenuItem>
+                        <MenuItem value={'MSCS'}>MS - Computer Science</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Grid>
+                  <Grid item xs={4} justify="center" style={formStyle}>
+                    <FormControl>
+                      <InputLabel error={this.isFieldEmpty('test')} htmlFor="test-auto-width">Test Type</InputLabel>
+                      <Select
+                        value={form1.test}
+                        onChange={(event) => {this.updateDropdownValue(event, 'form1', 'test');}}
+                        input={<Input name="test" id="test-auto-width" />}
+                        autoWidth>
+                        <MenuItem value={'GMAT'}>GMAT</MenuItem>
+                        <MenuItem value={'GRE'}>GRE</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Grid>
+                  <Grid item xs={4} justify="center" style={formStyle}>
+                    <FormControl>
+                      <div style={{ maxWidth: 150 }}>
+                        <Button variant="contained" color="primary" className={buttonStyles.button}>
+                          Apply
+                        </Button>
+                      </div>
+                    </FormControl>
+                  </Grid>
+                </Grid>
+              </form>
             </Grid>
-          </form>
-          <p className={styles.noSchoolWarning}>Don’t see your school or program? We’re adding new programs and schools every week! Check back soon.</p>
-        </Grid>
-      </Container>);
-
+          </CardContent>
+        </StyledCard>
+    </Container>);
+  
     const loanForm2 = (
           <Container className={styles.journey}>
             <h2 className={styles.subtitle}>Check if you qualify for a loan<span /></h2>
@@ -549,14 +596,38 @@ class Loan extends PureComponent {
           { submitted && successMessage }
           <Container>
             <Grid item sm={10} style={{'display': 'flex', 'justifyContent': 'flex-end', 'marginTop': '2%', 'marginBottom': '2%'}}>
-              { step > 1 && step < 6 && <Button onClick={this.decStep}>Prev</Button> }
-              { step > 0 && step < 5  && <Button onClick={this.incStep}>Next</Button> }
-              { step == 5 && <Button onClick={this.submitForm}>Submit</Button> }
+              {/* step > 1 && step < 6 && <Button onClick={this.decStep}>Prev</Button> */}
+              {/* step > 0 && step < 5  && <Button onClick={this.incStep}>Next</Button> */}
+              {/* step == 5 && <Button onClick={this.submitForm}>Submit</Button> */}
             </Grid>
           </Container>
-          <HomeSection image={scanIphone} title="Achieve Your Dreams">
-            <LeadingSecurity />
+          <HomeSection image={happyStudents} title="Achieve Your Dreams">
+            <AchieveDreams />
           </HomeSection>
+          <Container className={styles.main} style={{ marginBottom: '5vw' }}>
+            <Grid container>
+              <Grid item xs={12} sm={8}>
+                <div className={styles.titleBlock}>
+                  <p className={styles.title}>Referral Program</p>
+                </div>
+              </Grid>
+              <Grid item xs={12}>
+                <Referal />
+              </Grid>
+            </Grid>
+          </Container>
+          <Container className={styles.main} style={{ marginTop: '5vw' }}>
+            <Grid container>
+              <Grid item xs={12} sm={8}>
+                <div className={styles.titleBlock}>
+                  <p className={styles.schoolsBlock}>Schools That We Support</p>
+                </div>
+              </Grid>
+              <Grid item xs={12}>
+                <Schools />
+              </Grid>
+            </Grid>
+          </Container>
           <Container className={styles.main}>
             <Grid container>
               <Grid item xs={12} sm={8}>

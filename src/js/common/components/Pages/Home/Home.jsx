@@ -36,20 +36,26 @@ const HomeSection = ({
     </Grid>
   </Container>
 )
+
+const Dots = () => (
+  <div className={styles.dots}>
+    <div className={styles.dot}></div>
+    <div className={styles.dot}></div>
+    <div className={styles.dot}></div>
+    <div className={styles.dot}></div>
+    <div className={styles.dot}></div>
+    <div className={styles.dot}></div>
+    <div className={styles.dot}></div>
+    <div className={styles.dot}></div>
+  </div>
+)
+
 class Home extends Component {
   render() {
+    const isMobile = window.screen.width < 768
     return (
       <div>
-        <div className={styles.dots}>
-          <div className={styles.dot}></div>
-          <div className={styles.dot}></div>
-          <div className={styles.dot}></div>
-          <div className={styles.dot}></div>
-          <div className={styles.dot}></div>
-          <div className={styles.dot}></div>
-          <div className={styles.dot}></div>
-          <div className={styles.dot}></div>
-        </div>
+        {!isMobile && <Dots />}
         <HomeSection
           image={iPhone}
           title={'The Ultimate International <br /> Student Account'}

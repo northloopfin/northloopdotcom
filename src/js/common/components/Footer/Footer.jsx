@@ -20,6 +20,7 @@ const Footer = class Footer extends PureComponent {
   socialLink = (link) => window.open(link, '_blank')
 
   render() {
+    const isMobile = window.screen.width < 768
     return (
       <Container>
         <Grid container>
@@ -116,19 +117,25 @@ const Footer = class Footer extends PureComponent {
                   each calendar month.
                 </p>
               </Grid>
-              <Grid item xs={12} sm={3}>
+              {!isMobile && (
+                <Grid item xs={12} sm={3}>
                   <img src={Logo} alt="North Loop" />
                 </Grid>
+              )}
+              {!isMobile && (
                 <Grid item xs={12} sm={3}>
                   <img src={FDICLogo} />
                 </Grid>
+              )}
             </Grid>
           </Grid>
-          <Grid item xs={12} sm={4}>
-            <div>
-              <img src={iPhone2} alt="iPhone 6" />
-            </div>
-          </Grid>
+          {!isMobile && (
+            <Grid item xs={12} sm={4}>
+              <div>
+                <img src={iPhone2} alt="iPhone 6" />
+              </div>
+            </Grid>
+          )}
         </Grid>
       </Container>
     )

@@ -71,10 +71,10 @@ function Header(props) {
             </li>
             <li className={isJoinUs ? styles.active : ''}>
               {isJoinUs ? (
-                'Join Us'
+                'Careers'
               ) : (
                 <a href="https://www.linkedin.com/company/35694537/admin/" target="_blank">
-                  Join Us
+                  Careers
                 </a>
               )}
             </li>
@@ -131,10 +131,10 @@ function Header(props) {
                 </li>
                 <li className={isJoinUs ? styles.active : ''}>
                   {isJoinUs ? (
-                    'Join Us'
+                    'Careers'
                   ) : (
                     <a href="https://www.linkedin.com/company/35694537/admin/" target="_blank">
-                      Join Us
+                      Careers
                     </a>
                   )}
                 </li>

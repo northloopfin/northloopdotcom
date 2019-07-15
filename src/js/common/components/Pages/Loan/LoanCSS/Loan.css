@@ -43,11 +43,17 @@ ul {
 }
 
 .title {
-  font-size: 50px;
+  /*font-size: 50px;*/
   max-width: 538px;
-  line-height: 56px;
-  font-weight: normal;
+  /*line-height: 56px;
+  /*font-weight: normal;*/
   margin-bottom: 0px;
+
+  color: #000000;
+  font-size: 50px;
+  line-height: 60px;
+  letter-spacing: 0.2px;
+  font-weight: bold;
   span {
     width: 152px;
     display: block;
@@ -57,6 +63,14 @@ ul {
   }
 }
 
+.schoolsBlock {
+  height: 36px;
+  color: #4A494B;
+  font-family: "Muli";
+  font-size: 24px;
+  line-height: 36px;
+}
+
 .headerIphone {
   padding-top: 136px;
   div {
@@ -64,5 +78,15 @@ ul {
   }
   img {
     max-height: 660px;
+  }
+}
+
+@media only screen and (max-width: 768px)  {
+  .titleBlock {
+    margin-bottom: 0px;    
+  }
+  .title {
+    font-size: 25px;
+    line-height: 30px;
   }
 }

@@ -85,6 +85,7 @@
   }
   .successBlock{
     padding-bottom: 30px;
+    padding-left: 6px;
     flex-direction: column;
   }
   .success{

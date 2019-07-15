@@ -6,6 +6,10 @@
       float: none;
       padding: 20px 10px;
     }
+    header {
+      box-shadow: none !important;
+      background: #fff !important;
+    }
     ul {
       list-style: none;
       text-align: left;

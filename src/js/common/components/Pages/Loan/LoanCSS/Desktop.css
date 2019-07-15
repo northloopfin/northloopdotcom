@@ -158,12 +158,12 @@
       }
     }
     .container {
-      margin-top: 90px;
+      /*margin-top: 90px;*/
       >div {
         >div {
           >div {
-            width: 100%;
-            padding-right: 98px;
+            width: 80%;
+            padding-right: 0px;
           }
         }
       }
@@ -189,6 +189,23 @@
   }
   .noSchoolWarning {
       margin-top: 1%;
-      text-align: center;
+      text-align: left;
   }
+}
+
+.pageTitle {
+  height: 120px;
+  width: 754px;
+  font-size: 50px;
+  color: #000000;
+  line-height: 60px;
+  font-family: Muli;
+}
+
+.pageSubTitle {
+  color: #4A494B;
+  font-family: Muli;
+  font-size: 15px;
+  line-height: 24px;
+  margin-top: 30px;
 }
