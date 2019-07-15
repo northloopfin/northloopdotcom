@@ -207,7 +207,7 @@ class Loan extends PureComponent {
 
   render() {
     const { step, form1, form2, form3, form4, form5, submitted, loading, emptyErrorFields } = this.state;
-
+    const isMobile = window.screen.width < 768
     const universitiesMenuItems = universitiesList.map((univ, i) => {
       return <MenuItem value={univ} key={'univ-' + i}>{univ}</MenuItem>;
     });
