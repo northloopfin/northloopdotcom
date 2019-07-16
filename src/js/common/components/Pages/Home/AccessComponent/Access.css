@@ -1,0 +1,30 @@
+.row{
+  display: flex;
+  align-items: center;
+  img{
+    margin-right: 15px;
+  }
+}
+.buttonWrapper{
+  padding-left: 2vw;
+  padding-top: 2.8vw;
+}
+.text{
+  color: #252827;	
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 40px;
+}
+@media screen and (max-width: 768px) {
+ .mobileMarginTop{
+  margin-top: 15px;  
+ }
+.text{
+    font-size: calc(11px + 0.5vw);
+    line-height: normal;
+  }
+  .buttonWrapper{
+    text-align:center;
+    padding-left:0;
+  }
+}

@@ -1,34 +1,95 @@
 @import "../../../../../../style/configs/color";
+@import "../../../../../../style/configs/variables";
 
-@import "./Mobile.css";
-@import "./Desktop.css";
-ul {
-  list-style: none;
-  li {
-    display: inline-block;
+.main{
+    margin-top: 6.8vw;
+    margin-bottom: 18vw;
+}
+.titleBlock{
+   margin-top:40px;    
+   margin-bottom:60px;    
+}
+.title{
+ 	color: #000000;
+  font-size: 50px;
+  line-height: 60px;
+  letter-spacing: 0.2px;
+  font-weight: bold;
+}
+.subtitle{
+  color: #4A494B;
+  font-size: 24px;
+  line-height: 30px;
+}
+.headerIphone {
+  div {
+    text-align: right;
+  }
+  img {
+    max-height: 660px;
   }
 }
-.journey {
-  .container {
-    label {
-      + div {
-        &::before {
-          border-bottom: 2px solid #e5e5e5!important;
-        }
-        &::after {
-          border-bottom: 2px solid $brand-color;
-        }
-      }
-    }
-    > div {
-      > div {
-        > div {
-          label.Mui-focused {
-            color: $brand-color;
-
-          }
-        }
-      }
+button.button {
+   padding: 12px 37px;
+   text-transform: none;
+   font-size: 24px;
+   border-radius: 25px;
+   background-color: $btn-bg-color;
+   box-shadow:none;
+   color: #FFFFFF;	
+   text-align: center;
+   font-weight:bold;
+   font-size: 15px;
+   line-height: 19px;
+   white-space: nowrap;
+   cursor: pointer;
+   border: none;
+   &:hover {
+     background-color: $btn--hover-bg-color;
+   }
+}
+.dots{
+  position: fixed;
+  right: 27px;
+  top:50%;
+  transform: translateY(-50%);
+}
+.dot{
+  margin-bottom: 20px;
+  height: 12px;	
+  width: 12px;	
+  border: 2px solid #E0DCE4;
+  border-radius: 50%;
+  transition: $transition;
+  cursor: pointer;
+  &:hover{
+    border-color: #4A494B;
+  }
+}
+@media screen and (max-width: 768px) {
+.title{
+  font-size: calc(20px + 1vw);
+  line-height: 30px;
+  text-align: center;
+}
+.titleBlock{
+   margin-top:0;    
+   margin-bottom:0;    
+}
+.subtitle{
+  font-size: calc(14px + 1vw);
+  line-height: normal;
+  text-align: center;
+}
+.headerIphone {
+  padding-top: 20px;
+  text-align: center;
+  div {
+    text-align: center;
+  }
+  img {
+      max-height: 540px;
     }
   }
+  
 }

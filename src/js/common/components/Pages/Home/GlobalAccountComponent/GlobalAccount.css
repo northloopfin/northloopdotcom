@@ -1,0 +1,54 @@
+.receive{
+  font-size: 16px;
+  line-height: 30px;
+  font-weight:bold;
+}
+.freeText{
+  color: #EE6D7A;
+  margin-bottom: 7px;
+  margin-top: 1.3vw;
+}
+.instanslyText{
+  color: #D663B8;
+  margin-top: 2.3vw;
+  margin-bottom: 5px;
+}
+.feeslyText{
+  color: #F0A957;
+  margin-top: 2.5vw;
+  margin-bottom: 7px;
+}
+.text{
+  color: #4A494B;
+  font-size: 15px;
+  line-height: 24px;
+}
+.row{
+  margin-bottom: 1.8vw;
+  padding-bottom: 1vw;
+  width:80%;
+  box-shadow: 0 10px 25px 0 rgba(172,185,196,0.28);
+}
+.bookmark{
+  transform: translate(-39%,-10px);
+}
+@media screen and (max-width: 768px) {
+  .mainBlock{
+    margin-top: 5vw;
+  }
+  .receive{
+    font-size: calc(11px + 0.5vw);
+    line-height: normal;
+  }
+  .text{
+    font-size: calc(10px + 0.5vw);
+    line-height: normal;
+  }
+  .row{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+  }
+}

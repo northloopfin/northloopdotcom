@@ -11,11 +11,9 @@ const LoanRouteHandler = LazyLoading(() => import('views/loan'))
 const BlogRouteHandler = LazyLoading(() => import('views/blog'))
 const ManualSignupRouteHandler = LazyLoading(() => import('views/manualSignup'))
 const Header = LazyLoading(() => import('common/components/Header/Header'))
-const Footer = LazyLoading(() => import('common/components/Footer/Footer'))
 
 // This show case how you can access routing info in your component
 const HeaderWithRouter = withRouter((props) => <Header {...props} />)
-const FooterWithRouter = withRouter((props) => <Footer {...props} />)
 module.exports = (
   <div>
     <HeaderWithRouter />
@@ -28,6 +26,5 @@ module.exports = (
         <Route path="*" component={HomeRouteHandler} />
       </Switch>
     </div>
-    <FooterWithRouter />
   </div>
 )

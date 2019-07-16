@@ -1,7 +1,5 @@
 import React, { PureComponent } from 'react';
 
-import styles from './HomeCSS/Home.css';
-
 class HomeWithError extends PureComponent {
   render() {
     const { home } = this.props;
@@ -9,7 +7,7 @@ class HomeWithError extends PureComponent {
 
     if (result && result.size && result.size > 0) {
       return (
-        <div className={styles.homeOutput}>
+        <div>
           <h1>This should catch by ErrorBoundary</h1>
           {result.something_not_existed.get('something_not_existed')}
         </div>

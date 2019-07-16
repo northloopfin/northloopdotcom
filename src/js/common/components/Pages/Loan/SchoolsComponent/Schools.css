@@ -1,0 +1,44 @@
+.tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tabRow{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2vw;
+}
+
+
+@media screen and (max-width: 1130px) {
+  .textBlock{
+    flex-basis: 70%;
+    padding-left: 10px;
+    flex-direction: column;
+  }
+  .tab,.activeTab{
+    margin-bottom: 15px;
+  }
+  .tabRow{
+    flex-basis:300px;
+    flex-direction: column;
+  }
+  .mainWrapper{
+    margin-top:20px;
+    display: flex;
+  }
+}
+@media screen and (max-width: 768px) {
+  .text{
+    font-size: calc(13px + 1vw);
+    line-height: normal;
+  }
+  .tabRow{
+    flex-basis:100%;
+    flex-direction: row;
+  }
+  .tab,.activeTab{
+    flex-direction:column;
+  }
+}
