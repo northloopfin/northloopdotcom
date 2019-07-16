@@ -14,7 +14,7 @@ import twitterIcon from '../../../../assets/images/icon-twitter.svg';
 import facebookIcon from '../../../../assets/images/icon-facebook.svg';
 import youtubeIcon from '../../../../assets/images/icon-youtube.svg';
 import iPhone2 from '../../../../assets/images/iphone-6-two.png';
-import appStoreImage from '../../../../assets/images/appStore.png';
+import appStoreImage from '../../../../assets/images/AppStore.png';
 import playStoreImage from '../../../../assets/images/playstore.png';
 import RespDialog from '../RespDialog/RespDialog.jsx';
 import styles from './Footer.css';

@@ -16,7 +16,7 @@ import Conecto from '../../../../../assets/images/conecto.png';
 import goWithLow from '../../../../../assets/images/goWithLow.png';
 import syfuel from '../../../../../assets/images/syfuel.png';
 import playground from '../../../../../assets/images/playground.png';
-import AppStore from '../../../../../assets/images/appStore.png';
+import AppStore from '../../../../../assets/images/AppStore.png';
 import GooglePlay from '../../../../../assets/images/GooglePlay.png';
 
 function Partners() {

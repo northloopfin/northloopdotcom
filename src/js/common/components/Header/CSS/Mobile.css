@@ -94,6 +94,10 @@
     }
   }
   .list {
-    /*width: 80%;*/
+    width: 180px;
+  
+    a {
+      text-decoration: none;
+    }
   }
-  }
+}

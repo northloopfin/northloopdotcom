@@ -1,10 +1,13 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -280,12 +283,13 @@ function Header(props) {
   });
   const { location } = props;
   const { pathname } = location;
-  const isHome = pathname === '/';
+  const isHome = pathname === '/#/';
+  const isCareers = pathname === '/#/careers';
   const isJoinUs = pathname === 'https://www.linkedin.com/company/35694537/admin/';
-  const isHighYieldSavings = pathname === '/high-yield-savings';
-  const isLoans = pathname === '/loans';
-  const isBlogs = pathname === '/blogs';
-  const isManualSignup = pathname === '/manual-signup';
+  const isHighYieldSavings = pathname === '/#/high-yield-savings';
+  const isLoans = pathname === '/#/loans';
+  const isBlogs = pathname === '/#/blogs';
+  const isManualSignup = pathname === '/#/manual-signup';
   const isMobile = window.innerWidth < 768;
 
   // Content for each pages
@@ -356,32 +360,44 @@ function Header(props) {
     setState({ ...state, 'testimonialSelection': newSelection });
   };
 
-  const sideList = (side) => (
-    <div
-      className={styles.list}
-      role="presentation"
-      onClick={toggleDrawer(side, false)}
-      onKeyDown={toggleDrawer(side, false)}>
-      <div className={styles.globalHeader}>
-        <nav>
-          <ul>
-            <li className={!isHome ? styles.active : ''}>
-            {isHome ? 'Students' : <Link to="/">Students</Link>}
-          </li>
-            <li className={!isJoinUs ? styles.active : ''}>
-            {isJoinUs ? 'Join Us' : <a href="https://www.linkedin.com/company/35694537/admin/" target="_blank">Join Us</a>}
-          </li>
-            <li className={!isLoans ? styles.active : ''}>
-            {isLoans ? 'Loans' : <Link to="/loans">Loans</Link>}
-          </li>
-          </ul>
-        </nav>
+  const sideList = (side) => {
+    const useStyles = makeStyles({
+      list: {
+        width: 180,
+      },
+      link: {
+        textDecoration: 'none'
+      }
+    });
+
+    const classes = useStyles();
+    
+    return (
+      <div
+        className={styles.list}
+        role="presentation"
+        onClick={toggleDrawer(side, false)}
+        onKeyDown={toggleDrawer(side, false)}>
+        <List>
+          <ListItem button>
+            <NavLink exact to="/">Students</NavLink>
+          </ListItem>
+          <ListItem button>
+            <NavLink to="/careers/">Careers</NavLink>
+          </ListItem>
+          <ListItem button>
+            <NavLink to="/loans/">Loans</NavLink>
+          </ListItem>
+          <ListItem button>
+            <NavLink to="/get-the-app/"><Button variant="contained" color="secondary">Students</Button></NavLink>
+          </ListItem>
+        </List>
       </div>
-    </div>
-  );
+    )
+  };
 
   return (
-    <header className={styles.globalHeader}>
+    <header className='globalHeader'>
 
       {isMobile && (
         <div>
