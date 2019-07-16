@@ -1,13 +1,15 @@
 import React from 'react'
 import Drawer from '@material-ui/core/Drawer'
 import Container from '@material-ui/core/Container'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import MenuIcon from '@material-ui/icons/Menu'
 import IconButton from '@material-ui/core/IconButton'
 import Button from '@material-ui/core/Button'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
 
 import styles from './CSS/Header.css'
 import Logo from '../../../../assets/images/logo.png'
@@ -36,6 +38,7 @@ function Header(props) {
   const { location } = props
   const { pathname } = location
   const isHome = pathname === '/'
+  const isCareers = pathname === '/careers'
   const isJoinUs = pathname === 'https://www.linkedin.com/company/35694537/admin/'
   const isHighYieldSavings = pathname === '/high-yield-savings'
   const isLoans = pathname === '/loans'
@@ -50,45 +53,44 @@ function Header(props) {
   }
   const toggleDrawer = (side, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return
+      return;
     }
 
-    setState({ ...state, [side]: open })
-  }
+    setState({ ...state, [side]: open });
+  };
 
-  const sideList = (side) => (
-    <div
-      className={styles.list}
-      role="presentation"
-      onClick={toggleDrawer(side, false)}
-      onKeyDown={toggleDrawer(side, false)}
-    >
-      <div className={styles.globalHeader}>
-        <nav>
-          <ul>
-            <li className={isHome ? styles.active : ''}>
-              {isHome ? 'Students' : <Link to="/">Students</Link>}
-            </li>
-            <li className={isJoinUs ? styles.active : ''}>
-              {isJoinUs ? (
-                'Careers'
-              ) : (
-                <a href="https://www.linkedin.com/company/35694537/admin/" target="_blank">
-                  Careers
-                </a>
-              )}
-            </li>
-            <li className={isLoans ? styles.active : ''}>
-              {isLoans ? 'Loans' : <Link to="/loans">Loans</Link>}
-            </li>
-          </ul>
-        </nav>
+  const updateTestimonialSelection = (newSelection) => {
+    setState({ ...state, 'testimonialSelection': newSelection });
+  };
+
+  const sideList = (side) => {
+    return (
+      <div
+        className={styles.list}
+        role="presentation"
+        onClick={toggleDrawer(side, false)}
+        onKeyDown={toggleDrawer(side, false)}>
+        <List>
+          <ListItem button>
+            <NavLink exact to="/" className={isHome ? styles.active : ''}>Students</NavLink>
+          </ListItem>
+          <ListItem button>
+            <NavLink to="/careers" className={isCareers ? styles.active : ''}>Careers</NavLink>
+          </ListItem>
+          <ListItem button>
+            <NavLink to="/loans" className={isLoans ? styles.active : ''}>Loans</NavLink>
+          </ListItem>
+          <ListItem button>
+            <NavLink to="/get-the-app"><Button variant="contained" color="secondary">Get The App</Button></NavLink>
+          </ListItem>
+        </List>
       </div>
-    </div>
-  )
+    )
+  };
 
   return (
     <header className={styles.globalHeader}>
+
       {isMobile && (
         <div>
           <AppBar position="fixed" className={styles.newappBar} style={divStyle}>
