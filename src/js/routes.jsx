@@ -9,6 +9,7 @@ import styles from '../style/index.css'
 const HomeRouteHandler = LazyLoading(() => import('views/home'))
 const LoanRouteHandler = LazyLoading(() => import('views/loan'))
 const BlogRouteHandler = LazyLoading(() => import('views/blog'))
+const CurrencyProtectRouteHandler = LazyLoading(() => import('views/currencyprotect'))
 const ManualSignupRouteHandler = LazyLoading(() => import('views/manualSignup'))
 const Header = LazyLoading(() => import('common/components/Header/Header'))
 
@@ -22,6 +23,7 @@ module.exports = (
         <Route exact path="/" component={HomeRouteHandler} />
         <Route path="/loans" component={LoanRouteHandler} />
         <Route path="/blogs" component={BlogRouteHandler} />
+        <Route path="/currency/protect" component={CurrencyProtectRouteHandler} />
         <Route path="/manual-signup" component={ManualSignupRouteHandler} />
         <Route path="*" component={HomeRouteHandler} />
       </Switch>
