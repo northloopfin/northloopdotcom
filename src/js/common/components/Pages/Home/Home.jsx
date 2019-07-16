@@ -7,7 +7,7 @@ import GlobalAccount from './GlobalAccountComponent/GlobalAccount'
 import StartBankin from './StartBankingComponent/StartBankin'
 import Testimonial from '../../TestimonialComponent/Testimonial'
 import Access from './AccessComponent/Access'
-// import Slider from '../../SloderComponent/Slider'
+import Slider from '../../SliderComponent/Slider'
 import Footer from '../../Footer/Footer'
 import BankAccount from './BankAccountComponent/BankAccount'
 import iPhone from '../../../../../assets/images/iphone-6.png'
@@ -17,7 +17,6 @@ import signUpIphone from '../../../../../assets/images/signUp-iphone.png'
 import styles from './HomeCSS/Home.css'
 import DownloadApp from '../../DownloadAppComponent/DownloadApp'
 
-/*refactor_me*/
 const HomeSection = ({
   children, image, title, subtitle,
 }) => (
@@ -37,25 +36,11 @@ const HomeSection = ({
   </Container>
 )
 
-const Dots = () => (
-  <div className={styles.dots}>
-    <div className={styles.dot}></div>
-    <div className={styles.dot}></div>
-    <div className={styles.dot}></div>
-    <div className={styles.dot}></div>
-    <div className={styles.dot}></div>
-    <div className={styles.dot}></div>
-    <div className={styles.dot}></div>
-    <div className={styles.dot}></div>
-  </div>
-)
-
 class Home extends Component {
   render() {
     const isMobile = window.screen.width < 768
     return (
-      <div>
-        {!isMobile && <Dots />}
+      <Slider>
         <HomeSection
           image={iPhone}
           title={'The Ultimate International <br /> Student Account'}
@@ -90,9 +75,11 @@ class Home extends Component {
             </Grid>
           </Grid>
         </Container>
-        <Footer />
-        <DownloadApp />
-      </div>
+        <div>
+          <Footer />
+          <DownloadApp />
+        </div>
+      </Slider>
     )
   }
 }

@@ -48,24 +48,6 @@ button.button {
      background-color: $btn--hover-bg-color;
    }
 }
-.dots{
-  position: fixed;
-  right: 27px;
-  top:50%;
-  transform: translateY(-50%);
-}
-.dot{
-  margin-bottom: 20px;
-  height: 12px;	
-  width: 12px;	
-  border: 2px solid #E0DCE4;
-  border-radius: 50%;
-  transition: $transition;
-  cursor: pointer;
-  &:hover{
-    border-color: #4A494B;
-  }
-}
 @media screen and (max-width: 768px) {
 .title{
   font-size: calc(20px + 1vw);
