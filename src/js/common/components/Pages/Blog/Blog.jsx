@@ -5,7 +5,7 @@ import Footer from '../../Footer/Footer';
 import BlogItemLatest from './BlogItemLatest';
 import BlogItem from './BlogItem.jsx';
 
-import './BlogCSS/Blog.scss';
+import styles from './BlogCSS/Blog.css';
 
 const blogContainerStyle = {
 	display: 'flex',
@@ -27,7 +27,7 @@ class Blog extends PureComponent {
   	});
 
     return (
-			<div className="blog-container">
+			<div className={styles['blog-container']}>
 				<Container>
 					<BlogItemLatest post={posts[0]} />
 					{blogs}
