@@ -3,10 +3,10 @@
 @import "../CSS/Mobile.css";
 .globalHeader {
   /*background-image:url('../../../../../assets/images/bgTexture.png');*/
-    background-attachment:fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-    /*background-color: #fff2fb;*/
+  background-attachment:fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /*background-color: #fff2fb;*/
   nav {
     display: inline-block;
     float: right;

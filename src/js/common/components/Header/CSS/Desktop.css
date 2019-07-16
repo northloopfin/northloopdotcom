@@ -63,38 +63,38 @@
     }
     
   }
-    .bannerForm {
-      position: relative;
-      max-width: 538px;
-      margin-top: 48px;
-      div {
-        width: 100%;
+  .bannerForm {
+    position: relative;
+    max-width: 538px;
+    margin-top: 48px;
+    div {
+      width: 100%;
+    }
+    input {
+      height: 80px;
+      background: white;
+      border-radius: 50px;
+      padding: 0px;
+      padding-left: 25px;
+      &:before {
+        display: none!important;
       }
-      input {
-        height: 80px;
-        background: white;
-        border-radius: 50px;
-        padding: 0px;
-        padding-left: 25px;
-        &:before {
-          display: none!important;
-        }
+    }
+    button {
+      position: absolute;
+      /*right: 6px;*/
+      top: 20px;
+      height: 70px;
+      border-radius: 35px;
+      padding: 0 24px;
+      font-size: 20px;
+      background-color: #a24a87;
+      &:hover {
+        background-color: #b24a87;
       }
-      button {
-        position: absolute;
-        /*right: 6px;*/
-        top: 20px;
-        height: 70px;
-        border-radius: 35px;
-        padding: 0 24px;
-        font-size: 20px;
-        background-color: #a24a87;
-        &:hover {
-          background-color: #b24a87;
-        }
-      span {
-        text-transform: none;
-        }
+    span {
+      text-transform: none;
       }
     }
   }
+}

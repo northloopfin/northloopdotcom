@@ -283,13 +283,14 @@ function Header(props) {
   });
   const { location } = props;
   const { pathname } = location;
-  const isHome = pathname === '/#/';
-  const isCareers = pathname === '/#/careers';
+  const isHome = pathname === '/';
+  console.log('isHome', isHome);
+  const isCareers = pathname === '/careers';
   const isJoinUs = pathname === 'https://www.linkedin.com/company/35694537/admin/';
-  const isHighYieldSavings = pathname === '/#/high-yield-savings';
-  const isLoans = pathname === '/#/loans';
-  const isBlogs = pathname === '/#/blogs';
-  const isManualSignup = pathname === '/#/manual-signup';
+  const isHighYieldSavings = pathname === '/high-yield-savings';
+  const isLoans = pathname === '/loans';
+  const isBlogs = pathname === '/blogs';
+  const isManualSignup = pathname === '/manual-signup';
   const isMobile = window.innerWidth < 768;
 
   // Content for each pages
@@ -380,16 +381,16 @@ function Header(props) {
         onKeyDown={toggleDrawer(side, false)}>
         <List>
           <ListItem button>
-            <NavLink exact to="/">Students</NavLink>
+            <NavLink exact to="/" className={isHome ? styles.active : ''}>Students</NavLink>
           </ListItem>
           <ListItem button>
-            <NavLink to="/careers/">Careers</NavLink>
+            <NavLink to="/careers" className={isCareers ? styles.active : ''}>Careers</NavLink>
           </ListItem>
           <ListItem button>
-            <NavLink to="/loans/">Loans</NavLink>
+            <NavLink to="/loans" className={isLoans ? styles.active : ''}>Loans</NavLink>
           </ListItem>
           <ListItem button>
-            <NavLink to="/get-the-app/"><Button variant="contained" color="secondary">Students</Button></NavLink>
+            <NavLink to="/get-the-app"><Button variant="contained" color="secondary">Get The App</Button></NavLink>
           </ListItem>
         </List>
       </div>
@@ -397,7 +398,7 @@ function Header(props) {
   };
 
   return (
-    <header className='globalHeader'>
+    <header className={styles.globalHeader}>
 
       {isMobile && (
         <div>
