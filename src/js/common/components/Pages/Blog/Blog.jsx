@@ -1,6 +1,11 @@
 import React, { PureComponent } from 'react';
-import BlogItem from './BlogItem.jsx';
 import Container from '@material-ui/core/Container';
+
+import Footer from '../../Footer/Footer';
+import BlogItemLatest from './BlogItemLatest';
+import BlogItem from './BlogItem.jsx';
+
+import './BlogCSS/Blog.scss';
 
 const blogContainerStyle = {
 	display: 'flex',
@@ -13,7 +18,7 @@ const blogContainerStyle = {
 class Blog extends PureComponent {
   render() {
   	
-  	const { posts } = this.props;
+		const { posts } = this.props;
 
   	let array = [];
 
@@ -22,11 +27,13 @@ class Blog extends PureComponent {
   	});
 
     return (
-    	<Container>
-    		<div className="blog-container" style={blogContainerStyle}>
-			    {blogs}
-		    </div>
-    	</Container>
+			<div className="blog-container">
+				<Container>
+					<BlogItemLatest post={posts[0]} />
+					{blogs}
+					<Footer />
+				</Container>
+		  </div>
     );
   }
 }
