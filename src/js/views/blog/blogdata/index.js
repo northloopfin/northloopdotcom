@@ -1265,6 +1265,212 @@ const posts = [
     thumbnail: images.upenn1,
     image2: images.upenn2
   },
+  {
+    id: 24,
+    title: "School Profile: University of Southern California",
+    quick_facts: {
+      founded: '1880',
+      location: 'Los Angeles, California',
+      students: '45,687',
+      international_students: '35%'
+    },
+    site_url: 'http://www.usc.edu',
+    about: '<p>The University of Southern California (USC) is amongst the oldest universities in California, and is a world-famous institution. Amongst its many achievements, it is the birthplace of the Domain Name System.</p><p>It’s film, business and engineering departments have produced industry leading alumni that include filmmaker George Lucas and astronaut Neil Armstrong.</p>',
+    things_to_do: {
+      title: 'Things to Do in Los Angeles',
+      content: '<p>The city of Angels is large enough that you can spend your entire life here and not finish seeing, eating and experiencing all of its attractions. USC is home to the Trojans, its nationally renowned football team - don’t miss a game at the Coliseum amongst 75,000 extremely proud fans!</p>'
+    },
+    places_eat: {
+      title: 'Best Places to Eat around USC',
+      places: [
+        {
+          title: 'Cava',
+          cuisine: 'Greek',
+          location: '3201 S Hoover St Suite 1840',
+          discount: '1% Cashback'
+        },
+        {
+          title: 'Ground Zero',
+          cuisine: 'Coffee',
+          location: '615 Childs Way',
+          discount: '1% Cashback'
+        },
+        {
+          title: '23rd Street Cafe',
+          cuisine: 'Indian',
+          location: '936 W 23rd St',
+          discount: '1% Cashback'
+        },
+        {
+          title: 'Northern Way',
+          cuisine: 'Chinese',
+          location: '2904 S Figueroa St',
+          discount: '1% Cashback'
+        }
+      ]
+    },
+    thumbnail: images.usc1,
+    image2: images.usc2
+  },
+  {
+    id: 25,
+    title: "School Profile: University of Washington",
+    quick_facts: {
+      founded: '1861',
+      location: 'Seattle, Washington',
+      students: '47,899',
+      international_students: '18.6%'
+    },
+    site_url: 'https://www.washington.edu/',
+    about: '<p>The University of Washington (often called UW or Washington or U-Dub) is a public university in Seattle. Its sprawling Seattle campus includes on the largest library systems in the world. A leading research university (ranking 3rd in the United States for research funding), the UW is famous for its science and highly competitive engineering and computer science departments.</p><p>20 Nobel Prize winners are linked to the UW, as well as the earlier days of Microsoft founders Paul Allen and Bill Gates.</p>',
+    things_to_do: {
+      title: 'Things to Do in Seattle',
+      content: '<p>The birthplace of Starbucks (and Microsoft and Amazon), Seattle is a city that its residents love greatly. Explore the beautiful and awe inspiring scenery around the city, with hikes to adventure sports for those inclined. If you’re looking to dive into a city that is steeped in culture (Nirvana is from here) be prepared to be delighted - amazing artists, cafes, music venues and more will keep you exploring for days.</p>'
+    },
+    places_eat: {
+      title: 'Best Places to Eat around University of Washington',
+      places: [
+        {
+          title: 'Din Tai Fung',
+          cuisine: 'Taiwanese',
+          location: 'University Village',
+          discount: '3% Cashback'
+        },
+        {
+          title: 'Pagliacci Pizza',
+          cuisine: 'Pizza',
+          location: '1093 Hemphill Ave NW',
+          discount: '3% Cashback'
+        },
+        {
+          title: 'Taste of India',
+          cuisine: 'Indian',
+          location: '5517 Roosevelt Way NE',
+          discount: '3% Cashback'
+        },
+        {
+          title: 'Xi’an Noodles',
+          cuisine: 'Chinese',
+          location: '930 Howell Mill Rd NW',
+          discount: '3% Cashback'
+        },
+        {
+          title: 'U-Don Fresh Japanese Noodle Station',
+          cuisine: 'Japanese',
+          location: '4515 University Way NE',
+          discount: '3% Cashback'
+        }
+      ]
+    },
+    thumbnail: images.uiwashington1,
+    image2: images.uiwashington2
+  },
+  {
+    id: 26,
+    title: "School Profile: University of Texas - Dallas",
+    quick_facts: {
+      founded: '1961',
+      location: 'Dallas, Texas',
+      students: '28,755',
+      international_students: '34.5%'
+    },
+    site_url: 'https://www.utdallas.edu/',
+    about: '<p>The University of Texas-Dallas is a public university part of the University of Texas system. Rapidly rising in ranking, it has become a highly regarded institution in Texas, with four Nobel Prize winners associated with it. The Naveen Jindal School of Management is considered one of the best business schools in Texas.</p><p>Well known for its programs in engineering, computer science and political science, UT-Dallas offers over 140 different academic programs to students.</p>',
+    things_to_do: {
+      title: 'Things to Do in Dallas',
+      content: '<p>Dallas is a cultural and commercial hub of Texas. A vast metropolis, Dallas is famed for its amazing art museums and galleries, from the Dallas Museum of Art to galleries in the Art District. Fantastic restaurants, cafes, bistros and a great nightlife mean that students can experience one of America’s most diverse and vibrant cities through every lens.</p>'
+    },
+    places_eat: {
+      title: 'Best Places to Eat around UT-Dallas',
+      places: [
+        {
+          title: 'Hoki Poki',
+          cuisine: 'Poke',
+          location: '157 Wooster St',
+          discount: '3% Cashback'
+        },
+        {
+          title: 'Pinto Urban Thai Diner',
+          cuisine: 'Thai',
+          location: '3000 Northside Blvd',
+          discount: '3% Cashback'
+        },
+        {
+          title: 'Wu Wei Din',
+          cuisine: 'Chinese',
+          location: '2909 W 15th St',
+          discount: '3% Cashback'
+        },
+        {
+          title: 'Mumtaz Indian Restaurant',
+          cuisine: 'Indian',
+          location: '216 W Campbell Rd',
+          discount: '3% Cashback'
+        },
+        {
+          title: 'Charcoal Avenue',
+          cuisine: 'Indian',
+          location: '17509 Coit Rd',
+          discount: '3% Cashback'
+        }
+      ]
+    },
+    thumbnail: images.utdallas1,
+    image2: images.utdallas2
+  },
+  {
+    id: 27,
+    title: "School Profile: Yale University",
+    quick_facts: {
+      founded: '1701',
+      location: 'New Haven, Connecticut',
+      students: '12,312',
+      international_students: '22.3%'
+    },
+    site_url: 'https://www.yale.edu/',
+    about: '<p>Yale University, one of the most renowned and prestigious universities in the world, is one of the eight Ivy League universities. The third oldest institution in America, Yale is one of the hardest universities to gain admittance to, as students from all over the world fight to study in its historic halls.</p><p>Multiple US presidents, politicians and billionaires are its alumni, including over 240 Rhodes scholars. Famous alumni include the Bush family and Bill Clinton as well as multiple actors and actresses.</p>',
+    things_to_do: {
+      title: 'Things to Do in New Haven',
+      content: '<p>Yale’s campus is brimming with activity and energy. A diverse student population means you will always find something to do and someone to do it with. Apart from the many student-led groups and events that occur on and around campus, New Haven has many free concerts, museums, a thriving theatre scene and many restaurants to keep you busy.</p>'
+    },
+    places_eat: {
+      title: 'Best Places to Eat around Yale',
+      places: [
+        {
+          title: 'Pepe’s Pizzeria',
+          cuisine: 'Pizza',
+          location: '157 Wooster St',
+          discount: '1% Cashback'
+        },
+        {
+          title: 'Sushi on Chapel',
+          cuisine: 'Japanese',
+          location: '3000 Northside Blvd',
+          discount: '1% Cashback'
+        },
+        {
+          title: 'Blue State Coffee',
+          cuisine: 'Coffee',
+          location: '276 York St',
+          discount: '1% Cashback'
+        },
+        {
+          title: 'Ivy Wok',
+          cuisine: 'Chinese',
+          location: '316 Elm St',
+          discount: '1% Cashback'
+        },
+        {
+          title: 'House of Naan',
+          cuisine: 'Indian',
+          location: '65 Howe St',
+          discount: '1% Cashback'
+        }
+      ]
+    },
+    thumbnail: images.yale1,
+    image2: images.yale2
+  }
 ];
 
 export default posts;
