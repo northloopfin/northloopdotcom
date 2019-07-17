@@ -1,0 +1,39 @@
+.wrapper {
+  position: relative;
+}
+.icon {
+  top: 50px;
+  position: absolute;
+  max-width: inherit;
+}
+.imagePaddingLeft{
+  padding-left:20px;
+}
+.text{
+  height: 30px;
+  width: 550px;
+  color: #252827;
+  font-family: "Muli";
+  font-size: 16px;
+  line-height: 30px;
+}
+.rowSpacing{
+  margin-bottom:89px;
+}
+@media screen and (max-width: 768px) {
+  .rowSpacing{
+    /* margin-bottom: 0; */
+  }
+  .imagePaddingLeft{
+    padding-left:0;
+    padding-top: 5px;
+  }
+  .title{
+    font-size: calc(11px + 0.7vw);
+    line-height: normal;
+  }
+  .text{
+      font-size: calc(11px + 0.5vw);
+      line-height: normal;
+  }
+}

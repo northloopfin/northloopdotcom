@@ -23,6 +23,7 @@ import buttonStyles from '../Home/HomeCSS/Home.css'
 import Footer from '../../Footer/Footer'
 import Referal from './ReferalComponent/Referal';
 import Schools from './SchoolsComponent/Schools';
+import Slider from '../../SliderComponent/Slider'
 import Testimonial from '../../TestimonialComponent/Testimonial'
 import DownloadApp from '../../DownloadAppComponent/DownloadApp'
 import AchieveDreams from './AchieveDreamsComponent/AchieveDreams'
@@ -594,54 +595,64 @@ class Loan extends PureComponent {
               </div>
             </Container> }
           { submitted && successMessage }
-          <Container>
-            <Grid item sm={10} style={{'display': 'flex', 'justifyContent': 'flex-end', 'marginTop': '2%', 'marginBottom': '2%'}}>
+          {/* <Container>
+            <Grid item sm={10} style={{'display': 'flex', 'justifyContent': 'flex-end', 'marginTop': '2%', 'marginBottom': '2%'}}> */}
               {/* step > 1 && step < 6 && <Button onClick={this.decStep}>Prev</Button> */}
               {/* step > 0 && step < 5  && <Button onClick={this.incStep}>Next</Button> */}
               {/* step == 5 && <Button onClick={this.submitForm}>Submit</Button> */}
-            </Grid>
-          </Container>
-          <HomeSection image={happyStudents} title="Achieve Your Dreams">
-            <AchieveDreams />
-          </HomeSection>
-          <Container className={styles.main} style={{ marginBottom: '5vw' }}>
-            <Grid container>
-              <Grid item xs={12} sm={8}>
-                <div className={styles.titleBlock}>
-                  <p className={styles.title}>Referral Program</p>
-                </div>
-              </Grid>
-              <Grid item xs={12}>
-                <Referal />
-              </Grid>
-            </Grid>
-          </Container>
-          <Container className={styles.main} style={{ marginTop: '5vw' }}>
-            <Grid container>
-              <Grid item xs={12} sm={8}>
-                <div className={styles.titleBlock}>
-                  <p className={styles.schoolsBlock}>Schools That We Support</p>
-                </div>
-              </Grid>
-              <Grid item xs={12}>
-                <Schools />
-              </Grid>
-            </Grid>
-          </Container>
-          <Container className={styles.main}>
-            <Grid container>
-              <Grid item xs={12} sm={8}>
-                <div className={styles.titleBlock}>
-                  <p className={styles.title}>Student Testimonials</p>
-                </div>
-              </Grid>
-              <Grid item xs={12}>
-                <Testimonial />
-              </Grid>
-            </Grid>
-          </Container>
-          <Footer />
-          <DownloadApp />
+            {/* </Grid>
+          </Container> */}
+          <Slider>
+            <div id="1">
+              <HomeSection image={happyStudents} title="Achieve Your Dreams">
+                <AchieveDreams />
+              </HomeSection>
+            </div>
+            <div id="2">
+              <Container className={styles.main} style={{ marginBottom: '5vw' }}>
+                <Grid container>
+                  <Grid item xs={12} sm={8}>
+                    <div className={styles.titleBlock}>
+                      <p className={styles.title}>Referral Program</p>
+                    </div>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Referal />
+                  </Grid>
+                </Grid>
+              </Container>
+              <Container className={styles.main} style={{ marginTop: '5vw' }}>
+                <Grid container>
+                  <Grid item xs={12} sm={8}>
+                    <div className={styles.titleBlock}>
+                      <p className={styles.schoolsBlock}>Schools That We Support</p>
+                    </div>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Schools />
+                  </Grid>
+                </Grid>
+              </Container>
+            </div>
+            <div id="3">
+              <Container className={styles.main}>
+                <Grid container>
+                  <Grid item xs={12} sm={8}>
+                    <div className={styles.titleBlock}>
+                      <p className={styles.title}>Student Testimonials</p>
+                    </div>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Testimonial />
+                  </Grid>
+                </Grid>
+              </Container>
+            </div>
+            <div id="4">
+              <Footer />
+              <DownloadApp />
+            </div>
+          </Slider>
       </div>
     );
   }
