@@ -1,0 +1,88 @@
+@import "../../../../../style/configs/color";
+@import "../../../../../style/configs/variables";
+
+.main{
+    margin-top: 6.8vw;
+    margin-bottom: 18vw;
+}
+.titleBlock{
+   margin-top:40px;    
+   margin-bottom:60px;    
+}
+.title{
+ 	color: #000000;
+  font-size: 50px;
+  line-height: 60px;
+  letter-spacing: 0.2px;
+  font-weight: bold;
+}
+.subtitle{
+  color: #4A494B;
+  font-size: 24px;
+  line-height: 30px;
+}
+.headerIphone {
+  div {
+    text-align: right;
+  }
+  img {
+    max-height: 660px;
+  }
+}
+button.button {
+   padding: 12px 37px;
+   text-transform: none;
+   font-size: 24px;
+   border-radius: 25px;
+   background-color: $btn-bg-color;
+   box-shadow:none;
+   color: #FFFFFF;	
+   text-align: center;
+   font-weight:bold;
+   font-size: 15px;
+   line-height: 19px;
+   white-space: nowrap;
+   cursor: pointer;
+   border: none;
+   &:hover {
+     background-color: $btn--hover-bg-color;
+   }
+}
+
+.sectionImage {
+  max-width: 372px;
+}
+
+.videoWrapper {
+  margin-top: 200px;
+}
+
+@media screen and (max-width: 768px) {
+.title{
+  font-size: calc(20px + 1vw);
+  line-height: 30px;
+  text-align: center;
+}
+.titleBlock{
+   margin-top:0;    
+   margin-bottom:0;    
+}
+.subtitle{
+  font-size: calc(14px + 1vw);
+  line-height: normal;
+  text-align: center;
+}
+.headerIphone {
+  padding-top: 20px;
+  text-align: center;
+  div {
+    text-align: center;
+  }
+  img {
+      max-height: 540px;
+    }
+  }
+  .sectionImage {
+    max-width: 150px;
+  }
+}

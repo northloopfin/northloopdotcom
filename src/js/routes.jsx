@@ -9,7 +9,9 @@ import styles from '../style/index.css'
 const HomeRouteHandler = LazyLoading(() => import('views/home'))
 const LoanRouteHandler = LazyLoading(() => import('views/loan'))
 const BlogRouteHandler = LazyLoading(() => import('views/blog'))
+const CurrencyProtectRouteHandler = LazyLoading(() => import('views/currencyprotect'))
 const ManualSignupRouteHandler = LazyLoading(() => import('views/manualSignup'))
+const LegalRouteHandler = LazyLoading(() => import('views/legal'))
 const Header = LazyLoading(() => import('common/components/Header/Header'))
 
 // This show case how you can access routing info in your component
@@ -22,7 +24,13 @@ module.exports = (
         <Route exact path="/" component={HomeRouteHandler} />
         <Route path="/loans" component={LoanRouteHandler} />
         <Route path="/blogs" component={BlogRouteHandler} />
+        <Route path="/currency/protect" component={CurrencyProtectRouteHandler} />
         <Route path="/manual-signup" component={ManualSignupRouteHandler} />
+        <Route path="/legal" component={LegalRouteHandler} />
+        <Route path="/privacy-policy" component={LegalRouteHandler} />
+        <Route path="/terms-of-service" component={LegalRouteHandler} />
+        <Route path="/cardholder-agreement" component={LegalRouteHandler} />
+        <Route path="/consumer-deposit-agreement" component={LegalRouteHandler} />
         <Route path="*" component={HomeRouteHandler} />
       </Switch>
     </div>

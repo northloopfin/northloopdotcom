@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1146px" height="551px" viewBox="0 0 1146 551" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 55.2 (78181) - https://sketchapp.com -->
+    <title>0B42FC40-BC18-4CCD-8210-9EE81633F050</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <filter x="-71.7%" y="-71.7%" width="243.3%" height="243.3%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.929093071   0 0 0 0 0.35156117   0 0 0 0 0.412354002  0 0 0 0.444493007 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="3.061617e-15%" id="linearGradient-2">
+            <stop stop-color="#C861AD" offset="0%"></stop>
+            <stop stop-color="#FF7987" offset="100%"></stop>
+        </linearGradient>
+        <filter x="-71.7%" y="-71.7%" width="243.3%" height="243.3%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.929093071   0 0 0 0 0.35156117   0 0 0 0 0.412354002  0 0 0 0.444493007 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <filter x="-71.7%" y="-71.7%" width="243.3%" height="243.3%" filterUnits="objectBoundingBox" id="filter-4">
+            <feOffset dx="0" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.929093071   0 0 0 0 0.35156117   0 0 0 0 0.412354002  0 0 0 0.444493007 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Website" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Currency-Protect_scroll02" transform="translate(-145.000000, -334.000000)">
+            <g id="02">
+                <g id="Group-5" transform="translate(145.000000, 202.000000)">
+                    <g id="Group" transform="translate(0.000000, 101.000000)">
+                        <g id="illustration-currencyprotect_path" transform="translate(0.000000, 32.000000)">
+                            <path d="M154.17186,9.4765625 C169.940859,60.0654755 170.550239,139.906621 156,249 C153.840224,265.193359 169.557977,288.134608 185,307.519531 C190.642974,314.603358 185,334.065249 185,341.303277" id="Path-3" stroke="#4A494B" stroke-dasharray="7"></path>
+                            <g id="03-icon-secure" filter="url(#filter-1)" transform="translate(155.000000, 19.000000) rotate(-18.000000) translate(-155.000000, -19.000000) translate(140.000000, 4.000000)">
+                                <circle id="Oval" fill="url(#linearGradient-2)" cx="15" cy="15" r="15"></circle>
+                                <polyline id="Path-2" stroke="#FFFFFF" stroke-width="1.66666667" stroke-linecap="round" stroke-linejoin="round" points="7.77777778 17.2920189 15 23.6366102 22.2222222 16.9699436"></polyline>
+                                <path d="M15,23.3588325 L15,6.66666667" id="Path" stroke="#FFFFFF" stroke-width="1.66666667" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </g>
+                            <g id="03-icon-secure-copy" filter="url(#filter-3)" transform="translate(164.000000, 187.000000) rotate(5.000000) translate(-164.000000, -187.000000) translate(149.000000, 172.000000)">
+                                <circle id="Oval" fill="url(#linearGradient-2)" cx="15" cy="15" r="15"></circle>
+                                <polyline id="Path-2" stroke="#FFFFFF" stroke-width="1.66666667" stroke-linecap="round" stroke-linejoin="round" points="7.77777778 17.2920189 15 23.6366102 22.2222222 16.9699436"></polyline>
+                                <path d="M15,23.3588325 L15,6.66666667" id="Path" stroke="#FFFFFF" stroke-width="1.66666667" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </g>
+                            <text id="We-remove-the-stress" font-family="Muli-Regular, Muli" font-size="15" font-weight="normal" line-spacing="24" fill="#4A494B">
+                                <tspan x="0" y="521"></tspan>
+                                <tspan x="0" y="545"></tspan>
+                            </text>
+                            <g id="03-icon-secure-copy-2" filter="url(#filter-4)" transform="translate(174.000000, 320.000000)">
+                                <circle id="Oval" fill="url(#linearGradient-2)" cx="15" cy="15" r="15"></circle>
+                                <polyline id="Path-2" stroke="#FFFFFF" stroke-width="1.66666667" stroke-linecap="round" stroke-linejoin="round" points="7.77777778 17.2920189 15 23.6366102 22.2222222 16.9699436"></polyline>
+                                <path d="M15,23.3588325 L15,6.66666667" id="Path" stroke="#FFFFFF" stroke-width="1.66666667" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,26 +1,23 @@
 import React, { Component } from 'react'
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 import styles from './Slider.css'
 
-const Dots = () => (
+const Dots = ({ screens }) => (
   <div className={styles.dots}>
-    <div className={styles.dot}></div>
-    <div className={styles.dot}></div>
-    <div className={styles.dot}></div>
-    <div className={styles.dot}></div>
-    <div className={styles.dot}></div>
-    <div className={styles.dot}></div>
-    <div className={styles.dot}></div>
-    <div className={styles.dot}></div>
+    {screens.map(screen => (
+      <AnchorLink href={`#${screen.props.id}`}>
+        <div className={styles.dot}></div>
+      </AnchorLink>
+    ))}
   </div>
 )
-
 
 class Slider extends Component {
     render() {
       const isMobile = window.screen.width < 768
       return (
         <div>
-          {!isMobile && <Dots />}
+          {!isMobile && <Dots screens={this.props.children} />}
           {this.props.children}
         </div>
       )

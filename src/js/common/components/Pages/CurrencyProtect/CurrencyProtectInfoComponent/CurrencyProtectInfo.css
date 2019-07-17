@@ -1,0 +1,31 @@
+.mainText{
+  color: #4A494B;
+  font-size: 15px;
+  line-height: 24px;
+  margin-bottom: 100px;
+}
+.subText {
+  color: #4A494B;
+  font-family: "Muli";
+  font-size: 24px;
+  line-height: 36px;
+}
+.topPadding{
+  padding-top: 80px;
+}
+.marginLeft{
+  margin-left: 5vw;
+}
+@media screen and (max-width: 768px) {
+  .topPadding{
+    padding-top: 5vw;
+  }
+  .marginLeft{
+    margin-left: 0;
+  }
+  .mainText{
+    font-size: calc(10px + 1vw);
+    line-height: normal;
+    text-align: center;
+  }
+}
