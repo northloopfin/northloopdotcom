@@ -16,18 +16,22 @@ class BlogItem extends Component {
     return (
       <div className={styles['blog-item']}>
         <Grid container spacing={6}>
-          <Grid item xs={12} sm={6} className={styles['grid-image']}>
+          <Grid item xs={12} sm={6}>
             <div className={styles.thumbnail} style={{backgroundImage: `url(${post.thumbnail})`}}></div>
           </Grid>
-          <Grid item xs={12} sm={6} className={styles['grid-content']}>
-            <div className={styles['author']}>
-              <Avatar alt="Author" src={defaultAvatar} className={styles.avatar} />
-              <span>North Loop</span>
-              <span className={styles['pub-date']}>30 June 2019</span>
+          <Grid item xs={12} sm={6}>
+            <div className={styles['blog-content']}>
+              <div className={styles['author']}>
+                <Avatar alt="Author" src={defaultAvatar} className={styles.avatar} />
+                <span>North Loop</span>
+                <span className={styles['pub-date']}>30 June 2019</span>
+              </div>
+              <div className={styles.title}>{post.title}</div>
+              <div className={styles.about}>{getAbout(post.about, 140)}</div>
+              <NavLink to={`/blogs/${post.id}`} className={styles['button-link']}>
+                <Button variant="contained" color="secondary">Read More</Button>
+              </NavLink>
             </div>
-            <div className={styles.title}>{post.title}</div>
-            <div className={styles.about}>{getAbout(post.about, 140)}</div>
-            <NavLink to={`/blogs/${post.id}`} className={styles['button-link']}><Button variant="contained" color="secondary">Read More</Button></NavLink>
           </Grid>
         </Grid>
       </div>

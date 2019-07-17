@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
+import Button from '@material-ui/core/Button';
 
 import Footer from '../../Footer/Footer';
 import BlogItemLatest from './BlogItemLatest';
@@ -26,6 +27,32 @@ class Blog extends PureComponent {
 		this.setState({ postsToShow: this.props.posts.slice(1) });
 	}
 
+	handleOlderClick = () => {
+		this.setState({postShowNum: this.state.postShowNum + 5});
+	};
+
+	handleSearchChange = (event) => {
+		const value = event.target.value.trim();
+		console.log('value', value);
+		let posts = this.props.posts.slice(1);
+		if (value != '') {
+			const keys = value.toLowerCase().split(' ');
+			posts = posts.filter((post) => {
+				const str = JSON.stringify(post).toLowerCase();
+				
+				let isMatch = true;
+				for (let key of keys) {
+					if (!str.includes(key)) {
+						isMatch = false;
+						break;
+					}
+				}
+				return isMatch;
+			});
+		}
+		this.setState({postsToShow: posts, postShowNum: 5});
+	};
+
   render() {
 		let blogs = [];
 		if (this.state.postsToShow.length > 0) {
@@ -43,7 +70,8 @@ class Blog extends PureComponent {
 						<Paper className={styles.paper}>
 							<InputBase className={styles.input}
 								placeholder="Search blog"
-								inputProps={{ 'aria-label': 'Search Google Maps' }}
+								inputProps={{ 'aria-label': 'Search blog' }}
+								onChange={this.handleSearchChange}
 							/>
 							<IconButton aria-label="Search" className={styles.button}>
 								<SearchIcon />
@@ -55,8 +83,13 @@ class Blog extends PureComponent {
 							{blogs}
 						</div>
 					:
-						<p>No Posts to Show.</p>
+						<div style={{margin: '100px auto', width: 'fit-content'}}>No Posts to Show.</div>
 					}
+					{(this.state.postsToShow.length > this.state.postShowNum) && (
+						<div className={styles['button-older']}>
+							<Button variant="contained" onClick={this.handleOlderClick} className={styles.button}>Older Posts</Button>
+						</div>
+					)}
 					<Footer />
 				</Container>
 		  </div>
