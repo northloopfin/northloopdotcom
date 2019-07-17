@@ -8,6 +8,7 @@ import Container from '@material-ui/core/Container';
 // This is i18n and i10n
 // import { FormattedMessage, FormattedDate, FormattedTime } from 'react-intl'
 import BlogViewFile from '../../common/components/Pages/Blog/Blog.jsx';
+import blogData from './blogdata';
 
 class BlogView extends Component {
   state = {
@@ -16,9 +17,10 @@ class BlogView extends Component {
   }
 
   componentWillMount() {
-    axios.get("https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2F%40north_loop").then(res => {
+    /*axios.get("https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2F%40north_loop").then(res => {
       this.setState({posts: res.data.items, loading: false});
-    });
+    });*/
+    this.setState({posts: blogData, loading: false});
   }
 
   render() {

@@ -30,6 +30,7 @@ class Blog extends PureComponent {
 			<div className={styles['blog-container']}>
 				<Container>
 					<BlogItemLatest post={posts[0]} />
+					<div className={styles['input-container']}></div>
 					{blogs}
 					<Footer />
 				</Container>
