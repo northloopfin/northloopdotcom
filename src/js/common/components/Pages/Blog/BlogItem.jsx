@@ -1,46 +1,38 @@
-import React, { PureComponent } from 'react';
-import { NewsHeaderCard } from 'react-ui-cards';
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
 
-class BlogItem extends PureComponent {
+import { getAbout } from './utils';
+
+import styles from './BlogCSS/Blog.css';
+
+import defaultAvatar from '../../../../../assets/images/jai.jpeg';
+
+class BlogItem extends Component {
   render() {
-    const { data } = this.props;
-
-    // var srcIndex = item.description.substring(tagIndex).indexOf('src=') + tagIndex; //Find where the src attribute starts
-    // var srcStart = srcIndex + 5; //Find where the actual image URL starts; 5 for the length of 'src="'
-    // var srcEnd = item.description.substring(srcStart).indexOf('"') + srcStart; //Find where the URL ends
-                
-    // var src = item.description.substring(srcStart, srcEnd); // Extract just the URL
-                
-    // output += `<img src="${src}" class="card-img-top" alt="Cover image">`; //Adding the image to the Card
-                
-    // output += `<div class="card-body">`;    //Defining the Card body
-                
-    // output += `<h5 class="card-title"><a href="${item.link}">${item.title}</a></h5>`;   //Hyperlinking the title of the card to the post
-    // var yourString = item.description.replace(/<img[^>]*>/g,""); //We do not want an image in the description so I replace the images with "" (Empty text)
-                
-    // yourString = yourString.replace('h4', 'p'); //Replacing h4 tags with p tags
-                
-    // yourString = yourString.replace('h3', 'p'); //Replacing h3 tags with p tags
-                
-    // var maxLength = 120; // maximum number of characters to extract
-                
-    // //trim the string to the maximum length
-    // var trimmedString = yourString.substr(0, maxLength);
-    // //re-trim if we are in the middle of a word
-    // trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")));            
-
-
-    return data && data.thumbnail ? (
-      <div onClick={() => {window.open(data.link)}} style={{cursor: 'pointer'}}>
-        <NewsHeaderCard
-            thumbnail={data.thumbnail}
-            title={data.title}
-            author={data.author}
-            date={data.pubDate}
-            tags={data.categories}/>
-      </div>)
-    	: <p>No posts</p>;
+    const { post } = this.props;
+    return (
+      <div className={styles['blog-item']}>
+        <Grid container spacing={6}>
+          <Grid item xs={12} sm={6} className={styles['grid-image']}>
+            <div className={styles.thumbnail} style={{backgroundImage: `url(${post.thumbnail})`}}></div>
+          </Grid>
+          <Grid item xs={12} sm={6} className={styles['grid-content']}>
+            <div className={styles['author']}>
+              <Avatar alt="Author" src={defaultAvatar} className={styles.avatar} />
+              <span>North Loop</span>
+              <span className={styles['pub-date']}>30 June 2019</span>
+            </div>
+            <div className={styles.title}>{post.title}</div>
+            <div className={styles.about}>{getAbout(post.about, 140)}</div>
+            <NavLink to={`/blogs/${post.id}`} className={styles['button-link']}><Button variant="contained" color="secondary">Read More</Button></NavLink>
+          </Grid>
+        </Grid>
+      </div>
+    )
   }
 }
 
-export default BlogItem;
+export default BlogItem

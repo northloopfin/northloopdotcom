@@ -12,7 +12,6 @@ import defaultAvatar from '../../../../../assets/images/jai.jpeg';
 
 class BlogItemLatest extends Component {
   render() {
-    console.log('post:', this.props.post);
     const { post } = this.props;
     return (
       <div className={styles['blog-item-latest']}>
