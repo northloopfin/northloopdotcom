@@ -7,12 +7,12 @@ import Container from '@material-ui/core/Container';
 
 // This is i18n and i10n
 // import { FormattedMessage, FormattedDate, FormattedTime } from 'react-intl'
-import BlogViewFile from '../../common/components/Pages/Blog/Blog.jsx';
-import blogData from './blogdata';
+import BlogDetailViewFile from '../../common/components/Pages/BlogDetail/BlogDetail.jsx';
+import blogData from '../blog/blogdata';
 
-class BlogView extends Component {
+class BlogDetailView extends Component {
   state = {
-    posts:[],
+    post: null,
     loading: true
   }
 
@@ -20,7 +20,7 @@ class BlogView extends Component {
     /*axios.get("https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2F%40north_loop").then(res => {
       this.setState({posts: res.data.items, loading: false});
     });*/
-    this.setState({posts: blogData, loading: false});
+    this.setState({post: blogData[this.props.match.params.blogId - 1], loading: false});
   }
 
   render() {
@@ -34,7 +34,7 @@ class BlogView extends Component {
     return (
       <div>
         { 
-          !this.state.loading ? <BlogViewFile posts={this.state.posts} /> :
+          !this.state.loading ? <BlogDetailViewFile post={this.state.post} /> :
           <Container>
             <div style={{ 'display': 'flex', 'justifyContent': 'center', 'marginTop': '20%', 'marginBottom': '20%' }}>
               <CircularProgress color="secondary" />
@@ -47,4 +47,4 @@ class BlogView extends Component {
 }
 
 
-export default BlogView;
+export default BlogDetailView;

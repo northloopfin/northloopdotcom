@@ -10,28 +10,28 @@ import styles from './BlogCSS/Blog.css';
 
 import defaultAvatar from '../../../../../assets/images/jai.jpeg';
 
-class BlogItem extends Component {
+class BlogItemLatest extends Component {
   render() {
     const { post } = this.props;
     return (
-      <div className={styles['blog-item']}>
+      <div className={styles['blog-item-latest']}>
         <Grid container spacing={6}>
-          <Grid item xs={12} sm={6}>
-            <div className={styles.thumbnail} style={{backgroundImage: `url(${post.thumbnail})`}}></div>
-          </Grid>
           <Grid item xs={12} sm={6}>
             <div className={styles['blog-content']}>
               <div className={styles['author']}>
                 <Avatar alt="Author" src={defaultAvatar} className={styles.avatar} />
                 <span>North Loop</span>
-                <span className={styles['pub-date']}>30 June 2019</span>
               </div>
+              <span className={styles['pub-date']}>30 June 2019</span>
               <div className={styles.title}>{post.title}</div>
-              <div className={styles.about}>{getAbout(post.about, 140)}</div>
+              <div className={styles.about}>{getAbout(post.about, 200)}</div>
               <NavLink to={`/blogs/${post.id}`} className={styles['button-link']}>
                 <Button variant="contained" color="secondary">Read More</Button>
               </NavLink>
-            </div>
+            </div> 
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <div className={styles.thumbnail} style={{backgroundImage: `url(${post.thumbnail})`}}></div>
           </Grid>
         </Grid>
       </div>
@@ -39,4 +39,4 @@ class BlogItem extends Component {
   }
 }
 
-export default BlogItem
+export default BlogItemLatest

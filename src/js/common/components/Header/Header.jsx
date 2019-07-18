@@ -153,12 +153,12 @@ function Header(props) {
           </div>
         )}
 
-        {isBlogs && (
+        {/* {isBlogs && (
           <div style={{ marginTop: '5%' }}>
             <h1>North Loop Blogs</h1>
             <p>Useful insights to ease your move to the US</p>
           </div>
-        )}
+        )} */}
       </Container>
     </header>
   )
