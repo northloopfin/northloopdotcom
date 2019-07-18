@@ -4,6 +4,10 @@ import Button from '@material-ui/core/Button';
 import { NavLink } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 
 import defaultAvatar from '../../../../../assets/images/jai.jpeg';
 
@@ -34,7 +38,7 @@ class BlogDetail extends PureComponent {
 						<div className={styles.about} dangerouslySetInnerHTML={{__html: post.about}}></div>
 						<div className={styles['mid-title']}>{post.things_to_do.title}</div>
 						<div className={styles['about']} dangerouslySetInnerHTML={{__html: post.things_to_do.content}}></div>
-						<Grid container spacing={6}>
+						<Grid container spacing={6} className={styles.image2}>
 							<Grid item xs={12} sm={6} className={styles['img-grid']}>
 								<div className={styles.thumbnail}>
 									<img src={post.image2} alt="Blog Thumbnail" />
@@ -53,6 +57,32 @@ class BlogDetail extends PureComponent {
 									</div>
 								</div> 
 							</Grid>
+						</Grid>
+						<div className={styles['mid-title']} >{ post.places_eat.title }</div>
+						{post.places_eat.content && <div className={styles.about} dangerouslySetInnerHTML={{__html: post.places_eat.content}}></div>}
+						<Grid container spacing={6} className={styles.places}>
+							{post.places_eat.places.map((place, index) => (
+								<Grid key={index} item xs={12} sm={6} md={4} className={styles['place-grid']}>
+									<Card>
+										<CardActionArea>
+											<CardContent>
+												<Typography gutterBottom variant="h5" component="h2">
+													{place.title}
+												</Typography>
+												<Typography variant="body2" component="p">
+													{`Cuisine: ${place.cuisine}`}
+												</Typography>
+												<Typography variant="body2" component="p">
+													{`Location: ${place.location}`}
+												</Typography>
+												<Typography variant="body2" component="p">
+													{`North Loop Discount: ${place.discount}`}
+												</Typography>
+											</CardContent>
+										</CardActionArea>
+									</Card>
+								</Grid>
+							))}
 						</Grid>
 						<Footer />
 					</Container>
