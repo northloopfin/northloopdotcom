@@ -1,31 +1,31 @@
 import React from 'react'
 import styles from './Schools.css'
 
-import princeton from '../../../../../../assets/images/princeton.png'
-import nyu from '../../../../../../assets/images/nyu.png'
-import arizona from '../../../../../../assets/images/arizona.png'
-import pace from '../../../../../../assets/images/pace.png'
+import princeton from '../../../../assets/images/princeton.png'
+import nyu from '../../../../assets/images/nyu.png'
+import arizona from '../../../../assets/images/arizona.png'
+import pace from '../../../../assets/images/pace.png'
 
 const imgs = [ 
     {
         width: '201',
         height: '71',
-        src: princeton
+        src: princeton,
     },
     {
         width: '148',
         height: '65',
-        src: nyu
+        src: nyu,
     },
     {
         width: '224',
         height: '45',
-        src: arizona
+        src: arizona,
     },
     {
         width: '118',
         height: '56',
-        src: pace
+        src: pace,
     }
 ];
 

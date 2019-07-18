@@ -22,7 +22,7 @@ import buttonStyles from '../Home/HomeCSS/Home.css'
 
 import Footer from '../../Footer/Footer'
 import Referal from './ReferalComponent/Referal';
-import Schools from './SchoolsComponent/Schools';
+import Schools from '../../SchoolsComponent/Schools';
 import Slider from '../../SliderComponent/Slider'
 import Testimonial from '../../TestimonialComponent/Testimonial'
 import DownloadApp from '../../DownloadAppComponent/DownloadApp'
