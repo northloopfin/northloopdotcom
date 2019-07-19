@@ -24,10 +24,8 @@
 
 .subtitleRed {
   font-weight: bold;
-  margin-right: 4vw;
   color: #C75561;
-  font-size: 24px;
-  line-height: 24px;
+  font-size: 20px;
 }
 
 .contactWrapper {
@@ -36,33 +34,81 @@
   align-items: center;
 }
 
-.innerContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.footerSection {
-  padding-top: 25px;
-  padding-bottom: 25px;
-  background: #B04995;
-  color: #FFFFFF;
-}
-.message{
-  padding: 0 40px;
-  display:flex;
-  align-items: center;
-  justify-content: center;
-  img{
-    margin-right: 10px;
-  }
-  p{
-    white-space: nowrap;
-    font-weight: bold;
+.redText {
+    color: #C75561;
+    font-family: Muli;
     font-size: 15px;
-    line-height: 19px;
+    line-height: 24px;
+}
+
+.spacing {
+    height: 150px;
+}
+
+.thumbnail {
+    color: #1A191A;
+    font-family: "Muli";
+    font-size: 24px;
+    line-height: 36px;
+    text-align: center;
+    max-height: 72px;
+    max-width: 749px;
+    margin: 0 auto;
+}
+
+button.button {
+   padding: 12px 37px;
+   text-transform: none;
+   font-size: 24px;
+   border-radius: 25px;
+   background-color: $btn-bg-color;
+   box-shadow:none;
+   color: #FFFFFF;	
+   text-align: center;
+   font-weight:bold;
+   font-size: 15px;
+   line-height: 19px;
+   white-space: nowrap;
+   cursor: pointer;
+   border: none;
+   &:hover {
+     background-color: $btn--hover-bg-color;
+   }
+}
+
+.formWrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.form{
+  padding: 10px 10px 10px 48px;
+  border-radius: 42.5px;
+  box-shadow: 0 10px 25px 0 rgba(172,185,196,0.28);
+  display: inline-block;
+}
+.formInput{
+  transform: translateY(5px);
+  border:none;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 30px;
+  height: 30px;
+  &::placeholder{
+    font-weight: 300;
+    color: #252827;
   }
 }
 
+.rewardWrapper {
+    display: flex;
+    width: 350px;
+    height: 100px;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 10px 25px 0 rgba(172,185,196,0.28);
+}
 
 @media screen and (max-width: 768px) {
     .title{
